@@ -1,0 +1,22 @@
+{
+  "name": "english-flash-card",
+  "version": "1.0.0",
+  "description": "This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular) version 0.11.1.",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "easymock": "*"
+  },
+  "scripts": {
+    "mock": "easymock api"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kashiro/english-flash-card.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/kashiro/english-flash-card/issues"
+  },
+  "homepage": "https://github.com/kashiro/english-flash-card"
+}

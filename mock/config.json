@@ -1,0 +1,7 @@
+{
+  "routes":[
+    "/api/books/:bookid",
+    "/api/books/:bookid/cards",
+    "/api/books/:bookid/cards/:cardid"
+  ]
+}
