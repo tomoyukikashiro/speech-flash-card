@@ -1,1 +1,9 @@
-<h1>{{name}}</h1>
+<h1>Book list</h1>
+
+<ul>
+  <li ng-repeat="book in bookList">
+    <a ng-href="{{routes.Card.getLink(book.id)}}" ng-bind="book.name"></a>
+  </li>
+</ul>
+
+<p><a ng-href="{{routes.Book.getCreate()}}">create book</a></p>

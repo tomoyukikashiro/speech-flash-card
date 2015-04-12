@@ -1,4 +1,5 @@
 {
+  "cors": true,
   "routes":[
     "/api/books/:bookid",
     "/api/books/:bookid/cards",

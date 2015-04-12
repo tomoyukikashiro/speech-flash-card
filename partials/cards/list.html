@@ -1,1 +1,11 @@
 <h1>{{name}}</h1>
+
+<ul>
+  <li ng-repeat="card in cardList">
+    <a ng-href="{{routes.Card.getLink($routeParams.bookId, card.id)}}" ng-bind="card.words"></a>
+    <button ng-click="deleteCard(card.id)">delete</button>
+  </li>
+</ul>
+
+<p><a ng-href="{{routes.Card.getCreate($routeParams.bookId)}}">create card</a></p>
+<p><a ng-href="{{routes.Book.getList()}}">book list</a></p>
