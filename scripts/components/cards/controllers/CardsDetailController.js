@@ -9,11 +9,12 @@
         'CommonResourceCard',
         'CommonRouterCard',
         '$routeParams',
+        'CommonServiceSpeech',
         CardsDetailController
       ]
     );
 
-  function CardsDetailController($scope, CommonResourceCard, CommonRouterCard, $routeParams) {
+  function CardsDetailController($scope, CommonResourceCard, CommonRouterCard, $routeParams, CommonServiceSpeech) {
     $scope.name = 'cards detail';
 
     // init
@@ -21,11 +22,17 @@
       .then(function(card) {
         $scope.card = card;
       });
+    CommonServiceSpeech.init();
 
     // public
     $scope.routes = {
       Card : CommonRouterCard
     };
+
+    $scope.onClickCard = function(words) {
+      CommonServiceSpeech.speak(words);
+    };
+
 
   }
 })();

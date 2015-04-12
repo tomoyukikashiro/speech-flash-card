@@ -6,7 +6,8 @@
     [
       'common.resource.card',
       'common.router.book',
-      'common.router.card'
+      'common.router.card',
+      'common.service.speech'
     ],
     ['$routeProvider', function($routeProvider) {
     $routeProvider
