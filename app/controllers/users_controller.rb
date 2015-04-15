@@ -12,7 +12,6 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       # todo response
-      # render 'new'
     end
   end
 
