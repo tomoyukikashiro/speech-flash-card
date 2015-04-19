@@ -44,6 +44,9 @@ group :test, :development do
   gem "factory_girl_rails"
   gem "capybara"
   gem "capybara-webkit"
+end
+
+group :test do
   gem "database_cleaner"
 end
 

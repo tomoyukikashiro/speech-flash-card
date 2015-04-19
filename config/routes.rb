@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get "user" => "users#show"
+  resources :users, only: [:create, :update, :destroy]
+  resources :sessions, only: [:create, :destroy]
+  root 'top_pages#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
