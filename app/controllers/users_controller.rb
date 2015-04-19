@@ -1,23 +1,24 @@
 class UsersController < ApplicationController
 
-  def index
-    # todo from session
-    @user = User.find(params[:id])
+  # ユーザ情報を返すAPI
+  def show
   end
 
+  # ユーザ新規登録API
   def create
     @user = User.new(user_params)
     if @user.save
       sign_in @user
-      redirect_to @user
+      render nothing: true, status: 201
     else
-      # todo response
     end
   end
 
+  # ユーザ新規更新API
   def update
   end
 
+  # ユーザ新規削除API
   def destroy
   end
 
