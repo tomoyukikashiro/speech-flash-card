@@ -22,37 +22,26 @@ class UsersController < ApplicationController
   end
 
   def update
-    user = check_user
-    if user.nil?
-      # do nothing
-    elsif user.update_attributes(update_params)
-      render nothing: true, status: 201
-    else
-      render json: user.errors.keys, status: 400
+    check_user do | user |
+      if user.update_attributes(update_params)
+        render nothing: true, status: 201
+      else
+        render json: user.errors.keys, status: 400
+      end
     end
   end
 
   def destroy
-    user = check_user
-    if user.destroy
-      render nothing: true, status: 201
-    else
-      render nothing: true, status: 400
+    check_user do | user |
+      if user.destroy
+        render nothing: true, status: 201
+      else
+        render nothing: true, status: 400
+      end
     end
   end
 
   private
-
-    def check_user
-      user = current_user
-      if user.present? && user.id === params[:id]
-        user
-      else
-        render nothing: true, status: 403
-        # TODO
-        return nil
-      end
-    end
 
     def update_params
       params.require(:user).permit(:name, :email)

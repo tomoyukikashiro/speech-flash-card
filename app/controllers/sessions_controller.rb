@@ -1,2 +1,2 @@
-class SessionSController < ApplicationController
+class SessionsController < ApplicationController
 end
