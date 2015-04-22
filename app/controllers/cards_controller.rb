@@ -4,7 +4,7 @@ class CardsController < ApplicationController
     check_user do | user |
       book = get_book(user)
       if book.present?
-        render json: book.cards.get_all.to_json  status: 200
+        render json: book.cards.get_all.to_json, status: 200
       else
         render nothing: true, status: 403
       end

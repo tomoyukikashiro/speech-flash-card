@@ -2,8 +2,6 @@ require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
 
-  include SessionsSupport
-
   describe "GET : #show : " do
     describe "if you logined" do
       it "should return user data with 200" do
@@ -86,6 +84,6 @@ RSpec.describe UsersController, type: :controller do
         expect(saved_user.size).to eq(0)
       end
     end
-
   end
+
 end

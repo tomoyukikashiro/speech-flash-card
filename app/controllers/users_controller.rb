@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
 
-  include SessionsHelper
-
   def show
     user = current_user
     if user.present?

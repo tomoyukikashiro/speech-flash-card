@@ -3,10 +3,11 @@ class Book
 
   field :name,  type: String
   has_many :cards
+  belongs_to :user
 
   validates :name, presence: true, length: { maximum: 20 }
 
-  def get_all
+  def self.get_all
     if self.all.size > 0
       self.all.map do |item|
         {id: item.id, name: item.name}
