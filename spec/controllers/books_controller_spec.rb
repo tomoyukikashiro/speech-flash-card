@@ -22,26 +22,29 @@ RSpec.describe BooksController, type: :controller do
   end
 
   describe "POST : #create : " do
-    describe "if parameters are invalid" do
-      it "should return error's keys with 400" do
-        user = stub_login
-        post :create, {book: {name: ""}}
-        expect(response.status).to eq(400)
-        expect(response.body).to eq(["name"].to_json)
-      end
-    end
-    describe "if parameters are valid" do
-      it "should return 201 and the user is created" do
-        user = stub_login
-        post :create, {book: {name: "example"}}
-        expect(response.status).to eq(201)
-        expect(user.books.first.name).to eq("example")
-      end
-    end
     describe "if you don't login" do
       it "should return 403" do
         post :create, {book: {name: "example"}}
         expect(response.status).to eq(403)
+      end
+    end
+    describe "if you logined" do
+      before do
+        user = stub_login
+      end
+      describe "if parameters are invalid" do
+        it "should return error's keys with 400" do
+          post :create, {book: {name: ""}}
+          expect(response.status).to eq(400)
+          expect(response.body).to eq(["name"].to_json)
+        end
+      end
+      describe "if parameters are valid" do
+        it "should return 201 and the user is created" do
+          post :create, {book: {name: "example"}}
+          expect(response.status).to eq(201)
+          expect(user.books.first.name).to eq("example")
+        end
       end
     end
   end
@@ -79,7 +82,7 @@ RSpec.describe BooksController, type: :controller do
   describe "DELETE : destroy : " do
     describe "if you do'nt login" do
       it "should return 403" do
-        delete :update, {id: "11111"}
+        delete :destroy, {id: "11111"}
         expect(response.status).to eq(403)
       end
     end

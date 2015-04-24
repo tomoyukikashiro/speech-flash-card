@@ -8,7 +8,7 @@ class Card
   validates :text, presence: true, length: { maximum: 100 }
   validates :note, presence: true, length: { maximum: 100 }
 
-  def get_all
+  def self.get_all
     if self.all.size > 0
       self.all.map do |item|
         {id: item.id, text: item.text, note: item.note}

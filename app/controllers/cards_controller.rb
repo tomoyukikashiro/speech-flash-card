@@ -50,7 +50,7 @@ class CardsController < ApplicationController
 
   private
     def accept_params
-      params.require(:book).permit(:text, :note)
+      params.require(:card).permit(:text, :note)
     end
 
 end

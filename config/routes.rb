@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   resources :users, only: [:create, :update, :destroy]
   resources :sessions, only: [:create, :destroy]
 
-  resources :books, only: [:index, :create, :update, :destroy]
+  resources :books, only: [:index, :create, :update, :destroy] do
+    resources :cards, only: [:index, :create, :update, :destroy]
+  end
 
   root 'top_pages#index'
   # The priority is based upon order of creation: first created -> highest priority.

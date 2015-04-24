@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   private
     def get_book(user)
-      user.books.where(params[:book_id]).first
+      user.books.where(id: params[:book_id]).first
     end
 
     def check_book(user)
@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
 
     def check_card(user)
       check_book(user) do | book |
-        card = book.cards.where(params[:card_id])
+        card = book.cards.where(id: params[:id]).first
         render nothing: true, status: 403 unless card.present?
         yield card
       end
