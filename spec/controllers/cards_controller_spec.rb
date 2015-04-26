@@ -67,21 +67,21 @@ RSpec.describe CardsController, type: :controller do
     describe "if you do'nt login" do
       it "should return 403" do
         logout
-        put :update, {book_id: @book.id, id: @card.id, card: {text: "text1", note: "note1"}}
+        put :update, {book_id: @book.id, card_id: @card.id, card: {text: "text1", note: "note1"}}
         expect(response.status).to eq(403)
       end
     end
     describe "if you logined" do
       describe "and parameters are invalid" do
         it "should return errors's keys with 400" do
-          put :update, {book_id: @book.id, id: @card.id, card: {text: "", note: ""}}
+          put :update, {book_id: @book.id, card_id: @card.id, card: {text: "", note: ""}}
           expect(response.status).to eq(400)
           expect(response.body).to eq(["text", "note"].to_json)
         end
       end
       describe "and parameters are valid" do
         it "should return 201" do
-          put :update, {book_id: @book.id, id: @card.id, card: {text: "text1", note: "note1"}}
+          put :update, {book_id: @book.id, card_id: @card.id, card: {text: "text1", note: "note1"}}
           expect(response.status).to eq(201)
           update_card = @user.books.first.cards.where(id: @card.id).first
           expect(update_card.text).to eq("text1")
@@ -95,13 +95,13 @@ RSpec.describe CardsController, type: :controller do
     describe "if you do'nt login" do
       it "should return 403" do
         logout
-        delete :destroy, {book_id: @book.id, id: @card.id}
+        delete :destroy, {book_id: @book.id, card_id: @card.id}
         expect(response.status).to eq(403)
       end
     end
     describe "if you logined" do
       it "should return 201 and user is deleted" do
-        delete :destroy, {book_id: @book.id, id: @card.id}
+        delete :destroy, {book_id: @book.id, card_id: @card.id}
         expect(response.status).to eq(201)
         saved_book = Card.where(id: @card.id)
         expect(saved_book.size).to eq(0)

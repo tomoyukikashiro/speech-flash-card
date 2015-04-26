@@ -30,7 +30,7 @@ RSpec.describe BooksController, type: :controller do
     end
     describe "if you logined" do
       before do
-        user = stub_login
+        @user = stub_login
       end
       describe "if parameters are invalid" do
         it "should return error's keys with 400" do
@@ -43,7 +43,7 @@ RSpec.describe BooksController, type: :controller do
         it "should return 201 and the user is created" do
           post :create, {book: {name: "example"}}
           expect(response.status).to eq(201)
-          expect(user.books.first.name).to eq("example")
+          expect(@user.books.first.name).to eq("example")
         end
       end
     end
@@ -52,7 +52,7 @@ RSpec.describe BooksController, type: :controller do
   describe "PUT : #update : " do
     describe "if you do'nt login" do
       it "should return 403" do
-        put :update, {id: "11111", book: {name: "example"}}
+        put :update, {book_id: "11111", book: {name: "example"}}
         expect(response.status).to eq(403)
       end
     end
@@ -64,13 +64,13 @@ RSpec.describe BooksController, type: :controller do
       end
       describe "and parameters are invalid" do
         it "should return errors's keys with 400" do
-          put :update, {id: @book.id, book: {name: ""}}
+          put :update, {book_id: @book.id, book: {name: ""}}
           expect(response.status).to eq(400)
         end
       end
       describe "and parameters are valid" do
         it "should return 201" do
-          put :update, {id: @book.id, book: {name: "example2"}}
+          put :update, {book_id: @book.id, book: {name: "example2"}}
           expect(response.status).to eq(201)
           saved_book = Book.where(id: @book.id).first
           expect(saved_book.name).to eq("example2")
@@ -82,7 +82,7 @@ RSpec.describe BooksController, type: :controller do
   describe "DELETE : destroy : " do
     describe "if you do'nt login" do
       it "should return 403" do
-        delete :destroy, {id: "11111"}
+        delete :destroy, {book_id: "11111"}
         expect(response.status).to eq(403)
       end
     end
@@ -93,7 +93,7 @@ RSpec.describe BooksController, type: :controller do
         @book = @user.books.first
       end
       it "should return 201 and user is deleted" do
-        delete :destroy, {id: @book.id}
+        delete :destroy, {book_id: @book.id}
         expect(response.status).to eq(201)
         saved_book = Book.where(id: @book.id)
         expect(saved_book.size).to eq(0)

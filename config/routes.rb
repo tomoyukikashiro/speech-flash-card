@@ -1,14 +1,23 @@
 Rails.application.routes.draw do
 
+  #users
   get "users" => "users#show"
   resources :users, only: [:create, :update, :destroy]
+  #sessions
   resources :sessions, only: [:create, :destroy]
-
-  resources :books, only: [:index, :create, :update, :destroy] do
-    resources :cards, only: [:index, :create, :update, :destroy]
-  end
-
+  #books
+  get    "books"          => "books#index"
+  post   "books/"         => "books#create"
+  put    "books/:book_id" => "books#update"
+  delete "books/:book_id" => "books#destroy"
+  #cards
+  get    "books/:book_id/cards"          => "cards#index"
+  post   "books/:book_id/cards"          => "cards#create"
+  put    "books/:book_id/cards/:card_id" => "cards#update"
+  delete "books/:book_id/cards/:card_id" => "cards#destroy"
+  #top page
   root 'top_pages#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

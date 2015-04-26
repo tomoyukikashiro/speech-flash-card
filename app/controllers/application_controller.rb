@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
 
     def check_card(user)
       check_book(user) do | book |
-        card = book.cards.where(id: params[:id]).first
+        card = book.cards.where(id: params[:card_id]).first
         render nothing: true, status: 403 unless card.present?
         yield card
       end
