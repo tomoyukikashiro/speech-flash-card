@@ -1,0 +1,15 @@
+<h1>login</h1>
+
+<form name="UserCraeteForm" ng-submit="loginIndex.createSubmit()">
+  <input type="name" ng-model="loginIndex.create.name" required>
+  <input type="email" ng-model="loginIndex.create.email" required>
+  <input type="password" ng-model="loginIndex.create.password" required>
+  <input type="password" ng-model="loginIndex.create.passwordConfirm" required>
+  <input type="submit" value="create">
+</form>
+<hr>
+<form name="UserLoginForm" ng-submit="loginIndex.loginSubmit()">
+  <input type="email" ng-model="loginIndex.login.email" required>
+  <input type="password" ng-model="loginIndex.login.password" required>
+  <input type="submit" value="login">
+</form>
