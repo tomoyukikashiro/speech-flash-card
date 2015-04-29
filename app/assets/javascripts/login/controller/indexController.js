@@ -5,9 +5,9 @@
     .module('login')
     .controller('LoginIndexController', LoginIndexController);
 
-  LoginIndexController.$inject = ['CommonResourceUser', 'CommonRouterBook'];
+  LoginIndexController.$inject = ['CommonResourceUser', 'CommonRouterBook', 'CommonResourceSession'];
 
-  function LoginIndexController(CommonResourceUser, CommonRouterBook) {
+  function LoginIndexController(CommonResourceUser, CommonRouterBook, CommonResourceSession) {
     var vm = this;
     vm.createSubmit = createSubmit;
     vm.loginSubmit = loginSubmit;
@@ -35,6 +35,7 @@
       });
     }
     function loginSubmit() {
+      CommonResourceSession.resource.save({email: vm.login.email, password: vm.login.password});
     }
   }
 

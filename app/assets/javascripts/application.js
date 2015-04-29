@@ -22,6 +22,7 @@
 //= require config.js
 
 //= require common/resource/user.js
+//= require common/resource/session.js
 //= require common/resource/book.js
 //= require common/resource/card.js
 //= require common/router/book.js
