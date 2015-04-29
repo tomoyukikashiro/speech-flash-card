@@ -10,7 +10,7 @@ RSpec.describe BooksController, type: :controller do
         book = user.books.first
         get :index, {book_id: book.id}
         expect(response.status).to eq(200)
-        expect(response.body).to eq([{id: book.id, name: book.name}].to_json)
+        expect(response.body).to eq([{id: book.id.to_s, name: book.name}].to_json)
       end
     end
     describe "if you don't login" do
@@ -43,6 +43,7 @@ RSpec.describe BooksController, type: :controller do
         it "should return 201 and the user is created" do
           post :create, {book: {name: "example"}}
           expect(response.status).to eq(201)
+          expect(JSON.parse(response.body)).to have_key("id")
           expect(@user.books.first.name).to eq("example")
         end
       end
@@ -64,13 +65,13 @@ RSpec.describe BooksController, type: :controller do
       end
       describe "and parameters are invalid" do
         it "should return errors's keys with 400" do
-          put :update, {book_id: @book.id, book: {name: ""}}
+          put :update, {book_id: @book.id.to_s, book: {name: ""}}
           expect(response.status).to eq(400)
         end
       end
       describe "and parameters are valid" do
         it "should return 201" do
-          put :update, {book_id: @book.id, book: {name: "example2"}}
+          put :update, {book_id: @book.id.to_s, book: {name: "example2"}}
           expect(response.status).to eq(201)
           saved_book = Book.where(id: @book.id).first
           expect(saved_book.name).to eq("example2")
@@ -93,9 +94,9 @@ RSpec.describe BooksController, type: :controller do
         @book = @user.books.first
       end
       it "should return 201 and user is deleted" do
-        delete :destroy, {book_id: @book.id}
+        delete :destroy, {book_id: @book.id.to_s}
         expect(response.status).to eq(201)
-        saved_book = Book.where(id: @book.id)
+        saved_book = Book.where(id: @book.id.to_s)
         expect(saved_book.size).to eq(0)
       end
     end

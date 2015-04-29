@@ -1,7 +1,8 @@
-<div ng-click="cardsDetail.onClickCard(card.text)">
+<div ng-click="cardsDetail.onClickCard(cardsDetail.card.text)">
 
-  <p ng-bind="card.id"></p>
-  <p ng-bind="card.text"></p>
+  <p ng-bind="cardsDetail.card.id"></p>
+  <p ng-bind="cardsDetail.card.text"></p>
+  <p ng-bind="cardsDetail.card.note"></p>
 
-  <p><a ng-href="{{cardsDetail.routes.Card.getLink()}}">card list</a></p>
+  <p><a ng-href="{{cardsDetail.routers.card.getLink()}}">card list</a></p>
 </div>

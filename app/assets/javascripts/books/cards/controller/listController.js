@@ -9,7 +9,7 @@
 
   function CardsListController(CommonResourceCard, CommonRouterBook, CommonRouterCard, $routeParams) {
     var vm = this;
-    vm.cardList = [];
+    vm.list = [];
     vm.$routeParams = $routeParams;
     vm.deleteCard = deleteCard;
     vm.routers = {
@@ -26,13 +26,13 @@
     }
 
     function deleteCard(cardId) {
-      CommonResourceCard.resource.remove({cardId: cardId});
+      CommonResourceCard.resource.remove({bookId: $routeParams.bookId, cardId: cardId});
       getCardList(true);
     }
 
     function getCardList(isReload) {
       CommonResourceCard.getAll(isReload).then(function(response) {
-        vm.cardList = response.list;
+        vm.list = response.list;
       });
     }
   }

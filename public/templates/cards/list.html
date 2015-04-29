@@ -1,9 +1,9 @@
 <ul>
   <li ng-repeat="card in cardsList.list">
-    <a ng-href="{{cardsList.routes.Card.getLink($routeParams.bookId, card.id)}}" ng-bind="card.text"></a>
+    <a ng-href="{{cardsList.routers.card.getLink(cardsList.$routeParams.bookId, card.id)}}" ng-bind="card.text"></a>
     <button ng-click="cardsList.deleteCard(card.id)">delete</button>
   </li>
 </ul>
 
-<p><a ng-href="{{cardsList.routes.Card.getCreate($routeParams.bookId)}}">create card</a></p>
-<p><a ng-href="{{cardsList.routes.Book.getList()}}">book list</a></p>
+<p><a ng-href="{{cardsList.routers.card.getCreate(cardsList.$routeParams.bookId)}}">create card</a></p>
+<p><a ng-href="{{cardsList.routers.book.getList()}}">book list</a></p>

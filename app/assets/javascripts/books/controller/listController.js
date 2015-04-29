@@ -20,7 +20,7 @@
 
     function activate() {
       CommonResourceBook.resource.get({}, function(response) {
-        vm.list = response.list;
+        vm.list = response;
       });
     }
   }

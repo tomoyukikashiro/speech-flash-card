@@ -5,37 +5,17 @@
     .module('common.resource.card', ['ngResource'])
     .factory('CommonResourceCard', CommonResourceCard);
 
-  CommonResourceCard.$inject = ['$resource', '$q', '$routeParams', '$cacheFactory'];
+  CommonResourceCard.$inject = ['$resource', '$q', '$routeParams'];
 
-  function CommonResourceCard($resource, $q, $routeParams, $cacheFactory) {
-    var cache = $cacheFactory('cardList');
-    var resource = $resource('/books/:bookId/cards/:cardId', {bookId: '@bookId', cardId: '@cardId'}, {
-          get: {cache: cache}
-        });
+  function CommonResourceCard($resource, $q, $routeParams) {
+    var resource = $resource('/books/:bookId/cards/:cardId', {bookId: '@bookId', cardId: '@cardId'});
 
-    function getAll(isReload) {
-      if(isReload){
-        cache.removeAll();
-      }
+    function getAll() {
       return resource.get({bookId: $routeParams.bookId}).$promise;
-    }
-
-    function getCard(bookId, cardId) {
-      var dfd = $q.defer();
-      resource.get({bookId: bookId}, function(response) {
-        angular.forEach(response.list, function(card) {
-          if(card.id === cardId){
-            dfd.resolve(card);
-          }
-        });
-        dfd.reject();
-      });
-      return dfd.promise;
     }
 
     return {
       resource: resource,
-      getCard: getCard,
       getAll: getAll
     };
   }

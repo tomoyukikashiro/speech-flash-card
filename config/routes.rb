@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   delete "books/:book_id" => "books#destroy"
   #cards
   get    "books/:book_id/cards"          => "cards#index"
+  get    "books/:book_id/cards/:card_id" => "cards#show_detail"
   post   "books/:book_id/cards"          => "cards#create"
   put    "books/:book_id/cards/:card_id" => "cards#update"
   delete "books/:book_id/cards/:card_id" => "cards#destroy"

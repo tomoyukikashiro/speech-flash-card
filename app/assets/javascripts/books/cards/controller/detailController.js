@@ -22,10 +22,13 @@
     }
 
     function activate() {
-      CommonResourceCard.getCard($routeParams.bookId, $routeParams.cardId)
-        .then(function(card) {
-          vm.card = card;
-        });
+      var param = {
+        bookId: $routeParams.bookId,
+        cardId: $routeParams.cardId
+      };
+      CommonResourceCard.resource.get(param, function(response) {
+        vm.card = response;
+      });
       CommonServiceSpeech.init();
     }
   }

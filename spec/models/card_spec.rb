@@ -35,9 +35,9 @@ RSpec.describe Card, :type => :model do
   # ------------------------------
   describe "note property" do
     describe "when note is not present" do
-      it " instance is invalid" do
+      it " instance is valid" do
         @card.note = ""
-        expect(@card.valid?).to be_falsey
+        expect(@card.valid?).to be_truthy
       end
     end
     describe "when note is too long" do

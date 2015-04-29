@@ -5,12 +5,11 @@
     .module('common.resource.book', ['ngResource'])
     .factory('CommonResourceBook', CommonResourceBook);
 
-  CommonResourceBook.$inject = ['$resource', '$cacheFactory'];
+  CommonResourceBook.$inject = ['$resource'];
 
-  function CommonResourceBook($resource, $cacheFactory) {
-    var cache = $cacheFactory('bookList');
+  function CommonResourceBook($resource) {
     var resource = $resource('/books/:bookId', {bookId: '@bookId'}, {
-          get: {cache: cache, isArray: true}
+          get: {isArray: true}
         });
     return {
       resource: resource

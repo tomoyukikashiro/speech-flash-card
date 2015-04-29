@@ -5,13 +5,10 @@
     .module('common.resource.user', ['ngResource',])
     .factory('CommonResourceUser', CommonResourceUser);
 
-  CommonResourceUser.$inject = ['$resource', '$cacheFactory', '$q'];
+  CommonResourceUser.$inject = ['$resource', '$q'];
 
-  function CommonResourceUser($resource, $cacheFactory, $q) {
-    var cache = $cacheFactory('userData');
-    var resource = $resource('/users/', {}, {
-          get: {cache: cache}
-        });
+  function CommonResourceUser($resource, $q) {
+    var resource = $resource('/users/');
     return {
       resource: resource,
       checkCurrent: checkCurrent

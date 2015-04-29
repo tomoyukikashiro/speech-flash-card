@@ -18,7 +18,8 @@
         bookId: $routeParams.bookId
       };
       var postData = {
-        text : vm.text
+        text : vm.text,
+        note : vm.note
       };
       CommonResourceCard.resource.save(param, postData, function(response) {
         CommonRouterCard.goDetail($routeParams.bookId, response.id);

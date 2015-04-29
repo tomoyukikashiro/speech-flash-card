@@ -4,9 +4,21 @@ class CardsController < ApplicationController
     check_user do | user |
       book = get_book(user)
       if book.present?
-        render json: book.cards.get_all.to_json, status: 200
+        render json: {list: book.cards.get_all}.to_json, status: 200
       else
         render nothing: true, status: 403
+      end
+    end
+  end
+
+  def show_detail
+    check_user do | user |
+      check_card(user) do | card |
+        if card.present?
+          render json: card.get_data.to_json, status: 200
+        else
+          render nothing: true, status: 403
+        end
       end
     end
   end
@@ -16,7 +28,7 @@ class CardsController < ApplicationController
       check_book(user) do | book |
         card = book.cards.new(accept_params)
         if card.save
-          render nothing: true, status: 201
+          render json: card.get_data.to_json, status: 201
         else
           render json: card.errors.keys, status: 400
         end
