@@ -1,21 +1,24 @@
 Rails.application.routes.draw do
 
   #users
-  get "users" => "users#show"
-  resources :users, only: [:create, :update, :destroy]
+  get    "api/users"     => "users#show"
+  post   "api/users"     => "users#create"
+  put    "api/users/:id" => "users#update"
+  delete "api/users/:id" => "users#destroy"
   #sessions
-  resources :sessions, only: [:create, :destroy]
+  post   "api/sessions"     => "sessions#create"
+  delete "api/sessions/:id" => "sessions#destroy"
   #books
-  get    "books"          => "books#index"
-  post   "books/"         => "books#create"
-  put    "books/:book_id" => "books#update"
-  delete "books/:book_id" => "books#destroy"
+  get    "api/books"          => "books#index"
+  post   "api/books/"         => "books#create"
+  put    "api/books/:book_id" => "books#update"
+  delete "api/books/:book_id" => "books#destroy"
   #cards
-  get    "books/:book_id/cards"          => "cards#index"
-  get    "books/:book_id/cards/:card_id" => "cards#show_detail"
-  post   "books/:book_id/cards"          => "cards#create"
-  put    "books/:book_id/cards/:card_id" => "cards#update"
-  delete "books/:book_id/cards/:card_id" => "cards#destroy"
+  get    "api/books/:book_id/cards"          => "cards#index"
+  get    "api/books/:book_id/cards/:card_id" => "cards#show_detail"
+  post   "api/books/:book_id/cards"          => "cards#create"
+  put    "api/books/:book_id/cards/:card_id" => "cards#update"
+  delete "api/books/:book_id/cards/:card_id" => "cards#destroy"
   #top page
   root 'top_pages#index'
 

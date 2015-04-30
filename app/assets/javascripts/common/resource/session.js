@@ -8,7 +8,7 @@
   CommonResourceSession.$inject = ['$resource', 'CommonResourceUser'];
 
   function CommonResourceSession($resource, CommonResourceUser) {
-    var resource = $resource('/sessions/:userId', {userId: '@userId'});
+    var resource = $resource('/api/sessions/:userId', {userId: '@userId'});
 
     return {
       resource: resource,

@@ -8,7 +8,7 @@
   CommonResourceCard.$inject = ['$resource', '$q', '$routeParams'];
 
   function CommonResourceCard($resource, $q, $routeParams) {
-    var resource = $resource('/books/:bookId/cards/:cardId', {bookId: '@bookId', cardId: '@cardId'});
+    var resource = $resource('/api/books/:bookId/cards/:cardId', {bookId: '@bookId', cardId: '@cardId'});
 
     function getAll() {
       return resource.get({bookId: $routeParams.bookId}).$promise;

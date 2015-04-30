@@ -8,7 +8,7 @@
   CommonResourceUser.$inject = ['$resource', '$q'];
 
   function CommonResourceUser($resource, $q) {
-    var resource = $resource('/users/');
+    var resource = $resource('/api/users/');
     var data;
     return {
       getData: function() {return data;},

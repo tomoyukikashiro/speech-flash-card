@@ -8,7 +8,7 @@
   CommonResourceBook.$inject = ['$resource'];
 
   function CommonResourceBook($resource) {
-    var resource = $resource('/books/:bookId', {bookId: '@bookId'});
+    var resource = $resource('/api//books/:bookId', {bookId: '@bookId'});
     return {
       resource: resource
     };
