@@ -5,6 +5,8 @@ class Book
   has_many :cards
   belongs_to :user
 
+  index({id: 1}, {unique: true})
+
   validates :name, presence: true, length: { maximum: 20 }
 
   def get_data

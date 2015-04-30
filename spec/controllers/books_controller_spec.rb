@@ -8,9 +8,9 @@ RSpec.describe BooksController, type: :controller do
         user = stub_login
         user.books.create(name: "aaaaa")
         book = user.books.first
-        get :index, {book_id: book.id}
+        get :index
         expect(response.status).to eq(200)
-        expect(response.body).to eq([{id: book.id.to_s, name: book.name}].to_json)
+        expect(response.body).to eq({ list: [{id: book.id.to_s, name: book.name}]}.to_json)
       end
     end
     describe "if you don't login" do

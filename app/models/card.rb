@@ -5,6 +5,8 @@ class Card
   field :note,  type: String
   belongs_to :book
 
+  index({id: 1}, {unique: true})
+
   validates :text, presence: true, length: { maximum: 100 }
   validates :note, allow_nil: true, length: { maximum: 100 }
 

@@ -2,7 +2,7 @@ class BooksController < ApplicationController
 
   def index
     check_user do | user |
-      render json: user.books.get_all.to_json,  status: 200
+      render json: {list: user.books.get_all}.to_json,  status: 200
     end
   end
 

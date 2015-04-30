@@ -10,6 +10,9 @@ class User
   field :password_digest, type: String
   field :remember_token, type: String
 
+  index({email: 1}, {unique: true})
+  index({remember_token: 1}, {unique: true})
+
   has_many :books
 
   validates :name, presence: true, length: { maximum: 50 }
