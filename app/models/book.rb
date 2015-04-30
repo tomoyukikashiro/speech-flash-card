@@ -9,6 +9,10 @@ class Book
 
   validates :name, presence: true, length: { maximum: 20 }
 
+  before_destroy do
+    cards.destroy_all
+  end
+
   def get_data
     return {id: id.to_s, name: name}
   end

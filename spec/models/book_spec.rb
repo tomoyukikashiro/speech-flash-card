@@ -13,6 +13,20 @@ RSpec.describe Book, :type => :model do
   end
 
   # ------------------------------
+  # delete card
+  # ------------------------------
+  context "if a book is deleted" do
+    it "cards instance the book has are deleted too" do
+      book = FactoryGirl.create(:book_with_card)
+      expect(Book.where(id: book.id).size).to eq(1)
+      expect(Card.where(id: book.cards.first.id).size).to eq(1)
+      book.destroy
+      expect(Book.where(id: book.id).size).to eq(0)
+      expect(Card.where(id: book.cards.first.id).size).to eq(0)
+    end
+  end
+
+  # ------------------------------
   # name
   # ------------------------------
   describe "name property" do
@@ -35,6 +49,7 @@ RSpec.describe Book, :type => :model do
   # ------------------------------
   describe "cards property" do
     it "can set card instance" do
+      @book.cards.create(text: "text", note: "note");
       expect(Book.where(id: @book.id).first.cards.size).to eq(1)
       card = @book.cards.new(text: "test", note: "test")
       # increase in memory

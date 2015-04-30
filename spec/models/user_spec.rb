@@ -17,6 +17,21 @@ RSpec.describe User, :type => :model do
   end
 
   # ------------------------------
+  # delete book
+  # ------------------------------
+  context "if a user is deleted" do
+    it "book instance the book has are deleted too" do
+      @user.books.create(name: "test")
+      expect(User.where(id: @user.id).size).to eq(1)
+      expect(Book.where(id: @user.books.first.id).size).to eq(1)
+      @user.destroy
+      expect(User.where(id: @user.id).size).to eq(0)
+      expect(Book.where(id: @user.books.first.id).size).to eq(0)
+    end
+  end
+
+
+  # ------------------------------
   # name
   # ------------------------------
   describe "when name is not present" do
