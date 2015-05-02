@@ -6,8 +6,7 @@ RSpec.describe BooksController, type: :controller do
     describe "if you logined" do
       it "should return books data with 200" do
         user = stub_login
-        user.books.create(name: "aaaaa")
-        book = user.books.first
+        book = FactoryGirl.create(:book, user: user)
         get :index
         expect(response.status).to eq(200)
         expect(response.body).to eq({ list: [{id: book.id.to_s, name: book.name}]}.to_json)
@@ -60,8 +59,7 @@ RSpec.describe BooksController, type: :controller do
     describe "if you logined" do
       before do
         @user = stub_login
-        @user.books.create(name: "example")
-        @book = @user.books.first
+        @book = FactoryGirl.create(:book, user: @user)
       end
       describe "and parameters are invalid" do
         it "should return errors's keys with 400" do
@@ -90,8 +88,7 @@ RSpec.describe BooksController, type: :controller do
     describe "if you logined" do
       before do
         @user = stub_login
-        @user.books.create(name: "example")
-        @book = @user.books.first
+        @book = FactoryGirl.create(:book, user: @user)
       end
       it "should return 201 and user is deleted" do
         delete :destroy, {book_id: @book.id.to_s}

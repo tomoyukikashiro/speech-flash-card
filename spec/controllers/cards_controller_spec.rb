@@ -4,9 +4,7 @@ RSpec.describe CardsController, type: :controller do
 
   before(:each) do
     @user = stub_login
-    @user.books.create(name: "aaaaa")
-    @book = @user.books.first
-    @book.cards.create(text: "text", note: "note")
+    @book = FactoryGirl.create(:book_with_card, user: @user)
     @card = @book.cards.first
   end
 
@@ -15,7 +13,7 @@ RSpec.describe CardsController, type: :controller do
       it "should return cards data with 200" do
         get :index, {book_id: @book.id.to_s}
         expect(response.status).to eq(200)
-        expect(response.body).to eq({list: [{id: @card.id.to_s, text: "text", note: "note"}]}.to_json)
+        expect(response.body).to eq({list: [{id: @card.id.to_s, text: @card.text, note: @card.note}]}.to_json)
       end
     end
     describe "if you don't login" do

@@ -5,7 +5,7 @@ RSpec.describe SessionsController, type: :controller do
   describe "POST: #create" do
     describe "if user exist find by email you inputed" do
       before do
-        @user = User.create(name: "Example User", email: "user@example.com", password: "foobar", password_confirmation: "foobar")
+        @user = FactoryGirl.create(:user)
       end
       describe "then password is incorrect" do
         it "you have not logined with 400" do
