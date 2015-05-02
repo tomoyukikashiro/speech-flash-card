@@ -5,30 +5,22 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   private
-    def get_book(user)
-      user.books.where(id: params[:book_id]).first
+    def check_book
+      @book = @user.books.where(id: params[:book_id]).first
+      return_forbidden(@book)
     end
 
-    def check_book(user)
-      book = get_book(user)
-      render nothing: true, status: 403 unless book.present?
-      yield book
-    end
-
-    def check_card(user)
-      check_book(user) do | book |
-        card = book.cards.where(id: params[:card_id]).first
-        render nothing: true, status: 403 unless card.present?
-        yield card
-      end
+    def check_card
+      @card = @book.cards.where(id: params[:card_id]).first
+      return_forbidden(@card)
     end
 
     def check_user
-      user = current_user
-      if user.present?
-        yield user
-      else
-        render nothing: true, status: 403
-      end
+      @user = current_user
+      return_forbidden(@user)
+    end
+
+    def return_forbidden(target)
+      render nothing: true, status: 403 and return unless target.present?
     end
 end

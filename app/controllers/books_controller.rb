@@ -1,43 +1,34 @@
 class BooksController < ApplicationController
 
+  before_filter :check_user
+  before_filter :check_book, only: [:update, :destroy]
+
   def index
-    check_user do | user |
-      render json: {list: user.books.get_all}.to_json,  status: 200
-    end
+    render json: {list: @user.books.get_all}.to_json,  status: 200
   end
 
   def create
-    check_user do | user |
-      book = user.books.new(accept_params)
-      if book.save
-        render json: book.get_data.to_json, status: 201
-      else
-        render json: book.errors.keys, status: 400
-      end
+    book = @user.books.new(accept_params)
+    if book.save
+      render json: book.get_data.to_json, status: 201
+    else
+      render json: book.errors.keys, status: 400
     end
   end
 
   def update
-    check_user do | user |
-      check_book(user) do | book |
-        if book.update_attributes(accept_params)
-          render nothing: true, status: 201
-        else
-          render json: book.errors.keys, status: 400
-        end
-      end
+    if @book.update_attributes(accept_params)
+      render nothing: true, status: 201
+    else
+      render json: @book.errors.keys, status: 400
     end
   end
 
   def destroy
-    check_user do | user |
-      check_book(user) do | book |
-        if book.destroy
-          render nothing: true, status: 201
-        else
-          render nothing: true, status: 400
-        end
-      end
+    if @book.destroy
+      render nothing: true, status: 201
+    else
+      render nothing: true, status: 400
     end
   end
 
