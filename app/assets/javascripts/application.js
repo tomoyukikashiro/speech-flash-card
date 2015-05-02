@@ -21,6 +21,7 @@
 //= require router.js
 //= require config.js
 
+//= require common/controller/baseController.js
 //= require common/resource/user.js
 //= require common/resource/session.js
 //= require common/resource/book.js

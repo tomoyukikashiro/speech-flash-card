@@ -5,14 +5,12 @@
     .module('cards')
     .controller('CardsDetailController', CardsDetailController);
 
-  CardsDetailController.$inject = ['CommonResourceCard', 'CommonRouterCard', '$routeParams', 'CommonServiceSpeech'];
+  CardsDetailController.$inject = ['CommonResourceCard', 'CommonControllerBaseController', '$routeParams', 'CommonServiceSpeech'];
 
-  function CardsDetailController(CommonResourceCard, CommonRouterCard, $routeParams, CommonServiceSpeech) {
+  function CardsDetailController(CommonResourceCard, CommonControllerBaseController, $routeParams, CommonServiceSpeech) {
+    angular.extend(this, CommonControllerBaseController);
     var vm = this;
     vm.onClickCard = onClickCard;
-    vm.routers = {
-      card: CommonRouterCard
-    };
 
     activate();
 

@@ -5,16 +5,17 @@
     .module('books')
     .controller('BooksCreateController', BooksCreateController);
 
-  BooksCreateController.$inject = ['CommonResourceBook', 'CommonRouterCard'];
+  BooksCreateController.$inject = ['CommonResourceBook', 'CommonControllerBaseController'];
 
-  function BooksCreateController(CommonResourceBook, CommonRouterCard) {
+  function BooksCreateController(CommonResourceBook, CommonControllerBaseController) {
+    angular.extend(this, CommonControllerBaseController);
     var vm = this;
     vm.submit = submit;
 
     ////
     function submit() {
       CommonResourceBook.resource.save({name: vm.bookName}, function(response) {
-        CommonRouterCard.goList(response.id);
+        vm.routers.card.goList(response.id);
       });
     }
   }

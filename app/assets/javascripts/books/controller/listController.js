@@ -5,16 +5,15 @@
     .module('books')
     .controller('BooksListController', BooksListController);
 
-  BooksListController.$inject = ['CommonResourceBook', 'CommonRouterBook', 'CommonRouterCard', 'CommonResourceSession'];
+  BooksListController.$inject = ['CommonControllerBaseController', 'CommonResourceBook', 'CommonResourceSession'];
 
-  function BooksListController(CommonResourceBook, CommonRouterBook, CommonRouterCard, CommonResourceSession) {
+  function BooksListController(CommonControllerBaseController, CommonResourceBook, CommonResourceSession) {
+
+    angular.extend(this, CommonControllerBaseController);
+
     var vm = this;
     vm.list = [];
     vm.onClickLogout = logout;
-    vm.routers = {
-      card: CommonRouterCard,
-      book: CommonRouterBook
-    };
 
     activate();
     ////////////////

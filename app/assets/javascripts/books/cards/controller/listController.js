@@ -5,17 +5,14 @@
     .module('cards')
     .controller('CardsListController', CardsListController);
 
-  CardsListController.$inject = ['CommonResourceCard', 'CommonRouterBook', 'CommonRouterCard', '$routeParams'];
+  CardsListController.$inject = ['CommonResourceCard', 'CommonControllerBaseController', '$routeParams'];
 
-  function CardsListController(CommonResourceCard, CommonRouterBook, CommonRouterCard, $routeParams) {
+  function CardsListController(CommonResourceCard, CommonControllerBaseController, $routeParams) {
+    angular.extend(this, CommonControllerBaseController);
     var vm = this;
     vm.list = [];
     vm.$routeParams = $routeParams;
     vm.deleteCard = deleteCard;
-    vm.routers = {
-      card: CommonRouterCard,
-      book: CommonRouterBook
-    };
 
     activate();
 

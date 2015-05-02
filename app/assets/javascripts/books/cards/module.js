@@ -4,6 +4,7 @@
 
   angular.module('cards',
     [
+      'common.controller.base',
       'common.resource.card',
       'common.router.book',
       'common.router.card',

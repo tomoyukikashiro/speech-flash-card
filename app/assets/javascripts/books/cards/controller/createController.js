@@ -5,12 +5,12 @@
     .module('cards')
     .controller('CardsCreateController', CardsCreateController);
 
-  CardsCreateController.$inject = ['$routeParams', 'CommonResourceCard', 'CommonRouterCard'];
+  CardsCreateController.$inject = ['$routeParams', 'CommonResourceCard', 'CommonControllerBaseController'];
 
-  function CardsCreateController($routeParams, CommonResourceCard, CommonRouterCard) {
+  function CardsCreateController($routeParams, CommonResourceCard, CommonControllerBaseController) {
+    angular.extend(this, CommonControllerBaseController);
     var vm = this;
     vm.submit = submit;
-
 
     ////////////////
     function submit() {
@@ -22,7 +22,7 @@
         note : vm.note
       };
       CommonResourceCard.resource.save(param, postData, function(response) {
-        CommonRouterCard.goDetail($routeParams.bookId, response.id);
+        vm.routers.card.goDetail($routeParams.bookId, response.id);
       });
     }
   }
