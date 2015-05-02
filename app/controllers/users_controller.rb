@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     user = User.new(create_params)
     if user.save
       login user
-      render nothing: true, status: 201
+      render nothing: true, status: 204
     else
       render json: user.errors.keys, status: 400
     end
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(update_params)
-      render nothing: true, status: 201
+      render nothing: true, status: 204
     else
       render json: @user.errors.keys, status: 400
     end
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 
   def destroy
     if @user.destroy
-      render nothing: true, status: 201
+      render nothing: true, status: 204
     else
       render nothing: true, status: 400
     end

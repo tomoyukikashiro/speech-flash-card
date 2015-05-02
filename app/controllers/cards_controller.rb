@@ -23,7 +23,7 @@ class CardsController < ApplicationController
 
   def update
     if @card.update_attributes(accept_params)
-      render nothing: true, status: 201
+      render nothing: true, status: 204
     else
       render json: @card.errors.keys, status: 400
     end
@@ -31,7 +31,7 @@ class CardsController < ApplicationController
 
   def destroy
     if @card.destroy
-      render nothing: true, status: 201
+      render nothing: true, status: 204
     else
       render nothing: true, status: 400
     end

@@ -10,7 +10,7 @@ class BooksController < ApplicationController
   def create
     book = @user.books.new(accept_params)
     if book.save
-      render json: book.get_data.to_json, status: 201
+      render json: book.get_data.to_json, status: 204
     else
       render json: book.errors.keys, status: 400
     end
@@ -18,7 +18,7 @@ class BooksController < ApplicationController
 
   def update
     if @book.update_attributes(accept_params)
-      render nothing: true, status: 201
+      render nothing: true, status: 204
     else
       render json: @book.errors.keys, status: 400
     end
@@ -26,7 +26,7 @@ class BooksController < ApplicationController
 
   def destroy
     if @book.destroy
-      render nothing: true, status: 201
+      render nothing: true, status: 204
     else
       render nothing: true, status: 400
     end

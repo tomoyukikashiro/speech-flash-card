@@ -20,22 +20,23 @@
       vm.login = {};
     }
     function createSubmit() {
-      CommonResourceUser.resource.save({
+      CommonResourceUser.resource.save({}, {
         user: {
           name: vm.create.name,
           email: vm.create.email,
           password: vm.create.password,
           'password_confirmation': vm.create.passwordConfirm
         }
-      }, function() {
+      })
+      .$promise.then(function() {
         CommonRouterBook.goList();
-      },
-      function(res) {
-        console.log(res);
       });
     }
     function loginSubmit() {
-      CommonResourceSession.resource.save({email: vm.login.email, password: vm.login.password});
+      CommonResourceSession.resource.save({}, {email: vm.login.email, password: vm.login.password})
+      .$promise.then(function() {
+        CommonRouterBook.goList();
+      });
     }
   }
 
