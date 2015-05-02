@@ -5,26 +5,19 @@
     .module('books')
     .controller('BooksListController', BooksListController);
 
-  BooksListController.$inject = ['CommonControllerBaseController', 'CommonResourceBook', 'CommonResourceSession'];
+  BooksListController.$inject = ['CommonControllerBaseController', 'CommonResourceBook', 'CommonResourceSession', 'books'];
 
-  function BooksListController(CommonControllerBaseController, CommonResourceBook, CommonResourceSession) {
+  function BooksListController(CommonControllerBaseController, CommonResourceBook, CommonResourceSession, books) {
 
     angular.extend(this, CommonControllerBaseController);
 
     var vm = this;
-    vm.list = [];
+    vm.list = books;
     vm.onClickLogout = logout;
 
-    activate();
     ////////////////
     function logout() {
       CommonResourceSession.logout();
-    }
-
-    function activate() {
-      CommonResourceBook.resource.get({}, function(response) {
-        vm.list = response.list;
-      });
     }
   }
 })();

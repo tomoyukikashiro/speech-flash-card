@@ -9,8 +9,23 @@
 
   function BooksRouter($routeProvider) {
     $routeProvider
-      .when('/books', {templateUrl: '/templates/books/list.html', controller: 'BooksListController', controllerAs: 'booksList'})
-      .when('/books/create', {templateUrl: '/templates/books/create.html', controller: 'BooksCreateController', controllerAs: 'booksCreate'});
+      .when('/books',
+          {
+            templateUrl: '/templates/books/list.html',
+            controller: 'BooksListController',
+            controllerAs: 'booksList',
+            resolve: {
+              books: ['CommonResourceBook', function(CommonResourceBook) {
+                return CommonResourceBook.getList();
+              }]
+            }
+          })
+      .when('/books/create',
+          {
+            templateUrl: '/templates/books/create.html',
+            controller: 'BooksCreateController',
+            controllerAs: 'booksCreate'
+          });
   }
 
 })();

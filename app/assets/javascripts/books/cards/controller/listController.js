@@ -5,31 +5,24 @@
     .module('cards')
     .controller('CardsListController', CardsListController);
 
-  CardsListController.$inject = ['CommonResourceCard', 'CommonControllerBaseController', '$routeParams'];
+  CardsListController.$inject = ['CommonResourceCard', 'CommonControllerBaseController', '$routeParams', 'cards'];
 
-  function CardsListController(CommonResourceCard, CommonControllerBaseController, $routeParams) {
+  function CardsListController(CommonResourceCard, CommonControllerBaseController, $routeParams, cards) {
     angular.extend(this, CommonControllerBaseController);
     var vm = this;
-    vm.list = [];
+    vm.list = cards;
     vm.$routeParams = $routeParams;
     vm.deleteCard = deleteCard;
 
-    activate();
-
     ////////////////
-
-    function activate() {
-       getCardList();
-    }
-
     function deleteCard(cardId) {
       CommonResourceCard.resource.remove({bookId: $routeParams.bookId, cardId: cardId});
-      getCardList(true);
+      getCardList();
     }
 
-    function getCardList(isReload) {
-      CommonResourceCard.getAll(isReload).then(function(response) {
-        vm.list = response.list;
+    function getCardList() {
+      CommonResourceCard.getList().then(function(res) {
+        vm.list = res.list;
       });
     }
   }
