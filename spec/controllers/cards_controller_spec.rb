@@ -73,7 +73,7 @@ RSpec.describe CardsController, type: :controller do
       describe "and parameters are valid" do
         it "should return 201" do
           put :update, {book_id: @book.id.to_s, card_id: @card.id.to_s, card: {text: "text1", note: "note1"}}
-          expect(response.status).to eq(201)
+          expect(response.status).to eq(204)
           update_card = @user.books.first.cards.where(id: @card.id.to_s).first
           expect(update_card.text).to eq("text1")
           expect(update_card.note).to eq("note1")
@@ -93,7 +93,7 @@ RSpec.describe CardsController, type: :controller do
     describe "if you logined" do
       it "should return 201 and user is deleted" do
         delete :destroy, {book_id: @book.id.to_s, card_id: @card.id.to_s}
-        expect(response.status).to eq(201)
+        expect(response.status).to eq(204)
         saved_book = Card.where(id: @card.id.to_s)
         expect(saved_book.size).to eq(0)
       end

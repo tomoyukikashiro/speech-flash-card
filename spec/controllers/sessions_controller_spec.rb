@@ -17,7 +17,7 @@ RSpec.describe SessionsController, type: :controller do
       describe "then password is correct" do
         it "you have logined with 201" do
           post :create, {session: {email: @user.email, password: @user.password}}
-          expect(response.status).to eq(201)
+          expect(response.status).to eq(204)
           expect(login?).to be_truthy
         end
       end

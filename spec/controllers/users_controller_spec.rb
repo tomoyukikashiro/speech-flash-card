@@ -31,7 +31,7 @@ RSpec.describe UsersController, type: :controller do
     describe "if parameters are valid" do
       it "should return 201 and the user is created" do
         post :create, {user: {name: "example", email: "test@example.com", password: "example", password_confirmation: "example"}}
-        expect(response.status).to eq(201)
+        expect(response.status).to eq(204)
       end
     end
   end
@@ -80,7 +80,7 @@ RSpec.describe UsersController, type: :controller do
       end
       it "should return 201 and user is deleted" do
         delete :destroy, {id: @user.id}
-        expect(response.status).to eq(201)
+        expect(response.status).to eq(204)
         saved_user = User.where(id: @user.id)
         expect(saved_user.size).to eq(0)
       end

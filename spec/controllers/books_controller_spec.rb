@@ -70,7 +70,7 @@ RSpec.describe BooksController, type: :controller do
       describe "and parameters are valid" do
         it "should return 201" do
           put :update, {book_id: @book.id.to_s, book: {name: "example2"}}
-          expect(response.status).to eq(201)
+          expect(response.status).to eq(204)
           saved_book = Book.where(id: @book.id).first
           expect(saved_book.name).to eq("example2")
         end
@@ -92,7 +92,7 @@ RSpec.describe BooksController, type: :controller do
       end
       it "should return 201 and user is deleted" do
         delete :destroy, {book_id: @book.id.to_s}
-        expect(response.status).to eq(201)
+        expect(response.status).to eq(204)
         saved_book = Book.where(id: @book.id.to_s)
         expect(saved_book.size).to eq(0)
       end
