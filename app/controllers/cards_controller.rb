@@ -9,13 +9,13 @@ class CardsController < ApplicationController
   end
 
   def show_detail
-    render json: @card.get_data.to_json, status: 200
+    render json: @card.get_data, status: 200
   end
 
   def create
     card = @book.cards.new(accept_params)
     if card.save
-      render json: card.get_data.to_json, status: 201
+      render json: card.get_data, status: 201
     else
       render json: card.errors.keys, status: 400
     end

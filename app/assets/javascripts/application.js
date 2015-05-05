@@ -16,6 +16,8 @@
 //= require bower_components/angular-route/angular-route.js
 //= require bower_components/angular-sanitize/angular-sanitize.js
 //= require bower_components/angular-touch/angular-touch.js
+//= require bower_components/angular-aria/angular-aria.js
+//= require bower_components/angular-material/angular-material.js
 
 //= require module.js
 //= require router.js
@@ -30,6 +32,10 @@
 //= require common/router/card.js
 //= require common/service/resolveRedirection.js
 //= require common/service/speech.js
+//= require common/service/booksCreate/dialog.js
+//= require common/service/booksCreate/controller.js
+//= require common/service/cardsCreate/dialog.js
+//= require common/service/cardsCreate/controller.js
 
 //= require login/module.js
 //= require login/router.js
@@ -37,11 +43,13 @@
 //
 //= require books/module.js
 //= require books/router.js
-//= require books/controller/createController.js
 //= require books/controller/listController.js
+//= require books/directive/menu/menu.js
+//= require books/directive/menu/menuController.js
 
 //= require books/cards/module.js
 //= require books/cards/router.js
-//= require books/cards/controller/createController.js
 //= require books/cards/controller/detailController.js
 //= require books/cards/controller/listController.js
+//= require books/cards/directive/menu/menu.js
+//= require books/cards/directive/menu/menuController.js

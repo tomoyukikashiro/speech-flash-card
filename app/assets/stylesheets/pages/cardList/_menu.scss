@@ -1,0 +1,21 @@
+fc-card-menu{
+
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+
+  .card-menu{
+    width: 200px;
+  }
+
+  .card-menu__create-button{
+    position: relative;
+    margin: 0 8px 20px 0;
+  }
+  .card-menu__create-tooltip{
+  }
+
+  .card-menu__edit-button{
+  }
+
+}

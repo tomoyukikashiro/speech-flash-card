@@ -22,11 +22,16 @@
       $location.path(getList().substring(1));
     }
 
+    function goCreate() {
+      $location.path(getCreate().substring(1));
+    }
+
     // export
     return {
       getCreate: getCreate,
       getList: getList,
-      goList: goList
+      goList: goList,
+      goCreate: goCreate
     };
   }
 })();

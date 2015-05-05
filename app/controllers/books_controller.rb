@@ -10,7 +10,7 @@ class BooksController < ApplicationController
   def create
     book = @user.books.new(accept_params)
     if book.save
-      render json: book.get_data.to_json, status: 204
+      render json: book.get_data, status: 201
     else
       render json: book.errors.keys, status: 400
     end

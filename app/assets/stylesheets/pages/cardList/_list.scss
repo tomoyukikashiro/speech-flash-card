@@ -1,0 +1,10 @@
+.page__card-list{
+  padding: $page-padding;
+
+  // list item
+  .page__card-list__item{
+    display: block;
+    position: relative;
+    padding: 10px;
+  }
+}

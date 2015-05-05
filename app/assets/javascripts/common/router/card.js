@@ -32,8 +32,12 @@
       $location.path(_path);
     }
 
-    function goDetail(bookId, cardId) {
-      goList(bookId, cardId);
+    function goDetail(cardId) {
+      goList(undefined, cardId);
+    }
+
+    function goCreate() {
+      $location.path(createPath(undefined, undefined) + 'create');
     }
 
     // export
@@ -41,7 +45,8 @@
       getCreate: getCreate,
       getLink: getLink,
       goList: goList,
-      goDetail: goDetail
+      goDetail: goDetail,
+      goCreate: goCreate
     };
   }
 })();

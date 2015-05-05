@@ -1,8 +1,11 @@
-<ul>
-  <li ng-repeat="book in booksList.list">
-    <a ng-href="{{booksList.routers.card.getLink(book.id)}}" ng-bind="book.name"></a>
-  </li>
-</ul>
+<md-content class="page__book-list js-page__book-list">
 
-<p><a ng-href="{{booksList.routers.book.getCreate()}}">create book</a></p>
-<p><a ng-click="booksList.onClickLogout()">logout</a></p>
+  <md-list>
+    <md-list-item class="page__book-list__item" md-ink-ripple="#000" ng-repeat="book in booksList.list" ng-click="booksList.routers.card.goList(book.id)">
+      <p ng-bind="book.name"></p>
+    </md-list>
+  </md-list>
+
+  <fc-book-menu></fc-book-menu>
+
+</md-content>

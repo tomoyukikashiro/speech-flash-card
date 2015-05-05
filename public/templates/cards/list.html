@@ -1,9 +1,10 @@
-<ul>
-  <li ng-repeat="card in cardsList.list">
-    <a ng-href="{{cardsList.routers.card.getLink(cardsList.$routeParams.bookId, card.id)}}" ng-bind="card.text"></a>
-    <button ng-click="cardsList.deleteCard(card.id)">delete</button>
-  </li>
-</ul>
+<md-content class="page__card-list js-page__card-list">
 
-<p><a ng-href="{{cardsList.routers.card.getCreate(cardsList.$routeParams.bookId)}}">create card</a></p>
-<p><a ng-href="{{cardsList.routers.book.getList()}}">book list</a></p>
+  <md-list>
+    <md-list-item class="page__card-list__item" md-ink-ripple="#000" ng-repeat="card in cardsList.list" ng-click="cardsList.routers.card.goDetail(card.id)">
+      <p ng-bind="card.text"></p>
+    </md-list>
+  </md-list>
+
+  <fc-card-menu></fc-card-menu>
+</md-content>

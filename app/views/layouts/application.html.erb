@@ -4,12 +4,22 @@
   <title>EnglishFlashCard</title>
   <meta charset="utf-8">
   <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag "application" %>
 </head>
 <body>
 
+  <md-content>
+    <md-toolbar class="md-toolbar-tools" md-scroll-shrink>
+      <md-button class="md-icon-button" aria-label="Settings"><md-icon md-svg-icon="images/icons/menu.svg"></md-icon></md-button>
+        <h2><span>LIST</span></h2>
+      </md-toolbar>
+  </md-content>
+
 <%= yield %>
 
-<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'application' %>
 </body>
 </html>

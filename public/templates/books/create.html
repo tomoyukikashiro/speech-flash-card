@@ -1,4 +1,11 @@
-<form name="bookCreateForm" ng-submit="booksCreate.submit()">
-  <input type="text" ng-model="booksCreate.bookName" required>
-  <input type="submit" value="create">
-</form>
+<md-dialog aria-label="create book">
+  <md-dialog-content>
+    <form name="bookCreateForm">
+      <md-input-container>
+        <label>Name</label>
+        <input type="text" ng-model="booksCreate.bookName" required>
+      </md-input-container>
+      <md-button ng-click="booksCreate.submit()">create</md-button>
+    </form>
+  </md-dialog-content>
+</md-dialog>

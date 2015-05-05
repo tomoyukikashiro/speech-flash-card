@@ -19,12 +19,6 @@
                 return CommonResourceBook.getList();
               }]
             }
-          })
-      .when('/books/create',
-          {
-            templateUrl: '/templates/books/create.html',
-            controller: 'BooksCreateController',
-            controllerAs: 'booksCreate'
           });
   }
 

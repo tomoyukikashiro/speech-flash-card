@@ -8,7 +8,8 @@
       'common.resource.book',
       'common.resource.session',
       'common.router.book',
-      'common.router.card'
+      'common.router.card',
+      'common.service.booksCreate.dialog'
     ]
   );
 

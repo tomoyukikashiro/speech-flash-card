@@ -4,6 +4,8 @@
 
   angular.module('englishFlashCardApp', [
       'ngRoute',
+      'ngAria',
+      'ngMaterial',
       'books',
       'cards',
       'login'
