@@ -1,8 +1,9 @@
-<div ng-click="cardsDetail.onClickCard(cardsDetail.card.text)">
-
-  <p ng-bind="cardsDetail.card.id"></p>
-  <p ng-bind="cardsDetail.card.text"></p>
-  <p ng-bind="cardsDetail.card.note"></p>
-
-  <p><a ng-href="{{cardsDetail.routers.card.getLink()}}">card list</a></p>
-</div>
+<md-content class="page__card-list js-page__card-detail">
+  <div ng-click="cardsDetail.onClickCard(cardsDetail.card.text)">
+    <p ng-bind="cardsDetail.card.text"></p>
+    <p ng-bind="cardsDetail.card.note"></p>
+  </div>
+  <md-button ng-disabled="{{!cardsDetail.cardIterator.hasPrev}}" ng-click="cardsDetail.onClickPrev()">prev</md-button>
+  <md-button ng-disabled="{{!cardsDetail.cardIterator.hasNext}}" ng-click="cardsDetail.onClickNext()">next</md-button>
+  <md-button ng-click="cardsDetail.routers.card.goList()">back list</md-button>
+</md-content>
