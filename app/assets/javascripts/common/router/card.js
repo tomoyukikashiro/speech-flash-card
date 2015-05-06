@@ -17,19 +17,9 @@
       return path.replace(':bookId', _bookId).replace(':cardId', _cardId);
     }
 
-    function getCreate(bookId) {
-      var _path = createPath(bookId, 'create');
-      return prefix + _path;
-    }
-
     function getLink(bookId, cardId) {
       var _path = createPath(bookId, cardId);
       return prefix + _path;
-    }
-
-    function goList(bookId) {
-      var _path = createPath(bookId);
-      $location.path(_path);
     }
 
     function goDetail(bookId, cardId) {
@@ -37,17 +27,10 @@
       $location.path(_path);
     }
 
-    function goCreate() {
-      $location.path(createPath(undefined, undefined) + 'create');
-    }
-
     // export
     return {
-      getCreate: getCreate,
       getLink: getLink,
-      goList: goList,
-      goDetail: goDetail,
-      goCreate: goCreate
+      goDetail: goDetail
     };
   }
 })();

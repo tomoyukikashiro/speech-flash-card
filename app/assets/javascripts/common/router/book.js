@@ -10,10 +10,6 @@
   function CommonRouterBook($location) {
     var path = '#/books/';
 
-    function getCreate() {
-      return path + 'create';
-    }
-
     function getList() {
       return path;
     }
@@ -22,16 +18,10 @@
       $location.path(getList().substring(1));
     }
 
-    function goCreate() {
-      $location.path(getCreate().substring(1));
-    }
-
     // export
     return {
-      getCreate: getCreate,
       getList: getList,
-      goList: goList,
-      goCreate: goCreate
+      goList: goList
     };
   }
 })();

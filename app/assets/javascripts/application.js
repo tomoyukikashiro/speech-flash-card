@@ -50,6 +50,5 @@
 //= require books/cards/module.js
 //= require books/cards/router.js
 //= require books/cards/controller/detailController.js
-//= require books/cards/controller/listController.js
 //= require books/cards/directive/menu/menu.js
 //= require books/cards/directive/menu/menuController.js

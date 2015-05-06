@@ -9,17 +9,6 @@
 
   function CardsRouter($routeProvider) {
     $routeProvider
-      .when('/books/:bookId/cards',
-        {
-          templateUrl: '/templates/cards/list.html',
-          controller: 'CardsListController',
-          controllerAs: 'cardsList',
-          resolve: {
-            cards: ['CommonResourceCard', function(CommonResourceCard) {
-              return CommonResourceCard.getList();
-            }]
-          }
-        })
       .when('/books/:bookId/cards/:cardId',
         {
           templateUrl: '/templates/cards/detail.html',
