@@ -27,13 +27,14 @@
       return prefix + _path;
     }
 
-    function goList(bookId, cardId) {
-      var _path = createPath(bookId, cardId);
+    function goList(bookId) {
+      var _path = createPath(bookId);
       $location.path(_path);
     }
 
-    function goDetail(cardId) {
-      goList(undefined, cardId);
+    function goDetail(bookId, cardId) {
+      var _path = createPath(bookId, cardId);
+      $location.path(_path);
     }
 
     function goCreate() {

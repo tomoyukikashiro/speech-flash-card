@@ -22,7 +22,7 @@
         note : vm.note
       };
       CommonResourceCard.resource.save(param, postData, function(response) {
-        vm.routers.card.goDetail(response.id);
+        vm.routers.card.goDetail(undefined, response.id);
       });
     }
   }

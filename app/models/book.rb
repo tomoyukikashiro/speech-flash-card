@@ -14,7 +14,8 @@ class Book
   end
 
   def get_data
-    return {id: id.to_s, name: name}
+    first_card_id = cards.size > 0 ? cards.first.id : nil
+    return {id: id.to_s, name: name, first_card_id: first_card_id.to_s}
   end
 
   def self.get_all

@@ -21,11 +21,11 @@
     ////////////////
     function onClickNext() {
       var card = vm.cardIterator.getNext();
-      vm.routers.card.goDetail(card.id);
+      vm.routers.card.goDetail(undefined, card.id);
     }
     function onClickPrev() {
       var card = vm.cardIterator.getPrev();
-      vm.routers.card.goDetail(card.id);
+      vm.routers.card.goDetail(undefined, card.id);
     }
     function onClickCard(text) {
       CommonServiceSpeech.speak(text);
