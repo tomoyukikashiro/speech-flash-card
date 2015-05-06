@@ -18,7 +18,7 @@
       $mdDialog.show({
         parent: angular.element(document.body),
         targetEvent: $event,
-        templateUrl: '/templates/books/create.html',
+        templateUrl: '/templates/books/dialog/create.html',
         controller: 'CommonServiceBooksCreateDialogController',
         controllerAs: 'booksCreate'
       });

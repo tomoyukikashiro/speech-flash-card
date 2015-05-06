@@ -1,7 +1,7 @@
 <md-content class="page__book-list js-page__book-list">
 
   <md-list>
-    <md-list-item class="page__book-list__item" md-ink-ripple="#000" ng-repeat="book in booksList.list" ng-click="booksList.routers.card.goDetail(book.id, book.first_card_id)">
+  <md-list-item class="page__book-list__item" md-ink-ripple="#000" ng-repeat="book in booksList.list" ng-click="book.first_card_id ? booksList.routers.card.goDetail(book.id, book.first_card_id) : booksList.routers.card.goCreate(book.id)">
       <p ng-bind="book.name"></p>
     </md-list>
   </md-list>

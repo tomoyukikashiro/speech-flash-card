@@ -1,0 +1,15 @@
+<md-dialog aria-label="create card">
+  <md-dialog-content>
+    <form name="cardCreateForm">
+      <md-input-container>
+        <label>text</label>
+        <input type="text" ng-model="cardsCreate.text" required>
+      </md-input-container>
+      <md-input-container>
+        <label>note</label>
+        <textarea ng-model="cardsCreate.note"></textarea>
+      </md-input-container>
+      <md-button ng-click="cardsCreate.submit()">create</md-button>
+    </form>
+  </md-dialog-content>
+</md-dialog>

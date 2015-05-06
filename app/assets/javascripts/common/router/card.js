@@ -27,10 +27,16 @@
       $location.path(_path);
     }
 
+    function goCreate(bookId) {
+      var _path = createPath(bookId, 'create');
+      $location.path(_path);
+    }
+
     // export
     return {
       getLink: getLink,
-      goDetail: goDetail
+      goDetail: goDetail,
+      goCreate: goCreate
     };
   }
 })();
