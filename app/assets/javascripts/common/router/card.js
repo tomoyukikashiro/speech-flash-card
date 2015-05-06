@@ -8,8 +8,7 @@
   CommonRouterCard.$inject = ['$location', '$routeParams'];
 
   function CommonRouterCard($location, $routeParams) {
-    var path = '/books/:bookId/cards/:cardId',
-        prefix = '#';
+    var path = '/books/:bookId/cards/:cardId';
 
     function createPath(bookId, cardId) {
       var _bookId = bookId || $routeParams.bookId;
@@ -18,8 +17,7 @@
     }
 
     function getLink(bookId, cardId) {
-      var _path = createPath(bookId, cardId);
-      return prefix + _path;
+      return createPath(bookId, cardId);
     }
 
     function goDetail(bookId, cardId) {

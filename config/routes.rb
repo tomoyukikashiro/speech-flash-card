@@ -19,8 +19,12 @@ Rails.application.routes.draw do
   post   "api/books/:book_id/cards"          => "cards#create"
   put    "api/books/:book_id/cards/:card_id" => "cards#update"
   delete "api/books/:book_id/cards/:card_id" => "cards#destroy"
-  #top page
-  root 'top_pages#index'
+  #views
+  root "top_pages#index"
+  get  "login"                         => "top_pages#index"
+  get  "books"                         => "top_pages#index"
+  get  "books/:book_id/cards/create"   => "top_pages#index"
+  get  "books/:book_id/cards/:card_id" => "top_pages#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

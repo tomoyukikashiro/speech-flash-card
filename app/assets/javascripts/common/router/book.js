@@ -8,20 +8,19 @@
   CommonRouterBook.$inject = ['$location'];
 
   function CommonRouterBook($location) {
-    var path = '#/books/';
+    var path = '/books/';
 
+    function goList() {
+      $location.path(path);
+    }
     function getList() {
       return path;
     }
 
-    function goList() {
-      $location.path(getList().substring(1));
-    }
-
     // export
     return {
-      getList: getList,
-      goList: goList
+      goList: goList,
+      getList: getList
     };
   }
 })();

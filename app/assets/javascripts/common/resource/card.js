@@ -9,7 +9,7 @@
 
   function CommonResourceCard($resource, $q, $routeParams, $route) {
     var resource = $resource('/api/books/:bookId/cards/:cardId', {bookId: '@bookId', cardId: '@cardId'}),
-        list;
+        list = {};
 
     return {
       resource: resource,
@@ -20,11 +20,11 @@
 
     ///
     function getCurrentIndex(card) {
-      if(angular.isUndefined(list)){
+      if(angular.isUndefined(list.data)){
         return;
       }
       var hitIndex;
-      angular.forEach(list, function(target, i) {
+      angular.forEach(list.data, function(target, i) {
         if(target.id === card.id){
           hitIndex = i;
         }
@@ -32,6 +32,7 @@
       return hitIndex;
     }
     function getIterator(currentCard) {
+      var _list = list.data;
       var index = getCurrentIndex(currentCard);
       var iterator = {
         hasNext: undefined,
@@ -43,10 +44,10 @@
       iterator.updateHas();
       return iterator;
       function _hasNext() {
-        return !(angular.isUndefined(list) || index === list.length -1);
+        return !(angular.isUndefined(_list) || index === _list.length -1);
       }
       function _hasPrev() {
-        return !(angular.isUndefined(list) || index === 0);
+        return !(angular.isUndefined(_list) || index === 0);
       }
       function updateHas() {
         this.hasNext = _hasNext();
@@ -56,7 +57,7 @@
         if(!_hasPrev()){
           return;
         }
-        var prev = list[--index];
+        var prev = _list[--index];
         this.updateHas();
         return prev;
       }
@@ -64,7 +65,7 @@
         if(!_hasNext()){
           return;
         }
-        var next = list[++index];
+        var next = _list[++index];
         this.updateHas();
         return next;
       }
@@ -92,15 +93,18 @@
     function getList() {
       var dfd = $q.defer(),
           bookId = $route.current.params.bookId;
-      if(!angular.isUndefined(list)){
-        dfd.resolve(list);
+      if(!angular.isUndefined(list.data) && list.id === bookId){
+        dfd.resolve(list.data);
         return dfd.promise;
       }
       resource.get({bookId: bookId})
       .$promise
       .then(function(res) {
-        list = res.list;
-        dfd.resolve(list);
+        list = {
+          data: res.list,
+          id: bookId
+        };
+        dfd.resolve(list.data);
       },function() {
         dfd.reject();
       });
