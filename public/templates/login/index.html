@@ -1,15 +1,22 @@
-<h1>login</h1>
+<div class="login-container" flex layout="column" layout-align="center center">
+  <div>
+    <h1 class="md-display-3">Speech Flash Cards</h1>
+    <form name="UserLoginForm" ng-submit="loginIndex.loginSubmit()">
+      <md-input-container>
+        <label>Email</label>
+        <input type="email" required autocomplete="email" ng-model="loginIndex.login.email">
+      </md-input-container>
+      <md-input-container>
+        <label>Password</label>
+        <input type="password" required autocomplete="password" ng-model="loginIndex.login.password">
+      </md-input-container>
+      <div layout="row" layout-align="end center">
+        <div layout="row" flex>
+          <p><a href="/">Singup</a></p>
+        </div>
+        <md-button class="md-raised md-primary">Login</md-button>
+      </div>
+    </form>
+  </div>
+</div>
 
-<form name="UserCraeteForm" ng-submit="loginIndex.createSubmit()">
-  <input type="name" ng-model="loginIndex.create.name" required>
-  <input type="email" ng-model="loginIndex.create.email" required>
-  <input type="password" ng-model="loginIndex.create.password" required>
-  <input type="password" ng-model="loginIndex.create.passwordConfirm" required>
-  <input type="submit" value="create">
-</form>
-<hr>
-<form name="UserLoginForm" ng-submit="loginIndex.loginSubmit()">
-  <input type="email" ng-model="loginIndex.login.email" required>
-  <input type="password" ng-model="loginIndex.login.password" required>
-  <input type="submit" value="login">
-</form>
