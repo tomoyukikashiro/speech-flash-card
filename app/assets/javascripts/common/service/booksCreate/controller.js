@@ -15,7 +15,7 @@
     ////
     function submit() {
       CommonResourceBook.resource.save({}, {name: vm.bookName}, function(response) {
-        vm.routers.card.goList(response.id);
+        vm.routers.card.goCreate(response.id);
       });
     }
   }

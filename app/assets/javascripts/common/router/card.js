@@ -32,7 +32,7 @@
 
     // export
     return {
-      getLink: getLink,
+      getLink : getLink,
       goDetail: goDetail,
       goCreate: goCreate
     };

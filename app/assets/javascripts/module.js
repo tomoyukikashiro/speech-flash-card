@@ -8,7 +8,8 @@
       'ngMaterial',
       'books',
       'cards',
-      'login'
+      'login',
+      'signup'
   ]).config(appConfig);
 
   appConfig.$inject = ['$httpProvider', 'APP_CONFIG'];

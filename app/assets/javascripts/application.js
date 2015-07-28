@@ -40,7 +40,11 @@
 //= require login/module.js
 //= require login/router.js
 //= require login/controller/indexController.js
-//
+
+//= require signup/module.js
+//= require signup/router.js
+//= require signup/controller/indexController.js
+
 //= require books/module.js
 //= require books/router.js
 //= require books/controller/listController.js
