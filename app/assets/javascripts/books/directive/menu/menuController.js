@@ -12,6 +12,9 @@
     angular.extend(this, CommonControllerBaseController);
 
     var vm = this;
+    vm.menu = {
+      isOpen: false
+    };
     vm.createBookDialog = CommonServiceCreateBookDialog;
   }
 })();

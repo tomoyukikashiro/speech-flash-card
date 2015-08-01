@@ -1,13 +1,12 @@
-<md-content class="card-menu" layout="column" layout-align="center end">
-
-  <md-button class="md-fab md-mini md-primary card-menu__create-button" aria-label="" ng-click="cardsMenu.createCardDialog.show($event)">
-    <!-- <md-tooltip md-visible="true" md-direction="left" class="card-menu__create-tooltip">create card</md-tooltip> -->
-    <md-icon md-svg-src="images/icons/mode_edit.svg"></md-icon>
-  </md-button>
-
-  <md-button class="md-fab card-menu__edit-button" aria-label="">
+<md-fab-speed-dial md-open="cardsMenu.menu.isOpen" md-direction="up" ng-class="md-scale">
+  <md-fab-trigger>
+    <md-button aria-label="menu" class="md-fab md-warn">
       <md-icon md-svg-src="images/icons/add.svg"></md-icon>
-  </md-button>
-
-
-</md-content>
+    </md-button>
+  </md-fab-trigger>
+  <md-fab-actions>
+    <md-button aria-label="add" class="md-fab md-warn md-raised md-mini" ng-click="cardsMenu.createCardDialog.show($event)">
+      <md-icon md-svg-src="images/icons/mode_edit.svg"></md-icon>
+    </md-button>
+  </md-fab-actions>
+</md-fab-speed-dial>

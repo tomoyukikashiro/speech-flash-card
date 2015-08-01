@@ -16,6 +16,7 @@
     ///
     function show($event) {
       $mdDialog.show({
+        clickOutsideToClose: true,
         parent: angular.element(document.body),
         targetEvent: $event,
         templateUrl: '/templates/cards/dialog/create.html',

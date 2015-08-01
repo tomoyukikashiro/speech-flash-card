@@ -1,11 +1,13 @@
 <md-dialog aria-label="create book">
   <md-dialog-content>
-    <form name="bookCreateForm">
+    <form name="bookCreateForm" layout="column">
       <md-input-container>
         <label>Name</label>
         <input type="text" ng-model="booksCreate.bookName" required>
       </md-input-container>
-      <md-button ng-click="booksCreate.submit()">create</md-button>
+      <div layout="row" layout-align="end center">
+        <md-button ng-click="booksCreate.submit()">create</md-button>
+      </div>
     </form>
   </md-dialog-content>
 </md-dialog>
