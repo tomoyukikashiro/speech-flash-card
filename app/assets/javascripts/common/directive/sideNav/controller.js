@@ -5,11 +5,16 @@
     .module('common.directive.sideNav')
     .controller('CommonServiceSideNavController', CommonServiceSideNavController);
 
-  CommonServiceSideNavController.$inject = ['$location', '$mdDialog', 'CommonResourceSession'];
+  CommonServiceSideNavController.$inject = ['$location', '$mdDialog', 'CommonResourceSession', 'CommonServiceAuioSettingsDialog'];
 
-  function CommonServiceSideNavController($location, $mdDialog, CommonResourceSession) {
+  function CommonServiceSideNavController($location, $mdDialog, CommonResourceSession, CommonServiceAuioSettingsDialog) {
     var vm = this;
     vm.logout = logout;
+    vm.audioSettings = audioSettings;
+
+    function audioSettings(e){
+      CommonServiceAuioSettingsDialog.show(e);
+    }
 
     function logout(e){
       var dialog = $mdDialog.confirm()

@@ -4,6 +4,7 @@
   angular
     .module('common.directive.sideNav', [
       'common.resource.session',
+      'common.service.audioSettings.dialog',
       'ngMaterial'
     ])
     .directive('sideNav', SideNav);

@@ -1,0 +1,22 @@
+<md-dialog aria-label="Audio Settings">
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Audio Settings</h2>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <label>Speed</label>
+      <md-slider flex md-discrete ng-model="audioSettingsCtrl.user.audio_settings.speed" step="1" min="1" max="10" aria-label="speed"></md-slider>
+      <label>Repeat</label>
+      <md-radio-group ng-model="audioSettingsCtrl.user.audio_settings.repeat">
+        <md-radio-button value="book">Repeat Book</md-radio-button>
+        <md-radio-button value="card">Repeat Card</md-radio-button>
+        <md-radio-button value="none">None</md-radio-button>
+      </md-radio-group>
+    </md-dialog-content>
+    <div class="md-actions" layout="row">
+      <md-button ng-click="audioSettingsCtrl.submit()" class="md-primary">Done</md-button>
+    </div>
+  </form>
+</md-dialog>

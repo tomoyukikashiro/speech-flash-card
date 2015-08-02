@@ -36,6 +36,8 @@
 //= require common/service/booksCreate/controller.js
 //= require common/service/cardsCreate/dialog.js
 //= require common/service/cardsCreate/controller.js
+//= require common/service/audioSettings/dialog.js
+//= require common/service/audioSettings/controller.js
 //= require common/service/sideNav.js
 //= require common/directive/sideNav/sideNav.js
 //= require common/directive/sideNav/controller.js

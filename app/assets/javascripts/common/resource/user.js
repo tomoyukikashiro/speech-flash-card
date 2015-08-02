@@ -8,7 +8,9 @@
   CommonResourceUser.$inject = ['$resource', '$q'];
 
   function CommonResourceUser($resource, $q) {
-    var resource = $resource('/api/users/');
+    var resource = $resource('/api/users/:id', null, {
+      'update': {method: 'PUT'}
+    });
     var data;
     return {
       getData: function() {return data;},
@@ -19,8 +21,17 @@
     //////
     function checkCurrent() {
       var dfd = $q.defer();
+
+      if(data){
+        dfd.resolve(data);
+        return dfd.promise;
+      }
+
       resource.get({},function(user) {
-        data = user;
+        data = angular.copy(user);
+        delete data.$promise;
+        delete data.$resolved;
+
         dfd.resolve(user);
       }, function() {
         dfd.reject();
