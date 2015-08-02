@@ -13,7 +13,6 @@
 
     var vm = this;
     vm.list = books;
-    vm.onClickLogout = logout;
 
     ////////////////
     function logout() {

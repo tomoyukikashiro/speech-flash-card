@@ -36,6 +36,11 @@
 //= require common/service/booksCreate/controller.js
 //= require common/service/cardsCreate/dialog.js
 //= require common/service/cardsCreate/controller.js
+//= require common/service/sideNav.js
+//= require common/directive/sideNav/sideNav.js
+//= require common/directive/sideNav/controller.js
+
+//= require appController.js
 
 //= require login/module.js
 //= require login/router.js

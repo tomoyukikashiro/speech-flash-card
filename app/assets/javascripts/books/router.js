@@ -15,6 +15,11 @@
             controller: 'BooksListController',
             controllerAs: 'booksList',
             resolve: {
+              currentUser: ['CommonResourceUser', 'CommonResolveRedirection', 'CommonRouterBook',
+                function(CommonResourceUser, CommonResolveRedirection, CommonRouterBook) {
+                  return CommonResolveRedirection.redirect(CommonResourceUser.checkCurrent(), null, '/');
+                }
+              ],
               books: ['CommonResourceBook', function(CommonResourceBook) {
                 return CommonResourceBook.getList();
               }]

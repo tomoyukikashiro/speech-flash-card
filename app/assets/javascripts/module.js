@@ -6,10 +6,12 @@
       'ngRoute',
       'ngAria',
       'ngMaterial',
+      'app',
       'books',
       'cards',
       'login',
-      'signup'
+      'signup',
+      'common.directive.sideNav'
   ]).config(appConfig);
 
   appConfig.$inject = ['$httpProvider', 'APP_CONFIG'];

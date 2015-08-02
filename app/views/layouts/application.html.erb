@@ -9,12 +9,15 @@
   <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag "application" %>
 </head>
-<body layout="column">
+<body layout="column" ng-controller="appController as appCtrl">
   <md-toolbar class="md-toolbar-tools" md-scroll-shrink>
-    <md-button class="md-icon-button" aria-label="Settings"><md-icon md-svg-icon="images/icons/menu.svg"></md-icon></md-button>
+    <md-button class="md-icon-button" aria-label="Settings" ng-click="appCtrl.sideNav.toggleLeft()"><md-icon md-svg-icon="images/icons/menu_white.svg"></md-icon></md-button>
     <h2><span>LIST</span></h2>
   </md-toolbar>
-  <%= yield %>
+  <div layout="row">
+    <side-nav></side-nav>
+    <%= yield %>
+  </div>
   <%= javascript_include_tag 'application' %>
 </body>
 </html>
