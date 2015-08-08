@@ -14,10 +14,10 @@
     <md-button class="md-icon-button" aria-label="Settings" ng-click="appCtrl.sideNav.toggleLeft()"><md-icon md-svg-icon="images/icons/menu_white.svg"></md-icon></md-button>
     <h2><span>LIST</span></h2>
   </md-toolbar>
-  <div layout="row">
+  <md-content layout="row">
     <side-nav></side-nav>
     <%= yield %>
-  </div>
+  </md-content>
   <%= javascript_include_tag 'application' %>
 </body>
 </html>

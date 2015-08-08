@@ -8,12 +8,14 @@
   CommonResourceUser.$inject = ['$resource', '$q'];
 
   function CommonResourceUser($resource, $q) {
+    /*jshint camelcase: false */
     var resource = $resource('/api/users/:id', null, {
       'update': {method: 'PUT'}
     });
     var data;
     return {
       getData: function() {return data;},
+      setAudioData: function(newData) {data.audio_settings = newData;},
       resource: resource,
       checkCurrent: checkCurrent
     };

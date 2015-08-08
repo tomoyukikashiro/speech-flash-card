@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  #users::audio_settings
+  put    "api/users/:id/audio_settings" => "users/audio_settings#update"
   #users
   get    "api/users"     => "users#show"
   post   "api/users"     => "users#create"

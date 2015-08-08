@@ -1,21 +1,5 @@
-fc-book-menu{
-
+.m-book-create-menu{
   position: fixed;
-  bottom: 30px;
-  right: 30px;
-
-  .book-menu{
-    width: 200px;
-  }
-
-  .book-menu__create-button{
-    position: relative;
-    margin: 0 8px 20px 0;
-  }
-  .book-menu__create-tooltip{
-  }
-
-  .book-menu__edit-button{
-  }
-
+  bottom: 90px;
+  right: 60px;
 }

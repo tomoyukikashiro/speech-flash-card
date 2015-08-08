@@ -1,4 +1,4 @@
-class AudioSettings
+class Users::AudioSettings
   include Mongoid::Document
 
   embedded_in :user

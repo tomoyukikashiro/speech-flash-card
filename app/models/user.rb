@@ -14,7 +14,7 @@ class User
   index({remember_token: 1}, {unique: true})
 
   has_many :books
-  embeds_one :audio_settings, class_name: "AudioSettings"
+  embeds_one :audio_settings, class_name: "Users::AudioSettings"
 
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

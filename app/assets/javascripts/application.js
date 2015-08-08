@@ -25,6 +25,7 @@
 
 //= require common/controller/baseController.js
 //= require common/resource/user.js
+//= require common/resource/users/audioSettings.js
 //= require common/resource/session.js
 //= require common/resource/book.js
 //= require common/resource/card.js
@@ -34,10 +35,14 @@
 //= require common/service/speech.js
 //= require common/service/booksCreate/dialog.js
 //= require common/service/booksCreate/controller.js
+//= require common/service/booksEdit/dialog.js
+//= require common/service/booksEdit/controller.js
 //= require common/service/cardsCreate/dialog.js
 //= require common/service/cardsCreate/controller.js
 //= require common/service/audioSettings/dialog.js
 //= require common/service/audioSettings/controller.js
+//= require common/service/personalSettings/dialog.js
+//= require common/service/personalSettings/controller.js
 //= require common/service/sideNav.js
 //= require common/directive/sideNav/sideNav.js
 //= require common/directive/sideNav/controller.js
@@ -55,8 +60,6 @@
 //= require books/module.js
 //= require books/router.js
 //= require books/controller/listController.js
-//= require books/directive/menu/menu.js
-//= require books/directive/menu/menuController.js
 
 //= require books/cards/module.js
 //= require books/cards/router.js

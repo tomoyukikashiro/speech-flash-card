@@ -4,7 +4,8 @@
   angular
     .module('common.service.audioSettings.dialog', [
       'common.controller.base',
-      'common.resource.user'
+      'common.resource.user',
+      'common.resource.users.audioSettings',
     ])
     .factory('CommonServiceAuioSettingsDialog', CommonServiceAuioSettingsDialog);
 
