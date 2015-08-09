@@ -11,7 +11,10 @@
       restrict: 'E',
       templateUrl: 'templates/cards/menu.html',
       controller: 'CardsMenuController',
-      controllerAs: 'cardsMenu'
+      controllerAs: 'cardsMenu',
+      scope: {
+        card: '='
+      }
     };
     return directive;
 

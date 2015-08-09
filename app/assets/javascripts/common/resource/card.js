@@ -8,17 +8,41 @@
   CommonResourceCard.$inject = ['$resource', '$q', '$routeParams', '$route'];
 
   function CommonResourceCard($resource, $q, $routeParams, $route) {
-    var resource = $resource('/api/books/:bookId/cards/:cardId', {bookId: '@bookId', cardId: '@cardId'}),
-        list = {};
+    var resource = $resource('/api/books/:bookId/cards/:cardId', {bookId: '@bookId', cardId: '@cardId'}, { update: {method: 'PUT'}}),
+        list = {},
+        iterator;
 
     return {
       resource: resource,
       getList: getList,
       getCard: getCard,
-      getIterator: getIterator
+      getIterator: getIterator,
+      remove: remove,
+      update: update
     };
 
     ///
+    function update(params, data) {
+      var dfd = $q.defer();
+      resource.update(params, data)
+        .$promise
+        .then(function() {
+          updateItem(params.cardId, data);
+          dfd.resolve();
+        });
+      return dfd.promise;
+    }
+    function remove(params) {
+      var dfd = $q.defer();
+      resource.remove(params)
+        .$promise
+        .then(function() {
+          removeItem(params.cardId);
+          dfd.resolve();
+        });
+      return dfd.promise;
+    }
+
     function getCurrentIndex(card) {
       if(angular.isUndefined(list.data)){
         return;
@@ -32,9 +56,13 @@
       return hitIndex;
     }
     function getIterator(currentCard) {
+      if(angular.isDefined(iterator)){
+        iterator.updateHas();
+        return iterator;
+      }
       var _list = list.data;
       var index = getCurrentIndex(currentCard);
-      var iterator = {
+      iterator = {
         hasNext: undefined,
         hasPrev: undefined,
         updateHas: updateHas,
@@ -50,6 +78,7 @@
         return !(angular.isUndefined(_list) || index === 0);
       }
       function updateHas() {
+        _list = list.data;
         this.hasNext = _hasNext();
         this.hasPrev = _hasPrev();
       }
@@ -110,6 +139,24 @@
       });
       return dfd.promise;
     }
+    function updateItem(id, data) {
+      angular.forEach(list.data, function(v) {
+        if(v.id === id){
+          v.text = data.text;
+          v.note = data.note;
+        }
+      });
+      iterator.updateHas();
+    }
+    function removeItem(id) {
+      angular.forEach(list.data, function(v, i) {
+        if(v.id === id){
+          list.splice(i, 1);
+        }
+      });
+      iterator.updateHas();
+    }
+
   }
 
 })();

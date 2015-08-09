@@ -1,12 +1,15 @@
-<md-fab-speed-dial md-open="cardsMenu.menu.isOpen" md-direction="up" ng-class="md-scale">
+<md-fab-speed-dial md-open="cardsMenu.menu.isOpen" md-direction="up" class="md-scale">
   <md-fab-trigger>
     <md-button aria-label="menu" class="md-fab md-warn">
-      <md-icon md-svg-src="images/icons/add_white.svg"></md-icon>
+      <md-icon md-svg-src="images/icons/menu_white.svg"></md-icon>
     </md-button>
   </md-fab-trigger>
   <md-fab-actions>
-    <md-button aria-label="add" class="md-fab md-warn md-raised md-mini" ng-click="cardsMenu.createCardDialog.show($event)">
-      <md-icon md-svg-src="images/icons/mode_edit_white.svg"></md-icon>
+    <md-button aria-label="add" class="md-fab md-raised md-mini" ng-click="cardsMenu.createCardDialog.show($event)">
+      <md-icon md-svg-src="images/icons/add_black.svg"></md-icon>
+    </md-button>
+    <md-button aria-label="edit" class="md-fab md-raised md-mini" ng-click="cardsMenu.editCardDialog.show($event, card)">
+      <md-icon md-svg-src="images/icons/mode_edit_black.svg"></md-icon>
     </md-button>
   </md-fab-actions>
 </md-fab-speed-dial>

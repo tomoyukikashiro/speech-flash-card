@@ -39,6 +39,8 @@
 //= require common/service/booksEdit/controller.js
 //= require common/service/cardsCreate/dialog.js
 //= require common/service/cardsCreate/controller.js
+//= require common/service/cardsEdit/dialog.js
+//= require common/service/cardsEdit/controller.js
 //= require common/service/audioSettings/dialog.js
 //= require common/service/audioSettings/controller.js
 //= require common/service/personalSettings/dialog.js

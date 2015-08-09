@@ -5,9 +5,9 @@
     .module('cards')
     .controller('CardsDetailController', CardsDetailController);
 
-  CardsDetailController.$inject = ['CommonResourceCard', 'CommonControllerBaseController', '$routeParams', 'CommonServiceSpeech', 'card'];
+  CardsDetailController.$inject = ['$mdButtonInkRipple', 'CommonResourceCard', 'CommonControllerBaseController', '$routeParams', 'CommonServiceSpeech', 'card'];
 
-  function CardsDetailController(CommonResourceCard, CommonControllerBaseController, $routeParams, CommonServiceSpeech, card) {
+  function CardsDetailController($mdButtonInkRipple, CommonResourceCard, CommonControllerBaseController, $routeParams, CommonServiceSpeech, card) {
     angular.extend(this, CommonControllerBaseController);
     var vm = this;
     vm.cardIterator = CommonResourceCard.getIterator(card);
@@ -33,6 +33,7 @@
 
     function activate() {
       CommonServiceSpeech.init();
+      $mdButtonInkRipple.attach(null, angular.element(document.body.querySelectorAll('.js-page__card-detail')));
     }
   }
 })();

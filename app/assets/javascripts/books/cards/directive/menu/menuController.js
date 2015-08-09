@@ -5,9 +5,9 @@
     .module('cards')
     .controller('CardsMenuController', CardsMenuController);
 
-  CardsMenuController.$inject = ['CommonControllerBaseController', 'CommonServiceCreateCardDialog'];
+  CardsMenuController.$inject = ['CommonControllerBaseController', 'CommonServiceCreateCardDialog', 'CommonServiceEditCardDialog'];
 
-  function CardsMenuController(CommonControllerBaseController, CommonServiceCreateCardDialog) {
+  function CardsMenuController(CommonControllerBaseController, CommonServiceCreateCardDialog, CommonServiceEditCardDialog) {
 
     angular.extend(this, CommonControllerBaseController);
 
@@ -16,6 +16,7 @@
       isOpen: false
     };
     vm.createCardDialog = CommonServiceCreateCardDialog;
+    vm.editCardDialog = CommonServiceEditCardDialog;
 
     activate();
 

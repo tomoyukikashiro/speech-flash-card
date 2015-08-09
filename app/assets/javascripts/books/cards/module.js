@@ -9,7 +9,8 @@
       'common.router.book',
       'common.router.card',
       'common.service.speech',
-      'common.service.cardsCreate.dialog'
+      'common.service.cardsCreate.dialog',
+      'common.service.cardsEdit.dialog'
     ]
   );
 

@@ -1,10 +1,13 @@
-<md-content class="page__card-list js-page__card-detail">
-  <div ng-click="cardsDetail.onClickCard(cardsDetail.card.text)">
-    <p ng-bind="cardsDetail.card.text"></p>
-    <p ng-bind="cardsDetail.card.note"></p>
+<md-content flex layout="row" layout-align="center center" class="page__card-list js-page__card-detail"
+  ng-click="cardsDetail.onClickCard(cardsDetail.card.text)"
+  md-swipe-left="cardsDetail.onClickNext()"
+  md-swipe-right="cardsDetail.onClickPrev()">
+  <div class="card-list__item" flex layout="column">
+    <p class="card-list__text" ng-bind="cardsDetail.card.text"></p>
+    <p class="card-list__note" ng-bind="cardsDetail.card.note"></p>
   </div>
-  <md-button ng-disabled="{{!cardsDetail.cardIterator.hasPrev}}" ng-click="cardsDetail.onClickPrev()">prev</md-button>
-  <md-button ng-disabled="{{!cardsDetail.cardIterator.hasNext}}" ng-click="cardsDetail.onClickNext()">next</md-button>
-  <md-button ng-click="cardsDetail.routers.book.goList()">back list</md-button>
-  <fc-card-menu></fc-card-menu>
+  <!-- <md-button ng-disabled="{{!cardsDetail.cardIterator.hasPrev}}" ng-click="cardsDetail.onClickPrev()">prev</md-button> -->
+  <!-- <md-button ng-disabled="{{!cardsDetail.cardIterator.hasNext}}" ng-click="cardsDetail.onClickNext()">next</md-button> -->
+  <!-- <md-button ng-click="cardsDetail.routers.book.goList()">back list</md-button> -->
+  <fc-card-menu card="cardsDetail.card"></fc-card-menu>
 </md-content>
