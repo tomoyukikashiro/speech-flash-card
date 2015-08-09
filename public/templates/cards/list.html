@@ -1,0 +1,9 @@
+<md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right" md-is-locked-open="$mdMedia('gt-md')">
+  <md-content layout-padding>
+    <md-list>
+      <md-list-item ng-click="cardListCtrl.changeCard(card.id)" ng-repeat="card in cardList">
+        <p ng-bind="card.text"></p>
+      </md-list-item>
+    </md-list>
+  </md-content>
+</md-sidenav>

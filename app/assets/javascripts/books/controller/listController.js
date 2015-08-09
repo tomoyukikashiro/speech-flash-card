@@ -20,5 +20,11 @@
     vm.createBookDialog = CommonServiceCreateBookDialog;
     vm.editBookDialog = CommonServiceEditBookDialog;
 
+    activate();
+
+    function activate() {
+      vm.pageChange(vm.APP_CONFIG.PAGE_NAME.BOOK);
+    }
+
   }
 })();

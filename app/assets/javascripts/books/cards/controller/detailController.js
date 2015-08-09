@@ -5,9 +5,9 @@
     .module('cards')
     .controller('CardsDetailController', CardsDetailController);
 
-  CardsDetailController.$inject = ['$mdButtonInkRipple', 'CommonResourceCard', 'CommonControllerBaseController', '$routeParams', 'CommonServiceSpeech', 'card'];
+  CardsDetailController.$inject = ['$mdInkRipple', 'CommonResourceCard', 'CommonControllerBaseController', '$routeParams', 'CommonServiceSpeech', 'card'];
 
-  function CardsDetailController($mdButtonInkRipple, CommonResourceCard, CommonControllerBaseController, $routeParams, CommonServiceSpeech, card) {
+  function CardsDetailController($mdInkRipple, CommonResourceCard, CommonControllerBaseController, $routeParams, CommonServiceSpeech, card) {
     angular.extend(this, CommonControllerBaseController);
     var vm = this;
     vm.cardIterator = CommonResourceCard.getIterator(card);
@@ -29,11 +29,14 @@
     }
     function onClickCard(text) {
       CommonServiceSpeech.speak(text);
+      $mdInkRipple.attach(null, angular.element(document.body.querySelectorAll('.js-page__card-detail')), {
+        center: true
+      });
     }
 
     function activate() {
       CommonServiceSpeech.init();
-      $mdButtonInkRipple.attach(null, angular.element(document.body.querySelectorAll('.js-page__card-detail')));
+      vm.pageChange(vm.APP_CONFIG.PAGE_NAME.CARD);
     }
   }
 })();

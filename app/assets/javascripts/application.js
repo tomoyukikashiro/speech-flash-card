@@ -69,3 +69,6 @@
 //= require books/cards/controller/createController.js
 //= require books/cards/directive/menu/menu.js
 //= require books/cards/directive/menu/menuController.js
+//= require books/cards/service/cardList.js
+//= require books/cards/directive/cardList/nav.js
+//= require books/cards/directive/cardList/controller.js
