@@ -29,9 +29,6 @@
     }
     function onClickCard(text) {
       CommonServiceSpeech.speak(text);
-      $mdInkRipple.attach(null, angular.element(document.body.querySelectorAll('.js-page__card-detail')), {
-        center: true
-      });
     }
 
     function activate() {
