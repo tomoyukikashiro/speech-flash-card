@@ -1,8 +1,10 @@
 .page__book-list{
+  background-color: $bg-color;
   padding: $page-padding;
 
   md-list-item{
+    background-color: #FFF;
     padding: 16px 0;
-    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
   }
 }

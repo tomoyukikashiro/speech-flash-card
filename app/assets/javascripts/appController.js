@@ -28,9 +28,14 @@
     function onPageChange(e, data) {
       vm.page.name = data.name;
       if(vm.page.name === vm.APP_CONFIG.PAGE_NAME.CARD){
+        vm.page.preName = vm.APP_CONFIG.PAGE_NAME.BOOK + ' > ';
+        // prepare card list
         CommonResourceCard.getList().then(function(data){
           vm.cardListData = data;
         });
+        //
+      }else{
+        vm.page.preName = '';
       }
     }
   }
