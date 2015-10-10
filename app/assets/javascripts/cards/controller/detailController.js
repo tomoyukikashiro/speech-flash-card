@@ -5,9 +5,9 @@
     .module('EnglishFlashCard')
     .controller('cardsDetailController', cardsDetailController);
 
-  cardsDetailController.$inject = ['$location', '$mdInkRipple', 'resourceCard', 'baseController', '$routeParams', 'serviceSpeech', 'card'];
+  cardsDetailController.$inject = ['$location', '$mdInkRipple', 'resourceCard', 'baseController', '$routeParams', 'speech', 'card'];
 
-  function cardsDetailController($location, $mdInkRipple, resourceCard, baseController, $routeParams, serviceSpeech, card) {
+  function cardsDetailController($location, $mdInkRipple, resourceCard, baseController, $routeParams, speech, card) {
 
     if(!card){
       $location.path('/login');
@@ -33,11 +33,11 @@
       vm.routers.card.goDetail(undefined, card.id);
     }
     function onClickCard(text) {
-      serviceSpeech.speak(text);
+      speech.speak(text);
     }
 
     function activate() {
-      serviceSpeech.init();
+      speech.init();
       vm.pageChange(vm.APP_CONFIG.PAGE_NAME.CARD);
     }
   }

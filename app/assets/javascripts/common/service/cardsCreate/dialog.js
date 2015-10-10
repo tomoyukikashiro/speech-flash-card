@@ -14,14 +14,18 @@
     };
 
     ///
-    function show($event) {
+    function show($event, isFirst, bookId) {
       $mdDialog.show({
         clickOutsideToClose: true,
         parent: angular.element(document.body),
         targetEvent: $event,
         templateUrl: '/templates/cards/dialog/create.html',
         controller: 'cardsCreateDialogController',
-        controllerAs: 'cardsCreate'
+        controllerAs: 'cardsCreate',
+        locals: {
+          isFirst: isFirst,
+          bookId : bookId
+        }
       });
     }
   }

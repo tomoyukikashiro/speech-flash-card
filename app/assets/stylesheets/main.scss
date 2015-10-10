@@ -1,6 +1,8 @@
 @charset "utf-8";
 
+@import "bower_components/angular-material/angular-material.scss";
 @import "reset";
+@import "sideNav";
 @import "settings";
 
 @import "pages/bookList/all";

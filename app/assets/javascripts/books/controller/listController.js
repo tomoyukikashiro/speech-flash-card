@@ -7,11 +7,11 @@
 
   booksListController.$inject = [
     '$location', 'baseController', 'resourceBook', 'resourceSession',
-    'books', 'createBookDialog', 'editBookDialog'];
+    'books', 'createBookDialog', 'editBookDialog', 'createCardDialog'];
 
   function booksListController(
       $location, baseController, resourceBook, resourceSession,
-      books, createBookDialog, editBookDialog) {
+      books, createBookDialog, editBookDialog, createCardDialog) {
 
     if(!books){
       $location.path('/login');
@@ -23,6 +23,7 @@
     vm.list = books;
     vm.createBookDialog = createBookDialog;
     vm.editBookDialog = editBookDialog;
+    vm.createCardDialog = createCardDialog;
 
     activate();
 

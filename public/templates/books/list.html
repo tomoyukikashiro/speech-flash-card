@@ -1,7 +1,7 @@
 <md-content class="page__book-list js-page__book-list">
 
   <md-list>
-    <md-list-item class="page__book-list__item md-whiteframe-z2" md-ink-ripple="#000" ng-repeat="book in booksList.list" ng-click="book.first_card_id ? booksList.routers.card.goDetail(book.id, book.first_card_id) : booksList.routers.card.goCreate(book.id)" aria-label="book.name">
+    <md-list-item class="page__book-list__item md-whiteframe-z2" md-ink-ripple="#000" ng-repeat="book in booksList.list" ng-click="book.first_card_id ? booksList.routers.card.goDetail(book.id, book.first_card_id) : booksList.createCardDialog.show($event, true, book.id)" aria-label="book.name">
       <p ng-bind="book.name"></p>
       <md-icon md-svg-src="images/icons/more_vert_black.svg" ng-click="booksList.editBookDialog.show($event, book)" aria-label="Open Chat" class="md-secondary md-hue-3"></md-icon>
     </md-list-item>

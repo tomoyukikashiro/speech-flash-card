@@ -27,7 +27,7 @@
       if(vm.page.name === vm.APP_CONFIG.PAGE_NAME.CARD){
         vm.page.preName = vm.APP_CONFIG.PAGE_NAME.BOOK + ' > ';
         // prepare card list
-        rsourceCard.getList().then(function(data){
+        resourceCard.getList().then(function(data){
           vm.cardListData = data;
         });
         //
