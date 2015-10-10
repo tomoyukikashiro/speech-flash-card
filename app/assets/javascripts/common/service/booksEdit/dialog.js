@@ -2,12 +2,12 @@
   'use strict';
 
   angular
-    .module('common.service.booksEdit.dialog', [])
-    .factory('CommonServiceEditBookDialog', CommonServiceEditBookDialog);
+    .module('EnglishFlashCard')
+    .factory('editBookDialog', editBookDialog);
 
-  CommonServiceEditBookDialog.$inject = ['$mdDialog'];
+  editBookDialog.$inject = ['$mdDialog'];
 
-  function CommonServiceEditBookDialog($mdDialog) {
+  function editBookDialog($mdDialog) {
 
     return {
       show: show
@@ -20,7 +20,7 @@
         parent: angular.element(document.body),
         targetEvent: $event,
         templateUrl: '/templates/books/dialog/edit.html',
-        controller: 'CommonServiceBooksEditDialogController',
+        controller: 'booksEditDialogController',
         controllerAs: 'booksEdit',
         locals: {
           book: book

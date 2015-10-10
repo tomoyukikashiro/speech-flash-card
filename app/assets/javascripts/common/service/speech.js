@@ -2,10 +2,10 @@
   'use strict';
 
   angular
-    .module('common.service.speech', [])
-    .service('CommonServiceSpeech', CommonServiceSpeech);
+    .module('EnglishFlashCard')
+    .service('speech', speech);
 
-  function CommonServiceSpeech() {
+  function speech() {
     var defOptions = {
       volume: 1,
       rate: 1,

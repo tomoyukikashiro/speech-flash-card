@@ -2,19 +2,19 @@
   'use strict';
 
   angular
-    .module('common.service.audioSettings.dialog')
-    .controller('CommonServiceAudioSettingsDialogController', CommonServiceAudioSettingsDialogController);
+    .module('EnglishFlashCard')
+    .controller('audioSettingsDialogController', audioSettingsDialogController);
 
-  CommonServiceAudioSettingsDialogController.$inject = [
-    'CommonControllerBaseController', 'CommonResourceUser',
-    '$mdDialog', 'CommonResourceUserAudioSettings'];
+  audioSettingsDialogController.$inject = [
+    'baseController', 'resourceUser',
+    '$mdDialog', 'resourceUserAudioSettings'];
 
-  function CommonServiceAudioSettingsDialogController(CommonControllerBaseController, CommonResourceUser,
-      $mdDialog, CommonResourceUserAudioSettings) {
+  function audioSettingsDialogController(baseController, resourceUser,
+      $mdDialog, resourceUserAudioSettings) {
 
-    angular.extend(this, CommonControllerBaseController);
+    angular.extend(this, baseController);
     var vm = this;
-    vm.user = angular.copy(CommonResourceUser.getData());
+    vm.user = angular.copy(resourceUser.getData());
 
     vm.submit = submit;
 
@@ -22,10 +22,10 @@
       /*jshint camelcase: false */
       var as = vm.user.audio_settings,
           data = {speed: as.speed, repeat: as.repeat};
-      CommonResourceUserAudioSettings.resource.update({userId: vm.user.id}, data).$promise
+      resourceUserAudioSettings.resource.update({userId: vm.user.id}, data).$promise
         .then(function(){
-          CommonResourceUser.setAudioData(data);
-          vm.user = angular.copy(CommonResourceUser.getData());
+          resourceUser.setAudioData(data);
+          vm.user = angular.copy(resourceUser.getData());
           $mdDialog.hide();
         }, function(e){
           console.log(e);

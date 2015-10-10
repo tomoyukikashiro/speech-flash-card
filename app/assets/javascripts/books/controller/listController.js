@@ -2,23 +2,27 @@
   'use strict';
 
   angular
-    .module('books')
-    .controller('BooksListController', BooksListController);
+    .module('EnglishFlashCard')
+    .controller('booksListController', booksListController);
 
-  BooksListController.$inject = [
-    'CommonControllerBaseController', 'CommonResourceBook', 'CommonResourceSession',
-    'books', 'CommonServiceCreateBookDialog', 'CommonServiceEditBookDialog'];
+  booksListController.$inject = [
+    '$location', 'baseController', 'resourceBook', 'resourceSession',
+    'books', 'createBookDialog', 'editBookDialog'];
 
-  function BooksListController(
-      CommonControllerBaseController, CommonResourceBook, CommonResourceSession,
-      books, CommonServiceCreateBookDialog, CommonServiceEditBookDialog) {
+  function booksListController(
+      $location, baseController, resourceBook, resourceSession,
+      books, createBookDialog, editBookDialog) {
 
-    angular.extend(this, CommonControllerBaseController);
+    if(!books){
+      $location.path('/login');
+    }
+
+    angular.extend(this, baseController);
 
     var vm = this;
     vm.list = books;
-    vm.createBookDialog = CommonServiceCreateBookDialog;
-    vm.editBookDialog = CommonServiceEditBookDialog;
+    vm.createBookDialog = createBookDialog;
+    vm.editBookDialog = editBookDialog;
 
     activate();
 

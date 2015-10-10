@@ -2,19 +2,19 @@
   'use strict';
 
   angular
-    .module('common.service.booksCreate.dialog')
-    .controller('CommonServiceBooksCreateDialogController', CommonServiceBooksCreateDialogController);
+    .module('EnglishFlashCard')
+    .controller('booksCreateDialogController', booksCreateDialogController);
 
-  CommonServiceBooksCreateDialogController.$inject = ['CommonResourceBook', 'CommonControllerBaseController'];
+  booksCreateDialogController.$inject = ['resourceBook', 'baseController'];
 
-  function CommonServiceBooksCreateDialogController(CommonResourceBook, CommonControllerBaseController) {
-    angular.extend(this, CommonControllerBaseController);
+  function booksCreateDialogController(resourceBook, baseController) {
+    angular.extend(this, baseController);
     var vm = this;
     vm.submit = submit;
 
     ////
     function submit() {
-      CommonResourceBook.resource.save({}, {name: vm.bookName}, function(response) {
+      resourceBook.resource.save({}, {name: vm.bookName}, function(response) {
         vm.routers.card.goCreate(response.id);
       });
     }

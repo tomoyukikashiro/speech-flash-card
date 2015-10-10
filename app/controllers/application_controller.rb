@@ -7,20 +7,20 @@ class ApplicationController < ActionController::Base
   private
     def check_book
       @book = @user.books.where(id: params[:book_id]).first
-      return_forbidden(@book)
+      return_empty(@book)
     end
 
     def check_card
       @card = @book.cards.where(id: params[:card_id]).first
-      return_forbidden(@card)
+      return_empty(@card)
     end
 
     def check_user
       @user = current_user
-      return_forbidden(@user)
+      return_empty(@user)
     end
 
-    def return_forbidden(target)
-      render nothing: true, status: 403 and return unless target.present?
+    def return_empty(target)
+      render nothing: true, status: 204 and return unless target.present?
     end
 end

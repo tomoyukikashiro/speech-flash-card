@@ -2,19 +2,16 @@
   'use strict';
 
   angular
-    .module('app', [
-      'common.controller.base',
-      'cards'
-    ])
-    .controller('appController', appController);
+    .module('EnglishFlashCard')
+      .controller('appController', appController);
 
-  appController.$inject = ['$rootScope', 'CommonControllerBaseController', 'APP_CONFIG', 'CardList', 'CommonResourceCard'];
+  appController.$inject = ['$rootScope', 'baseController', 'APP_CONFIG', 'cardList', 'resourceCard'];
 
-  function appController($rootScope, CommonControllerBaseController, APP_CONFIG, CardList, CommonResourceCard) {
-    angular.extend(this, CommonControllerBaseController);
+  function appController($rootScope, baseController, APP_CONFIG, cardList, resourceCard) {
+    angular.extend(this, baseController);
 
     var vm = this;
-    vm.cardList = CardList;
+    vm.cardList = cardList;
     vm.cardListData = [];
     vm.page = {
       name: APP_CONFIG.PAGE_NAME.BOOK
@@ -30,7 +27,7 @@
       if(vm.page.name === vm.APP_CONFIG.PAGE_NAME.CARD){
         vm.page.preName = vm.APP_CONFIG.PAGE_NAME.BOOK + ' > ';
         // prepare card list
-        CommonResourceCard.getList().then(function(data){
+        rsourceCard.getList().then(function(data){
           vm.cardListData = data;
         });
         //

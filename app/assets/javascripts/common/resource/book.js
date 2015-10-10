@@ -2,12 +2,12 @@
   'use strict';
 
   angular
-    .module('common.resource.book', ['ngResource'])
-    .factory('CommonResourceBook', CommonResourceBook);
+    .module('EnglishFlashCard')
+    .factory('resourceBook', resourceBook);
 
-  CommonResourceBook.$inject = ['$resource', '$q'];
+  resourceBook.$inject = ['$resource', '$q'];
 
-  function CommonResourceBook($resource, $q) {
+  function resourceBook($resource, $q) {
     var resource = $resource('/api/books/:bookId', {bookId: '@bookId'}, {
       'update': {method: 'PUT'}
     });
@@ -45,8 +45,8 @@
       resource.get()
         .$promise
         .then(function(res) {
-          data = res.list;
-          dfd.resolve(res.list);
+          data = res ? res.list : null;
+          dfd.resolve(data);
         });
       return dfd.promise;
     }

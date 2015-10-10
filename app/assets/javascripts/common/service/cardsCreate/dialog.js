@@ -2,12 +2,12 @@
   'use strict';
 
   angular
-    .module('common.service.cardsCreate.dialog', [])
-    .factory('CommonServiceCreateCardDialog', CommonServiceCreateCardDialog);
+    .module('EnglishFlashCard')
+    .factory('createCardDialog', createCardDialog);
 
-  CommonServiceCreateCardDialog.$inject = ['$mdDialog'];
+  createCardDialog.$inject = ['$mdDialog'];
 
-  function CommonServiceCreateCardDialog($mdDialog) {
+  function createCardDialog($mdDialog) {
 
     return {
       show: show
@@ -20,7 +20,7 @@
         parent: angular.element(document.body),
         targetEvent: $event,
         templateUrl: '/templates/cards/dialog/create.html',
-        controller: 'CommonServiceCardsCreateDialogController',
+        controller: 'cardsCreateDialogController',
         controllerAs: 'cardsCreate'
       });
     }

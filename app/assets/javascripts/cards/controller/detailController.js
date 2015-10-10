@@ -2,15 +2,20 @@
   'use strict';
 
   angular
-    .module('cards')
-    .controller('CardsDetailController', CardsDetailController);
+    .module('EnglishFlashCard')
+    .controller('cardsDetailController', cardsDetailController);
 
-  CardsDetailController.$inject = ['$mdInkRipple', 'CommonResourceCard', 'CommonControllerBaseController', '$routeParams', 'CommonServiceSpeech', 'card'];
+  cardsDetailController.$inject = ['$location', '$mdInkRipple', 'resourceCard', 'baseController', '$routeParams', 'serviceSpeech', 'card'];
 
-  function CardsDetailController($mdInkRipple, CommonResourceCard, CommonControllerBaseController, $routeParams, CommonServiceSpeech, card) {
-    angular.extend(this, CommonControllerBaseController);
+  function cardsDetailController($location, $mdInkRipple, resourceCard, baseController, $routeParams, serviceSpeech, card) {
+
+    if(!card){
+      $location.path('/login');
+    }
+
+    angular.extend(this, baseController);
     var vm = this;
-    vm.cardIterator = CommonResourceCard.getIterator(card);
+    vm.cardIterator = resourceCard.getIterator(card);
     vm.card = card;
     vm.onClickCard = onClickCard;
     vm.onClickNext = onClickNext;
@@ -28,11 +33,11 @@
       vm.routers.card.goDetail(undefined, card.id);
     }
     function onClickCard(text) {
-      CommonServiceSpeech.speak(text);
+      serviceSpeech.speak(text);
     }
 
     function activate() {
-      CommonServiceSpeech.init();
+      serviceSpeech.init();
       vm.pageChange(vm.APP_CONFIG.PAGE_NAME.CARD);
     }
   }

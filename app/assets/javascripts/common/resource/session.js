@@ -2,12 +2,12 @@
   'use strict';
 
   angular
-    .module('common.resource.session', ['ngResource'])
-    .factory('CommonResourceSession', CommonResourceSession);
+    .module('EnglishFlashCard')
+    .factory('resourceSession', resourceSession);
 
-  CommonResourceSession.$inject = ['$resource', 'CommonResourceUser'];
+  resourceSession.$inject = ['$resource', 'resourceUser'];
 
-  function CommonResourceSession($resource, CommonResourceUser) {
+  function resourceSession($resource, resourceUser) {
     var resource = $resource('/api/sessions/:userId', {userId: '@userId'});
 
     return {
@@ -17,7 +17,7 @@
 
     ///
     function logout() {
-      return resource.remove({userId: CommonResourceUser.getData().id}).$promise;
+      return resource.remove({userId: resourceUser.getData().id}).$promise;
     }
   }
 

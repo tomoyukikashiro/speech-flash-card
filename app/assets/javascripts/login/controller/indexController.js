@@ -2,12 +2,17 @@
   'use strict';
 
   angular
-    .module('login')
-    .controller('LoginIndexController', LoginIndexController);
+    .module('EnglishFlashCard')
+    .controller('loginController', loginController);
 
-  LoginIndexController.$inject = ['CommonRouterBook', 'CommonResourceSession'];
+  loginController.$inject = ['routerBook', 'resourceSession', 'currentUser'];
 
-  function LoginIndexController(CommonRouterBook, CommonResourceSession) {
+  function loginController(routerBook, resourceSession, currentUser) {
+
+    if(currentUser){
+      routerBook.goList();
+    }
+
     var vm = this;
     vm.loginSubmit = loginSubmit;
 
@@ -18,9 +23,9 @@
       vm.login = {};
     }
     function loginSubmit() {
-      CommonResourceSession.resource.save({}, {email: vm.login.email, password: vm.login.password})
+      resourceSession.resource.save({}, {email: vm.login.email, password: vm.login.password})
       .$promise.then(function() {
-        CommonRouterBook.goList();
+        routerBook.goList();
       });
     }
   }

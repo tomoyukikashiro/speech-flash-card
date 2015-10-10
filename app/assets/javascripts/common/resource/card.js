@@ -2,12 +2,12 @@
   'use strict';
 
   angular
-    .module('common.resource.card', ['ngResource'])
-    .factory('CommonResourceCard', CommonResourceCard);
+    .module('EnglishFlashCard')
+    .factory('resourceCard', resourceCard);
 
-  CommonResourceCard.$inject = ['$resource', '$q', '$routeParams', '$route'];
+  resourceCard.$inject = ['$resource', '$q', '$routeParams', '$route'];
 
-  function CommonResourceCard($resource, $q, $routeParams, $route) {
+  function resourceCard($resource, $q, $routeParams, $route) {
     var resource = $resource('/api/books/:bookId/cards/:cardId', {bookId: '@bookId', cardId: '@cardId'}, { update: {method: 'PUT'}}),
         list = {},
         iterator;

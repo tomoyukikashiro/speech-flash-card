@@ -2,12 +2,12 @@
   'use strict';
 
   angular
-    .module('common.resource.user', ['ngResource',])
-    .factory('CommonResourceUser', CommonResourceUser);
+    .module('EnglishFlashCard')
+    .factory('resourceUser', resourceUser);
 
-  CommonResourceUser.$inject = ['$resource', '$q'];
+  resourceUser.$inject = ['$resource', '$q'];
 
-  function CommonResourceUser($resource, $q) {
+  function resourceUser($resource, $q) {
     /*jshint camelcase: false */
     var resource = $resource('/api/users/:id', null, {
       'update': {method: 'PUT'}
@@ -34,7 +34,9 @@
         delete data.$promise;
         delete data.$resolved;
 
-        dfd.resolve(user);
+        data = data.id ? data : null;
+
+        dfd.resolve(data);
       }, function() {
         dfd.reject();
       });

@@ -2,13 +2,13 @@
   'use strict';
 
   angular
-    .module('common.service.cardsCreate.dialog')
-    .controller('CommonServiceCardsCreateDialogController', CommonServiceCardsCreateDialogController);
+    .module('EnglishFlashCard')
+    .controller('cardsCreateDialogController', cardsCreateDialogController);
 
-  CommonServiceCardsCreateDialogController.$inject = ['$routeParams', '$mdDialog', 'CommonResourceCard', 'CommonControllerBaseController'];
+  cardsCreateDialogController.$inject = ['$routeParams', '$mdDialog', 'resourceCard', 'baseController'];
 
-  function CommonServiceCardsCreateDialogController($routeParams, $mdDialog, CommonResourceCard, CommonControllerBaseController) {
-    angular.extend(this, CommonControllerBaseController);
+  function cardsCreateDialogController($routeParams, $mdDialog, resourceCard, baseController) {
+    angular.extend(this, baseController);
     var vm = this;
     vm.submit = submit;
 
@@ -21,7 +21,7 @@
         text : vm.text,
         note : vm.note
       };
-      CommonResourceCard.resource.save(param, postData, function(response) {
+      resourceCard.resource.save(param, postData, function(response) {
         vm.routers.card.goDetail(undefined, response.id);
         $mdDialog.hide();
       });

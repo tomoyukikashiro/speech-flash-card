@@ -2,16 +2,12 @@
   'use strict';
 
   angular
-    .module('common.service.audioSettings.dialog', [
-      'common.controller.base',
-      'common.resource.user',
-      'common.resource.users.audioSettings',
-    ])
-    .factory('CommonServiceAuioSettingsDialog', CommonServiceAuioSettingsDialog);
+    .module('EnglishFlashCard')
+    .factory('auioSettingsDialog', auioSettingsDialog);
 
-  CommonServiceAuioSettingsDialog.$inject = ['$mdDialog'];
+  auioSettingsDialog.$inject = ['$mdDialog'];
 
-  function CommonServiceAuioSettingsDialog($mdDialog) {
+  function auioSettingsDialog($mdDialog) {
 
     return {
       show: show
@@ -24,7 +20,7 @@
         parent: angular.element(document.body),
         targetEvent: $event,
         templateUrl: '/templates/audioSettings/dialog.html',
-        controller: 'CommonServiceAudioSettingsDialogController',
+        controller: 'audioSettingsDialogController',
         controllerAs: 'audioSettingsCtrl'
       });
     }

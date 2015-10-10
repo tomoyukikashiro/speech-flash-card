@@ -50,25 +50,12 @@
 //= require common/directive/sideNav/controller.js
 
 //= require appController.js
-
-//= require login/module.js
-//= require login/router.js
 //= require login/controller/indexController.js
-
-//= require signup/module.js
-//= require signup/router.js
-//= require signup/controller/indexController.js
-
-//= require books/module.js
-//= require books/router.js
+//= require signup/controller/signupController.js
 //= require books/controller/listController.js
-
-//= require books/cards/module.js
-//= require books/cards/router.js
-//= require books/cards/controller/detailController.js
-//= require books/cards/controller/createController.js
-//= require books/cards/directive/menu/menu.js
-//= require books/cards/directive/menu/menuController.js
-//= require books/cards/service/cardList.js
-//= require books/cards/directive/cardList/nav.js
-//= require books/cards/directive/cardList/controller.js
+//= require cards/controller/detailController.js
+//= require cards/directive/menu/menu.js
+//= require cards/directive/menu/menuController.js
+//= require cards/service/cardList.js
+//= require cards/directive/cardList/nav.js
+//= require cards/directive/cardList/controller.js

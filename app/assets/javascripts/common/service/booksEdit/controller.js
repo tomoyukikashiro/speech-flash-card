@@ -2,26 +2,26 @@
   'use strict';
 
   angular
-    .module('common.service.booksEdit.dialog')
-    .controller('CommonServiceBooksEditDialogController', CommonServiceBooksEditDialogController);
+    .module('EnglishFlashCard')
+    .controller('booksEditDialogController', booksEditDialogController);
 
-  CommonServiceBooksEditDialogController.$inject = ['$mdDialog', 'CommonResourceBook', 'CommonControllerBaseController', 'book'];
+  booksEditDialogController.$inject = ['$mdDialog', 'resourceBook', 'baseController', 'book'];
 
-  function CommonServiceBooksEditDialogController($mdDialog, CommonResourceBook, CommonControllerBaseController, book) {
-    angular.extend(this, CommonControllerBaseController);
+  function booksEditDialogController($mdDialog, resourceBook, baseController, book) {
+    angular.extend(this, baseController);
     var vm = this;
     vm.book = book;
     vm.remove = remove;
     vm.update = update;
 
     function remove() {
-      CommonResourceBook.remove(book.id)
+      resourceBook.remove(book.id)
         .then(function() {
           $mdDialog.hide();
         });
     }
     function update() {
-      CommonResourceBook.update(book.id, vm.book.name)
+      resourceBook.update(book.id, vm.book.name)
         .then(function() {
           $mdDialog.hide();
         });

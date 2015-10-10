@@ -2,12 +2,17 @@
   'use strict';
 
   angular
-    .module('signup')
-    .controller('SignupIndexController', SignupIndexController);
+    .module('EnglishFlashCard')
+    .controller('signupController', signupController);
 
-  SignupIndexController.$inject = ['CommonResourceUser', 'CommonRouterBook'];
+  signupController.$inject = ['resourceUser', 'routerBook', 'currentUser'];
 
-  function SignupIndexController(CommonResourceUser, CommonRouterBook) {
+  function signupController(resourceUser, routerBook, currentUser) {
+
+    if(currentUser){
+      routerBook.goList();
+    }
+
     var vm = this;
     vm.createSubmit = createSubmit;
 
@@ -19,7 +24,7 @@
     }
 
     function createSubmit() {
-      CommonResourceUser.resource.save({}, {
+      resourceUser.resource.save({}, {
         user: {
           name: vm.signup.name,
           email: vm.signup.email,
@@ -28,7 +33,7 @@
         }
       })
       .$promise.then(function() {
-        CommonRouterBook.goList();
+        routerBook.goList();
       });
     }
   }

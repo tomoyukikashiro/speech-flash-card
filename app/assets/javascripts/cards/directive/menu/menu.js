@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('cards')
+    .module('EnglishFlashCard')
     .directive('fcCardMenu', fcBookMenu);
 
   function fcBookMenu() {
@@ -10,7 +10,7 @@
       link: link,
       restrict: 'E',
       templateUrl: 'templates/cards/menu.html',
-      controller: 'CardsMenuController',
+      controller: 'cardsMenuController',
       controllerAs: 'cardsMenu',
       scope: {
         card: '='

@@ -2,26 +2,25 @@
   'use strict';
 
   angular
-    .module('common.directive.sideNav')
-    .controller('CommonServiceSideNavController', CommonServiceSideNavController);
+    .module('EnglishFlashCard')
+    .controller('sideNavController', sideNavController);
 
-  CommonServiceSideNavController.$inject = [
-    '$location', '$mdDialog', 'CommonResourceSession',
-    'CommonServiceAuioSettingsDialog', 'CommonServicePersonalSettingsDialog'
+  sideNavController.$inject = [
+    '$location', '$mdDialog', 'resourceSession',
+    'auioSettingsDialog', 'personalSettingsDialog'
   ];
 
-  function CommonServiceSideNavController($location, $mdDialog, CommonResourceSession,
-      CommonServiceAuioSettingsDialog, CommonServicePersonalSettingsDialog) {
+  function sideNavController($location, $mdDialog, resourceSession, auioSettingsDialog, personalSettingsDialog) {
     var vm = this;
     vm.logout = logout;
     vm.audioSettings = audioSettings;
     vm.personalSettings = personalSettings;
 
     function audioSettings(e){
-      CommonServiceAuioSettingsDialog.show(e);
+      auioSettingsDialog.show(e);
     }
     function personalSettings(e){
-      CommonServicePersonalSettingsDialog.show(e);
+      personalSettingsDialog.show(e);
     }
 
     function logout(e){
@@ -36,7 +35,7 @@
           .targetEvent(e);
       $mdDialog.show(dialog)
         .then(function(){
-          CommonResourceSession.logout().then(function(){
+          resourceSession.logout().then(function(){
             $location.path('/');
           });
         });

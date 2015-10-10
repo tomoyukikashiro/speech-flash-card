@@ -5,23 +5,19 @@
    * return object will extend controller instance
    */
   angular
-    .module('common.controller.base', [
-      'common.router.book',
-      'common.router.card',
-      'common.service.sideNav'
-    ])
-    .factory('CommonControllerBaseController', CommonControllerBaseController);
+    .module('EnglishFlashCard')
+    .factory('baseController', baseController);
 
-  CommonControllerBaseController.$inject = ['$rootScope', 'CommonRouterBook', 'CommonRouterCard', 'CommonServiceSideNav', 'APP_CONFIG'];
+  baseController.$inject = ['$rootScope', '$location', 'routerBook', 'routerCard', 'sideNav', 'APP_CONFIG', 'resourceUser'];
 
-  function CommonControllerBaseController($rootScope, CommonRouterBook, CommonRouterCard, CommonServiceSideNav, APP_CONFIG) {
+  function baseController($rootScope, $location, routerBook, routerCard, sideNav, APP_CONFIG) {
 
     return {
       routers:{
-        card: CommonRouterCard,
-        book: CommonRouterBook
+        card: routerCard,
+        book: routerBook
       },
-      sideNav: CommonServiceSideNav,
+      sideNav: sideNav,
       pageChange: pageChange,
       APP_CONFIG : APP_CONFIG
     };

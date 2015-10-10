@@ -2,16 +2,11 @@
 
   'use strict';
 
-  angular.module('englishFlashCardApp', [
+  angular.module('EnglishFlashCard', [
       'ngRoute',
       'ngAria',
       'ngMaterial',
-      'app',
-      'books',
-      'cards',
-      'login',
-      'signup',
-      'common.directive.sideNav'
+      'ngResource'
   ]).config(appConfig);
 
   appConfig.$inject = ['$httpProvider', 'APP_CONFIG'];

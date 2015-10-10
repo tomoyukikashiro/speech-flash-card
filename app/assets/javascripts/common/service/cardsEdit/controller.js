@@ -2,15 +2,15 @@
   'use strict';
 
   angular
-    .module('common.service.cardsEdit.dialog')
-    .controller('CommonServiceCardsEditDialogController', CommonServiceCardsEditDialogController);
+    .module('EnglishFlashCard')
+    .controller('cardsEditDialogController', cardsEditDialogController);
 
-  CommonServiceCardsEditDialogController.$inject = ['$routeParams', '$mdDialog', 'CommonResourceCard', 'CommonControllerBaseController', 'card'];
+  cardsEditDialogController.$inject = ['$routeParams', '$mdDialog', 'resourceCard', 'baseController', 'card'];
 
-  function CommonServiceCardsEditDialogController($routeParams, $mdDialog, CommonResourceCard, CommonControllerBaseController, card) {
-    angular.extend(this, CommonControllerBaseController);
+  function cardsEditDialogController($routeParams, $mdDialog, resourceCard, baseController, card) {
+    angular.extend(this, baseController);
     var vm = this;
-    var cardIterator = CommonResourceCard.getIterator();
+    var cardIterator = resourceCard.getIterator();
     vm.card = card;
     vm.submit = submit;
     vm.remove = remove;
@@ -18,7 +18,7 @@
     ////////////////
     function remove() {
       var param = getParams();
-      CommonResourceCard.remove(param)
+      resourceCard.remove(param)
         .then(function () {
           $mdDialog.hide();
           if(cardIterator.hasNext){
@@ -36,7 +36,7 @@
         text : vm.text,
         note : vm.note
       };
-      CommonResourceCard.update(param, postData)
+      resourceCard.update(param, postData)
         .then(function () {
           $mdDialog.hide();
         });

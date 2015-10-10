@@ -2,13 +2,13 @@
   'use strict';
 
   angular
-    .module('cards')
-    .directive('cardList', CardList);
+    .module('EnglishFlashCard')
+    .directive('cardList', cardList);
 
-  function CardList() {
+  function cardList() {
     var directive = {
       restrict: 'E',
-      controller: 'CardListController',
+      controller: 'cardListController',
       controllerAs: 'cardListCtrl',
       templateUrl: 'templates/cards/list.html',
       scope: {

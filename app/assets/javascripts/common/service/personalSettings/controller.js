@@ -2,14 +2,14 @@
   'use strict';
 
   angular
-    .module('common.service.personalSettings.dialog')
-    .controller('CommonServicePersonalSettingsDialogController', CommonServicePersonalSettingsDialogController);
+    .module('EnglishFlashCard')
+    .controller('personalSettingsDialogController', personalSettingsDialogController);
 
-  CommonServicePersonalSettingsDialogController.$inject = ['CommonControllerBaseController', 'CommonResourceUser', '$mdDialog'];
+  personalSettingsDialogController.$inject = ['baseController', 'resourceUser', '$mdDialog'];
 
-  function CommonServicePersonalSettingsDialogController(CommonControllerBaseController, CommonResourceUser, $mdDialog) {
-    angular.extend(this, CommonControllerBaseController);
-    var orgUserData = CommonResourceUser.getData();
+  function personalSettingsDialogController(baseController, resourceUser, $mdDialog) {
+    angular.extend(this, baseController);
+    var orgUserData = resourceUser.getData();
     var vm = this;
     vm.user = {
       name     : orgUserData.name,
@@ -24,7 +24,7 @@
       if(!param){
         return;
       }
-      CommonResourceUser.resource.update({id: orgUserData.id}, param).$promise
+      resourceUser.resource.update({id: orgUserData.id}, param).$promise
         .then(function(){
           $mdDialog.hide();
         }, function(e){

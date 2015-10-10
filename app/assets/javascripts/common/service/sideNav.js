@@ -2,12 +2,12 @@
   'use strict';
 
   angular
-    .module('common.service.sideNav', [])
-    .service('CommonServiceSideNav', CommonServiceSideNav);
+    .module('EnglishFlashCard')
+    .service('sideNav', sideNav);
 
-  CommonServiceSideNav.$inject = ['$mdSidenav', '$mdUtil'];
+  sideNav.$inject = ['$mdSidenav', '$mdUtil'];
 
-  function CommonServiceSideNav($mdSidenav, $mdUtil) {
+  function sideNav($mdSidenav, $mdUtil) {
     this.toggleLeft = buildToggler('left');
     this.close = function(){$mdSidenav('left').close();};
 

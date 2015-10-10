@@ -2,12 +2,12 @@
   'use strict';
 
   angular
-    .module('common.service.resolveRedirection', [])
-    .factory('CommonResolveRedirection', CommonResolveRedirection);
+    .module('EnglishFlashCard')
+    .factory('resolveRedirection', resolveRedirection);
 
-  CommonResolveRedirection.$inject = ['$location', '$q'];
+  resolveRedirection.$inject = ['$location', '$q'];
 
-  function CommonResolveRedirection($location, $q) {
+  function resolveRedirection($location, $q) {
     return {
       redirect: redirect
     };

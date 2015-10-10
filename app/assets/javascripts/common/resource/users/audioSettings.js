@@ -2,12 +2,12 @@
   'use strict';
 
   angular
-    .module('common.resource.users.audioSettings', ['ngResource'])
-    .factory('CommonResourceUserAudioSettings', CommonResourceUserAudioSettings);
+    .module('EnglishFlashCard')
+    .factory('resourceUserAudioSettings', resourceUserAudioSettings);
 
-  CommonResourceUserAudioSettings.$inject = ['$resource', '$q'];
+  resourceUserAudioSettings.$inject = ['$resource', '$q'];
 
-  function CommonResourceUserAudioSettings($resource) {
+  function resourceUserAudioSettings($resource) {
     var resource = $resource('/api/users/:userId/audio_settings', {userId: '@userId'}, {update: {method: 'PUT'}});
     return {
       resource: resource

@@ -2,12 +2,12 @@
   'use strict';
 
   angular
-    .module('common.service.cardsEdit.dialog', [])
-    .factory('CommonServiceEditCardDialog', CommonServiceEditCardDialog);
+    .module('EnglishFlashCard')
+    .factory('editCardDialog', editCardDialog);
 
-  CommonServiceEditCardDialog.$inject = ['$mdDialog'];
+  editCardDialog.$inject = ['$mdDialog'];
 
-  function CommonServiceEditCardDialog($mdDialog) {
+  function editCardDialog($mdDialog) {
 
     return {
       show: show
@@ -20,7 +20,7 @@
         parent: angular.element(document.body),
         targetEvent: $event,
         templateUrl: '/templates/cards/dialog/edit.html',
-        controller: 'CommonServiceCardsEditDialogController',
+        controller: 'cardsEditDialogController',
         controllerAs: 'cardsEdit',
         locals: {
           card: card

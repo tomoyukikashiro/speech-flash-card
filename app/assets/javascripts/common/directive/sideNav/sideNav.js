@@ -2,18 +2,13 @@
   'use strict';
 
   angular
-    .module('common.directive.sideNav', [
-      'common.resource.session',
-      'common.service.audioSettings.dialog',
-      'common.service.personalSettings.dialog',
-      'ngMaterial'
-    ])
-    .directive('sideNav', SideNav);
+    .module('EnglishFlashCard')
+    .directive('sideNav', sideNav);
 
-  function SideNav() {
+  function sideNav() {
     var directive = {
       restrict: 'E',
-      controller: 'CommonServiceSideNavController',
+      controller: 'sideNavController',
       controllerAs: 'sideNav',
       templateUrl: 'templates/common/directive/sideNav.html'
     };

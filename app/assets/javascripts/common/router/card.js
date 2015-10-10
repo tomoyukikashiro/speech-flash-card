@@ -2,12 +2,12 @@
   'use strict';
 
   angular
-    .module('common.router.card', [])
-    .factory('CommonRouterCard', CommonRouterCard);
+    .module('EnglishFlashCard')
+    .factory('routerCard', routerCard);
 
-  CommonRouterCard.$inject = ['$location', '$routeParams'];
+  routerCard.$inject = ['$location', '$routeParams'];
 
-  function CommonRouterCard($location, $routeParams) {
+  function routerCard($location, $routeParams) {
     var path = '/books/:bookId/cards/:cardId';
 
     function createPath(bookId, cardId) {

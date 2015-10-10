@@ -2,12 +2,12 @@
   'use strict';
 
   angular
-    .module('common.router.book', [])
-    .factory('CommonRouterBook', CommonRouterBook);
+    .module('EnglishFlashCard')
+    .factory('routerBook', routerBook);
 
-  CommonRouterBook.$inject = ['$location'];
+  routerBook.$inject = ['$location'];
 
-  function CommonRouterBook($location) {
+  function routerBook($location) {
     var path = '/books/';
 
     function goList() {

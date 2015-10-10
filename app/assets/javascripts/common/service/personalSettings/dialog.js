@@ -2,15 +2,12 @@
   'use strict';
 
   angular
-    .module('common.service.personalSettings.dialog', [
-      'common.controller.base',
-      'common.resource.user'
-    ])
-    .factory('CommonServicePersonalSettingsDialog', CommonServicePersonalSettingsDialog);
+    .module('EnglishFlashCard')
+    .factory('personalSettingsDialog', personalSettingsDialog);
 
-  CommonServicePersonalSettingsDialog.$inject = ['$mdDialog'];
+  personalSettingsDialog.$inject = ['$mdDialog'];
 
-  function CommonServicePersonalSettingsDialog($mdDialog) {
+  function personalSettingsDialog($mdDialog) {
 
     return {
       show: show
@@ -23,7 +20,7 @@
         parent: angular.element(document.body),
         targetEvent: $event,
         templateUrl: '/templates/personalSettings/dialog.html',
-        controller: 'CommonServicePersonalSettingsDialogController',
+        controller: 'personalSettingsDialogController',
         controllerAs: 'personalSettingsCtrl'
       });
     }

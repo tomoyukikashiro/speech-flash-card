@@ -2,12 +2,12 @@
   'use strict';
 
   angular
-    .module('cards')
-    .service('CardList', CardList);
+    .module('EnglishFlashCard')
+    .service('cardList', cardList);
 
-  CardList.$inject = ['$mdSidenav', '$mdUtil'];
+  cardList.$inject = ['$mdSidenav', '$mdUtil'];
 
-  function CardList($mdSidenav, $mdUtil) {
+  function cardList($mdSidenav, $mdUtil) {
     this.toggleLeft = buildToggler('right');
     this.close = function(){$mdSidenav('right').close();};
 
