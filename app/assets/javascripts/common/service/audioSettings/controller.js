@@ -22,13 +22,13 @@
       /*jshint camelcase: false */
       var as = vm.user.audio_settings,
           data = {speed: as.speed, repeat: as.repeat};
-      resourceUserAudioSettings.resource.update({userId: vm.user.id}, data).$promise
+      resourceUserAudioSettings.resource.update({}, data).$promise
         .then(function(){
           resourceUser.setAudioData(data);
           vm.user = angular.copy(resourceUser.getData());
           $mdDialog.hide();
         }, function(e){
-          console.log(e);
+          // TODO ログ
         });
     }
   }

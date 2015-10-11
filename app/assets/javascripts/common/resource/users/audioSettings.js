@@ -8,7 +8,7 @@
   resourceUserAudioSettings.$inject = ['$resource', '$q'];
 
   function resourceUserAudioSettings($resource) {
-    var resource = $resource('/api/users/:userId/audio_settings', {userId: '@userId'}, {update: {method: 'PUT'}});
+    var resource = $resource('/api/users/audio_settings', {}, {update: {method: 'PUT'}});
     return {
       resource: resource
     };

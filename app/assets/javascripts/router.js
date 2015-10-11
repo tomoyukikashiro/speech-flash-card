@@ -37,6 +37,7 @@
             controller: 'booksListController',
             controllerAs: 'booksList',
             resolve: {
+              currentUser: ['resourceUser',function(resourceUser) {return resourceUser.checkCurrent()}],
               books: ['resourceBook', function(resourceBook) {return resourceBook.getList()}]
             }
           })
@@ -46,6 +47,7 @@
           controller: 'cardsDetailController',
           controllerAs: 'cardsDetail',
           resolve: {
+            currentUser: ['resourceUser',function(resourceUser) {return resourceUser.checkCurrent()}],
             card: ['resourceCard', function(resourceCard) {return resourceCard.getCard()}]
           }
         })
