@@ -10,6 +10,12 @@ class ApplicationController < ActionController::Base
       return_empty(@book)
     end
 
+    def check_voice
+      check_book
+      @voice = @book.voices
+      return_empty(@voice)
+    end
+
     def check_card
       @card = @book.cards.where(id: params[:card_id]).first
       return_empty(@card)

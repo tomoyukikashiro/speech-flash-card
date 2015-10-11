@@ -9,22 +9,32 @@ RSpec.describe BooksController, type: :controller do
         book = FactoryGirl.create(:book, user: user)
         get :index
         expect(response.status).to eq(200)
-        expect(response.body).to eq({ list: [{id: book.id.to_s, name: book.name}]}.to_json)
+        res = {
+          list: [
+            {
+              id: book.id.to_s,
+              name: book.name,
+              first_card_id: "",
+              voices: [{id: book.voices.first.id.to_s, os: book.voices.first.os,browser: book.voices.first.browser,type: book.voices.first.type}]
+            }
+          ]
+        }
+        expect(response.body).to eq(res.to_json)
       end
     end
     describe "if you don't login" do
-      it "should return 403" do
+      it "should return 204" do
         get :index
-        expect(response.status).to eq(403)
+        expect(response.status).to eq(204)
       end
     end
   end
 
   describe "POST : #create : " do
     describe "if you don't login" do
-      it "should return 403" do
+      it "should return 204" do
         post :create, {book: {name: "example"}}
-        expect(response.status).to eq(403)
+        expect(response.status).to eq(204)
       end
     end
     describe "if you logined" do
@@ -40,10 +50,13 @@ RSpec.describe BooksController, type: :controller do
       end
       describe "if parameters are valid" do
         it "should return 201 and the user is created" do
-          post :create, {book: {name: "example"}}
+          post :create, {book: {name: "example", voice: {os: "mac", browser: "chrome", type: "google chrome English"}}}
           expect(response.status).to eq(201)
           expect(JSON.parse(response.body)).to have_key("id")
           expect(@user.books.first.name).to eq("example")
+          expect(@user.books.first.voices.first.os).to eq("mac")
+          expect(@user.books.first.voices.first.browser).to eq("chrome")
+          expect(@user.books.first.voices.first.type).to eq("google chrome English")
         end
       end
     end
@@ -53,7 +66,7 @@ RSpec.describe BooksController, type: :controller do
     describe "if you do'nt login" do
       it "should return 403" do
         put :update, {book_id: "11111", book: {name: "example"}}
-        expect(response.status).to eq(403)
+        expect(response.status).to eq(204)
       end
     end
     describe "if you logined" do
@@ -69,10 +82,13 @@ RSpec.describe BooksController, type: :controller do
       end
       describe "and parameters are valid" do
         it "should return 201" do
-          put :update, {book_id: @book.id.to_s, book: {name: "example2"}}
+          put :update, {book_id: @book.id.to_s, book: {name: "example2", voice: [{os: "windows", browser: "Edge", type: "English"}]}}
           expect(response.status).to eq(204)
           saved_book = Book.where(id: @book.id).first
           expect(saved_book.name).to eq("example2")
+          expect(saved_book.voices.first.os).to eq("windows")
+          expect(saved_book.voices.first.browser).to eq("Edge")
+          expect(saved_book.voices.first.type).to eq("English")
         end
       end
     end
@@ -82,7 +98,7 @@ RSpec.describe BooksController, type: :controller do
     describe "if you do'nt login" do
       it "should return 403" do
         delete :destroy, {book_id: "11111"}
-        expect(response.status).to eq(403)
+        expect(response.status).to eq(204)
       end
     end
     describe "if you logined" do

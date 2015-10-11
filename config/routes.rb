@@ -15,6 +15,11 @@ Rails.application.routes.draw do
   post   "api/books/"         => "books#create"
   put    "api/books/:book_id" => "books#update"
   delete "api/books/:book_id" => "books#destroy"
+  #voices
+  get    "api/books/:book_id/voices"     => "voices#index"
+  post   "api/books/:book_id/voices"     => "voices#create"
+  put    "api/books/:book_id/voices/:id" => "voices#update"
+  delete "api/books/:book_id/voices/:id" => "voices#destroy"
   #cards
   get    "api/books/:book_id/cards"          => "cards#index"
   get    "api/books/:book_id/cards/:card_id" => "cards#show_detail"

@@ -1,8 +1,10 @@
 class Book
   include Mongoid::Document
+  include Mongoid::Timestamps
 
   field :name,  type: String
   has_many :cards
+  embeds_many :voices, class_name: "Books::Voices"
   belongs_to :user
 
   index({id: 1}, {unique: true})
@@ -15,7 +17,12 @@ class Book
 
   def get_data
     first_card_id = cards.size > 0 ? cards.first.id : nil
-    return {id: id.to_s, name: name, first_card_id: first_card_id.to_s}
+    return {
+      id: id.to_s,
+      name: name,
+      first_card_id: first_card_id.to_s,
+      voices: voices.get_all
+    }
   end
 
   def self.get_all

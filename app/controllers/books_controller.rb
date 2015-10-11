@@ -8,20 +8,29 @@ class BooksController < ApplicationController
   end
 
   def create
-    book = @user.books.new(accept_params)
-    if book.save
-      render json: book.get_data, status: 201
-    else
-      render json: book.errors.keys, status: 400
+    data = accept_params
+    book = @user.books.new(name: data[:name])
+    if !book.save
+      render json: book.errors.keys, status: 400 and return
     end
+    if !book.voices.create(data[:voice])
+      render json: book.errors.keys, status: 400 and return
+    end
+    render json: book.get_data, status: 201
   end
 
   def update
-    if @book.update_attributes(accept_params)
-      render nothing: true, status: 204
-    else
-      render json: @book.errors.keys, status: 400
+    data = accept_params
+    if !@book.update_attributes(name: data[:name]) || !data[:voice].kind_of?(Array)
+      render json: @book.errors.keys, status: 400 and return
     end
+    @book.voices.delete_all
+    data[:voice].each do |item|
+      if !@book.voices.create(item)
+        render json: @book.errors.keys, status: 400 and return
+      end
+    end
+    render nothing: true, status: 204
   end
 
   def destroy
@@ -34,6 +43,6 @@ class BooksController < ApplicationController
 
   private
     def accept_params
-      params.require(:book).permit(:name)
+      params.require(:book).permit(:name, voice: [:os, :browser, :type])
     end
 end
