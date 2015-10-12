@@ -48,6 +48,7 @@
           controllerAs: 'cardsDetail',
           resolve: {
             currentUser: ['resourceUser',function(resourceUser) {return resourceUser.checkCurrent()}],
+            books: ['resourceBook', function(resourceBook) {return resourceBook.getList()}],
             card: ['resourceCard', function(resourceCard) {return resourceCard.getCard()}]
           }
         })

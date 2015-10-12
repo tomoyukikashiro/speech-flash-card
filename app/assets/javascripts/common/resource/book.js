@@ -16,7 +16,8 @@
       resource: resource,
       getList: getList,
       remove: remove,
-      update: update
+      update: update,
+      getBook: getBook
     };
 
     ///
@@ -49,6 +50,15 @@
           dfd.resolve(data);
         });
       return dfd.promise;
+    }
+    function getBook(id) {
+      var res;
+      angular.forEach(data, function(v) {
+        if(v.id === id){
+          res = v;
+        }
+      });
+      return res;
     }
     function updateItem(id, data) {
       angular.forEach(data, function(v) {

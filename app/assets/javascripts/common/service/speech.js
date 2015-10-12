@@ -8,11 +8,11 @@
   speech.$inject = ['APP_CONFIG'];
 
   function speech(APP_CONFIG) {
+    // https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html
     var defOptions = {
-      volume: 1,
+      volume: 1, // 0 -2
       rate: 1,
-      pitch: 2,
-      lang: 'en-US'
+      pitch: 1 // 0 - 2
     };
 
     var extendedOptions,
@@ -22,10 +22,12 @@
 
     this.init = function(options) {
       extendedOptions = angular.extend({}, defOptions, options);
+      if(extendedOptions.voice){
+        msg.voice = extendedOptions.voice;
+      }
       msg.volume = extendedOptions.volume;
       msg.rate = extendedOptions.rate;
       msg.pitch = extendedOptions.pitch;
-      msg.lang = extendedOptions.lang;
     };
 
     this.getVoices = function() {

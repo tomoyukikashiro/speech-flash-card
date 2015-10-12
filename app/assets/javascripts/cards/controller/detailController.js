@@ -5,9 +5,9 @@
     .module('EnglishFlashCard')
     .controller('cardsDetailController', cardsDetailController);
 
-  cardsDetailController.$inject = ['$location', '$mdInkRipple', 'resourceCard', 'baseController', '$routeParams', 'speech', 'card'];
+  cardsDetailController.$inject = ['$location', '$mdInkRipple', 'resourceCard', 'resourceBook','baseController', '$routeParams', 'speech', 'card'];
 
-  function cardsDetailController($location, $mdInkRipple, resourceCard, baseController, $routeParams, speech, card) {
+  function cardsDetailController($location, $mdInkRipple, resourceCard, resourceBook, baseController, $routeParams, speech, card) {
 
     if(!card){
       $location.path('/login');
@@ -15,6 +15,8 @@
 
     angular.extend(this, baseController);
     var vm = this;
+    var book = resourceBook.getBook($routeParams.bookId);
+    var selectedVoice = speech.getSelectedVoiceData(book.voices);
     vm.cardIterator = resourceCard.getIterator(card);
     vm.card = card;
     vm.onClickCard = onClickCard;
@@ -37,7 +39,7 @@
     }
 
     function activate() {
-      speech.init();
+      speech.init({voice: selectedVoice});
       vm.pageChange(vm.APP_CONFIG.PAGE_NAME.CARD);
     }
   }
