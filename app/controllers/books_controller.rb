@@ -13,7 +13,7 @@ class BooksController < ApplicationController
     if !book.save
       render json: book.errors.keys, status: 400 and return
     end
-    if !book.voices.create(data[:voice])
+    if !book.voices.create(name: data[:voices][:name], lang: data[:voices][:lang])
       render json: book.errors.keys, status: 400 and return
     end
     render json: book.get_data, status: 201
@@ -21,14 +21,19 @@ class BooksController < ApplicationController
 
   def update
     data = accept_params
-    if !@book.update_attributes(name: data[:name]) || !data[:voice].kind_of?(Array)
+    if !@book.update_attributes(name: data[:name])
       render json: @book.errors.keys, status: 400 and return
     end
-    @book.voices.delete_all
-    data[:voice].each do |item|
-      if !@book.voices.create(item)
-        render json: @book.errors.keys, status: 400 and return
-      end
+    # update
+    if data[:voices][:id].present?
+      voice = @book.voices.where(id: data[:voices][:id]).first
+      res = voice.update_attributes(name: data[:voices][:name], lang: data[:voices][:lang])
+    else
+    # create new data
+      res = @book.voices.create(name: data[:voices][:name], lang: data[:voices][:lang])
+    end
+    unless res
+      render json: @book.errors.keys, status: 400 and return
     end
     render nothing: true, status: 204
   end
@@ -43,6 +48,6 @@ class BooksController < ApplicationController
 
   private
     def accept_params
-      params.require(:book).permit(:name, voice: [:os, :browser, :type])
+      params.require(:book).permit(:name, voices: [:name, :lang, :id])
     end
 end

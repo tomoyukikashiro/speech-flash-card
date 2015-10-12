@@ -20,9 +20,9 @@
     };
 
     ///
-    function update(id, name) {
+    function update(id, data) {
       var dfd = $q.defer();
-      resource.update({bookId: id}, {name: name})
+      resource.update({bookId: id}, {book: data})
         .$promise
         .then(function() {
           updateItem(id, name);
@@ -50,10 +50,11 @@
         });
       return dfd.promise;
     }
-    function updateItem(id, name) {
+    function updateItem(id, data) {
       angular.forEach(data, function(v) {
         if(v.id === id){
-          v.name = name;
+          v.name = data.name;
+          v.voices = {name: data.voices.name, lang: data.voices.lang}
         }
       });
     }

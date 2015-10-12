@@ -7,7 +7,9 @@
       'ngAria',
       'ngMaterial',
       'ngResource'
-  ]).config(appConfig);
+  ])
+  .config(appConfig)
+  .run(['speech', function(speech) {speech.bindVoicesLoad()}]);
 
   appConfig.$inject = ['$httpProvider', 'APP_CONFIG'];
   ///

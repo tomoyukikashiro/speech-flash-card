@@ -4,20 +4,17 @@ class Books::Voices
 
   embedded_in :book
 
-  field :os,      type: String
-  field :browser, type: String
-  field :type ,   type: String
+  field :name ,   type: String
+  field :lang ,   type: String
 
-  validates :os,      presence: true, length: { maximum: 30 }
-  validates :browser, presence: true, length: { maximum: 30 }
-  validates :type,    presence: true, length: { maximum: 30 }
+  validates :name,    presence: true, length: { maximum: 30 }
+  validates :lang,    presence: true, length: { maximum: 10 }
 
   def get_data
     {
       id: id.to_s,
-      os: os,
-      browser: browser,
-      type: type
+      name: name,
+      lang: lang
     }
   end
 

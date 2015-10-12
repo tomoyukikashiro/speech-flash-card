@@ -15,7 +15,7 @@ RSpec.describe BooksController, type: :controller do
               id: book.id.to_s,
               name: book.name,
               first_card_id: "",
-              voices: [{id: book.voices.first.id.to_s, os: book.voices.first.os,browser: book.voices.first.browser,type: book.voices.first.type}]
+              voices: [{id: book.voices.first.id.to_s, name: book.voices.first.name, lang: book.voices.first.lang}]
             }
           ]
         }
@@ -50,13 +50,12 @@ RSpec.describe BooksController, type: :controller do
       end
       describe "if parameters are valid" do
         it "should return 201 and the user is created" do
-          post :create, {book: {name: "example", voice: {os: "mac", browser: "chrome", type: "google chrome English"}}}
+          post :create, {book: {name: "example", voices: {name: "google chrome English", lang: "en-US"}}}
           expect(response.status).to eq(201)
           expect(JSON.parse(response.body)).to have_key("id")
           expect(@user.books.first.name).to eq("example")
-          expect(@user.books.first.voices.first.os).to eq("mac")
-          expect(@user.books.first.voices.first.browser).to eq("chrome")
-          expect(@user.books.first.voices.first.type).to eq("google chrome English")
+          expect(@user.books.first.voices.first.name).to eq("google chrome English")
+          expect(@user.books.first.voices.first.lang).to eq("en-US")
         end
       end
     end
@@ -81,14 +80,26 @@ RSpec.describe BooksController, type: :controller do
         end
       end
       describe "and parameters are valid" do
-        it "should return 201" do
-          put :update, {book_id: @book.id.to_s, book: {name: "example2", voice: [{os: "windows", browser: "Edge", type: "English"}]}}
-          expect(response.status).to eq(204)
-          saved_book = Book.where(id: @book.id).first
-          expect(saved_book.name).to eq("example2")
-          expect(saved_book.voices.first.os).to eq("windows")
-          expect(saved_book.voices.first.browser).to eq("Edge")
-          expect(saved_book.voices.first.type).to eq("English")
+        context "update saved voice data" do
+          it "should return 201" do
+            put :update, {book_id: @book.id.to_s, book: {name: "example2", voices: {name: "English", lang: "en-UK", id: @book.voices.first.id}}}
+            expect(response.status).to eq(204)
+            saved_book = Book.where(id: @book.id).first
+            expect(saved_book.name).to eq("example2")
+            expect(saved_book.voices.first.name).to eq("English")
+            expect(saved_book.voices.first.lang).to eq("en-UK")
+          end
+        end
+        context "create new voice data" do
+          it "should return 201" do
+            @book.voices.delete_all
+            put :update, {book_id: @book.id.to_s, book: {name: "example2", voices: {name: "English", lang: "en-UK"}}}
+            expect(response.status).to eq(204)
+            saved_book = Book.where(id: @book.id).first
+            expect(saved_book.name).to eq("example2")
+            expect(saved_book.voices.first.name).to eq("English")
+            expect(saved_book.voices.first.lang).to eq("en-UK")
+          end
         end
       end
     end
