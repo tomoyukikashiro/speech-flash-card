@@ -28,11 +28,15 @@
     ////////////////
     function onClickNext() {
       var card = vm.cardIterator.getNext();
-      vm.routers.card.goDetail(undefined, card.id);
+      if(card){
+        vm.routers.card.goDetail(undefined, card.id);
+      }
     }
     function onClickPrev() {
       var card = vm.cardIterator.getPrev();
-      vm.routers.card.goDetail(undefined, card.id);
+      if(card){
+        vm.routers.card.goDetail(undefined, card.id);
+      }
     }
     function onClickCard(text) {
       speech.speak(text);

@@ -72,10 +72,10 @@
       iterator.updateHas();
       return iterator;
       function _hasNext() {
-        return !(angular.isUndefined(_list) || index === _list.length -1);
+        return !angular.isUndefined(_list) && index !== _list.length -1;
       }
       function _hasPrev() {
-        return !(angular.isUndefined(_list) || index === 0);
+        return !angular.isUndefined(_list) && index !== 0;
       }
       function updateHas() {
         _list = list.data;
@@ -151,7 +151,7 @@
     function removeItem(id) {
       angular.forEach(list.data, function(v, i) {
         if(v.id === id){
-          list.splice(i, 1);
+          list.data.splice(i, 1);
         }
       });
       iterator.updateHas();

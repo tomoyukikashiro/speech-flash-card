@@ -22,19 +22,19 @@
         .then(function () {
           $mdDialog.hide();
           if(cardIterator.hasNext){
-            vm.routes.card.goDetail(null, cardIterator.getNext());
+            vm.routers.card.goDetail(null, cardIterator.getNext());
           }else if (cardIterator.hasPrev){
-            vm.routes.card.goDetail(null, cardIterator.getPrev());
+            vm.routers.card.goDetail(null, cardIterator.getPrev());
           }else{
-            vm.routes.book.goList();
+            vm.routers.book.goList();
           }
         });
     }
     function submit() {
       var param = getParams();
       var postData = {
-        text : vm.text,
-        note : vm.note
+        text : vm.card.text,
+        note : vm.card.note
       };
       resourceCard.update(param, postData)
         .then(function () {
