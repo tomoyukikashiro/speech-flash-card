@@ -10,6 +10,9 @@
 # Ignore the default SQLite database.
 db/
 
+# env prop
+.env
+
 # Ignore all logfiles and tempfiles.
 log/*.log
 tmp

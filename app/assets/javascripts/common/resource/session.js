@@ -18,6 +18,7 @@
     ///
     function logout() {
       return resource.remove({userId: resourceUser.getData().id}).$promise;
+      resourceUser.clearCache();
     }
   }
 

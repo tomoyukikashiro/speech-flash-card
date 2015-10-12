@@ -34,10 +34,15 @@ gem 'unicorn'
 # gem 'capistrano-rails', group: :development
 
 # Use debugger
-# gem 'debugger', group: [:development, :test]
+group :test, :development do
+  gem "pry"
+end
 
 gem "foreman"
 gem "mongoid"
+
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
 
 group :test, :development do
   gem "rspec-rails"

@@ -11,6 +11,7 @@
 
     if(currentUser){
       routerBook.goList();
+      return;
     }
 
     var vm = this;

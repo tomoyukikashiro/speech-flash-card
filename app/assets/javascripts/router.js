@@ -13,7 +13,7 @@
     $routeProvider
       .when('/login',
           {
-            templateUrl: '/templates/login/index.html',
+            templateUrl: '/templates/login/oauth.html',
             controller: 'loginController',
             controllerAs: 'loginIndex',
             resolve: {

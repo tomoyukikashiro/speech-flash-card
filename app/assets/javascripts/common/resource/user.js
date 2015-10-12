@@ -17,8 +17,13 @@
       getData: function() {return data;},
       setAudioData: function(newData) {data.audio_settings = newData;},
       resource: resource,
-      checkCurrent: checkCurrent
+      checkCurrent: checkCurrent,
+      clearCache: clearCache
     };
+
+    function clearCache() {
+      data = null;
+    }
 
     //////
     function checkCurrent() {
