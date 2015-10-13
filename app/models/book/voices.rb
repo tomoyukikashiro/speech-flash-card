@@ -1,4 +1,4 @@
-class Books::Voices
+class Book::Voices
   include Mongoid::Document
   include Mongoid::Timestamps
 

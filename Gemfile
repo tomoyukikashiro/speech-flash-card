@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby "2.1.2"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
@@ -10,7 +11,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer',  platforms: :ruby
+gem 'therubyracer',  platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -33,18 +34,14 @@ gem 'unicorn'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# Use debugger
-group :test, :development do
-  gem "pry"
-end
-
 gem "foreman"
-gem "mongoid"
+gem "mongoid", '~>5.0.0'
 
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 
 group :test, :development do
+  gem "pry"
   gem "rspec-rails"
   gem "factory_girl_rails"
   gem "capybara"
@@ -55,3 +52,6 @@ group :test do
   gem "database_cleaner"
 end
 
+group :production do
+  gem 'rails_12factor'
+end

@@ -4,7 +4,7 @@ class Book
 
   field :name,  type: String
   has_many :cards
-  embeds_many :voices, class_name: "Books::Voices"
+  embeds_many :voices, class_name: "Book::Voices"
   belongs_to :user
 
   index({id: 1}, {unique: true})
