@@ -13,6 +13,9 @@ require "rails/test_unit/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+# http://blog.r-unit.co.jp/archives/1508
+Mongo::Logger.logger.level = Logger::WARN
+
 module EnglishFlashCard
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.

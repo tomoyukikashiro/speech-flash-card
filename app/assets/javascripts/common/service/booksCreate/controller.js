@@ -5,9 +5,9 @@
     .module('EnglishFlashCard')
     .controller('booksCreateDialogController', booksCreateDialogController);
 
-  booksCreateDialogController.$inject = ['resourceBook', 'baseController', '$mdDialog', 'speech'];
+  booksCreateDialogController.$inject = ['resourceBook', 'baseController', '$mdDialog', 'speech', 'commonDialog'];
 
-  function booksCreateDialogController(resourceBook, baseController, $mdDialog, speech) {
+  function booksCreateDialogController(resourceBook, baseController, $mdDialog, speech, commonDialog) {
     angular.extend(this, baseController);
     var vm = this;
     vm.submit = submit;
@@ -23,6 +23,10 @@
       };
       resourceBook.resource.save({}, param, function(response) {
         $mdDialog.hide();
+      }, function(response) {
+        if(resourceBook.isTooManyBook(response.data)){
+          commonDialog.alert({content: 'Bookはこれ以上つくれません'});
+        }
       });
     }
   }

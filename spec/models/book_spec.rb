@@ -13,6 +13,24 @@ RSpec.describe Book, :type => :model do
   end
 
   # ------------------------------
+  # card
+  # ------------------------------
+  context "validation" do
+    it "user can set card up to 100 in book" do
+      20.times do
+        @book.cards.create(text: "test")
+      end
+      expect(@book.valid?).to be_truthy
+    end
+    it "user can not set book greater than 21 books" do
+      51.times do
+        @book.cards.create(text: "test")
+      end
+      expect(@book.valid?).to be_falsey
+    end
+  end
+
+  # ------------------------------
   # delete card
   # ------------------------------
   context "if a book is deleted" do

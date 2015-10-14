@@ -48,8 +48,10 @@ group :test, :development do
   gem "capybara-webkit"
 end
 
+# https://github.com/DatabaseCleaner/database_cleaner/issues/402
+# https://github.com/DatabaseCleaner/database_cleaner/issues/392
 group :test do
-  gem "database_cleaner"
+  gem "database_cleaner", github: 'DatabaseCleaner/database_cleaner'
 end
 
 group :production do

@@ -18,10 +18,15 @@
       getCard: getCard,
       getIterator: getIterator,
       remove: remove,
-      update: update
+      update: update,
+
+      isTooManyCard: isTooManyCard
     };
 
     ///
+    function isTooManyCard(errors) {
+      return errors && errors.indexOf('tmc') !== -1
+    }
     function update(params, data) {
       var dfd = $q.defer();
       resource.update(params, data)

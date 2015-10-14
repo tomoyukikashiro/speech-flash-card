@@ -17,10 +17,15 @@
       getList: getList,
       remove: remove,
       update: update,
-      getBook: getBook
+      getBook: getBook,
+
+      isTooManyBook: isTooManyBook
     };
 
     ///
+    function isTooManyBook(errors) {
+      return errors && errors.indexOf('tmb') !== -1
+    }
     function update(id, data) {
       var dfd = $q.defer();
       resource.update({bookId: id}, {book: data})

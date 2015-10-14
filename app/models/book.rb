@@ -10,6 +10,7 @@ class Book
   index({id: 1}, {unique: true})
 
   validates :name, presence: true, length: { maximum: 20 }
+  validate :check_count, on: :create
 
   before_destroy do
     cards.destroy_all
@@ -34,5 +35,10 @@ class Book
       []
     end
   end
+
+  private
+    def check_count
+      errors.add(:tmb, "too many books") if self.user.present? && self.user.books.size > 20
+    end
 
 end

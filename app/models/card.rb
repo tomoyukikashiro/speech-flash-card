@@ -10,6 +10,7 @@ class Card
 
   validates :text, presence: true, length: { maximum: 100 }
   validates :note, allow_nil: true, length: { maximum: 100 }
+  validate :check_count, on: :create
 
   def get_data
     return {id: id.to_s, text: text, note: note}
@@ -24,5 +25,10 @@ class Card
       []
     end
   end
+
+  private
+    def check_count
+      errors.add(:tmc, "too many card") if self.book.present? && self.book.cards.size > 50
+    end
 
 end

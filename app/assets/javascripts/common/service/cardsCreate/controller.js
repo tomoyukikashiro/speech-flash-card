@@ -5,9 +5,9 @@
     .module('EnglishFlashCard')
     .controller('cardsCreateDialogController', cardsCreateDialogController);
 
-  cardsCreateDialogController.$inject = ['$routeParams', '$mdDialog', 'resourceCard', 'baseController', 'isFirst', 'bookId'];
+  cardsCreateDialogController.$inject = ['$routeParams', '$mdDialog', 'resourceCard', 'baseController', 'isFirst', 'bookId', 'commonDialog'];
 
-  function cardsCreateDialogController($routeParams, $mdDialog, resourceCard, baseController, isFirst, bookId) {
+  function cardsCreateDialogController($routeParams, $mdDialog, resourceCard, baseController, isFirst, bookId, commonDialog) {
     angular.extend(this, baseController);
     var vm = this;
     vm.submit = submit;
@@ -26,6 +26,10 @@
       resourceCard.resource.save(param, postData, function(response) {
         vm.routers.card.goDetail(param.bookId, response.id);
         $mdDialog.hide();
+      }, function(response) {
+        if(resourceCard.isTooManyCard(response.data)){
+          commonDialog.alert({content: 'Cardはこれ以上つくれません'});
+        }
       });
     }
   }
