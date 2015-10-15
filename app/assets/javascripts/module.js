@@ -9,7 +9,14 @@
       'ngResource'
   ])
   .config(appConfig)
-  .run(['speech', function(speech) {speech.bindVoicesLoad()}]);
+  .run(['speech', 'commonToast', 'disableVoiceDialog', function(speech, commonToast, disableVoiceDialog) {
+
+    if(!window.SpeechSynthesisUtterance){
+      disableVoiceDialog.show();
+    }
+    speech.bindVoicesLoad();
+    commonToast.notice(FLASH);
+  }]);
 
   appConfig.$inject = ['$httpProvider', 'APP_CONFIG'];
   ///
