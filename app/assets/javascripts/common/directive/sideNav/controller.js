@@ -6,11 +6,11 @@
     .controller('sideNavController', sideNavController);
 
   sideNavController.$inject = [
-    '$location', '$mdDialog', 'resourceSession',
+    '$window', '$mdDialog', 'resourceSession',
     'auioSettingsDialog', 'personalSettingsDialog'
   ];
 
-  function sideNavController($location, $mdDialog, resourceSession, auioSettingsDialog, personalSettingsDialog) {
+  function sideNavController($window, $mdDialog, resourceSession, auioSettingsDialog, personalSettingsDialog) {
     var vm = this;
     vm.logout = logout;
     vm.audioSettings = audioSettings;
@@ -36,7 +36,7 @@
       $mdDialog.show(dialog)
         .then(function(){
           resourceSession.logout().then(function(){
-            $location.path('/');
+            $window.location.assign('/');
           });
         });
     }

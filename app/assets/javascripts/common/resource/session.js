@@ -5,9 +5,9 @@
     .module('EnglishFlashCard')
     .factory('resourceSession', resourceSession);
 
-  resourceSession.$inject = ['$resource', 'resourceUser'];
+  resourceSession.$inject = ['$resource', 'resourceUser', '$q'];
 
-  function resourceSession($resource, resourceUser) {
+  function resourceSession($resource, resourceUser, $q) {
     var resource = $resource('/api/sessions/');
 
     return {
@@ -17,8 +17,14 @@
 
     ///
     function logout() {
-      return resource.remove({}).$promise;
-      resourceUser.clearCache();
+      var dfd = $q.defer();
+      resource.remove({}, function() {
+        resourceUser.clearCache();
+        dfd.resolve();
+      }, function() {
+        dfd.reject();
+      });
+      return dfd.promise;
     }
   }
 
