@@ -18,9 +18,9 @@ class Book::Voices
     }
   end
 
-  def self.get_all
-    if self.all.size > 0
-      self.all.map do |item|
+  def self.get_all(book)
+    if book.voices.size > 0
+      book.voices.map do |item|
         item.get_data
       end
     else

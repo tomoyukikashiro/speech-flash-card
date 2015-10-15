@@ -16,9 +16,9 @@ class Card
     return {id: id.to_s, text: text, note: note}
   end
 
-  def self.get_all
-    if self.all.size > 0
-      self.all.map do |item|
+  def self.get_all(book)
+    if book.cards.size > 0
+      book.cards.map do |item|
         {id: item.id.to_s, text: item.text, note: item.note}
       end
     else

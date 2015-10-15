@@ -8,7 +8,7 @@
   resourceSession.$inject = ['$resource', 'resourceUser'];
 
   function resourceSession($resource, resourceUser) {
-    var resource = $resource('/api/sessions/:userId', {userId: '@userId'});
+    var resource = $resource('/api/sessions/');
 
     return {
       resource: resource,
@@ -17,7 +17,7 @@
 
     ///
     function logout() {
-      return resource.remove({userId: resourceUser.getData().id}).$promise;
+      return resource.remove({}).$promise;
       resourceUser.clearCache();
     }
   }

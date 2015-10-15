@@ -5,7 +5,7 @@ class CardsController < ApplicationController
   before_filter :check_card, only: [:show_detail, :update, :destroy]
 
   def index
-    render json: {list: @book.cards.get_all}.to_json, status: 200
+    render json: {list: Card.get_all(@book)}.to_json, status: 200
   end
 
   def show_detail

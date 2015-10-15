@@ -5,11 +5,11 @@ Rails.application.routes.draw do
   #users
   get    "api/users"     => "users#show"
   post   "api/users"     => "users#create"
-  put    "api/users/:id" => "users#update"
-  delete "api/users/:id" => "users#destroy"
+  put    "api/users" => "users#update"
+  delete "api/users" => "users#destroy"
   #sessions
   post   "api/sessions"     => "sessions#create"
-  delete "api/sessions/:id" => "sessions#destroy"
+  delete "api/sessions" => "sessions#destroy"
   #books
   get    "api/books"          => "books#index"
   post   "api/books/"         => "books#create"

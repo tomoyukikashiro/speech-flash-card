@@ -17,20 +17,20 @@ RSpec.describe CardsController, type: :controller do
       end
     end
     describe "if you don't login" do
-      it "should return 403" do
+      it "should return 204" do
         logout
         get :index, {book_id: "111111"}
-        expect(response.status).to eq(403)
+        expect(response.status).to eq(204)
       end
     end
   end
 
   describe "POST : #create : " do
     describe "if you don't login" do
-      it "should return 403" do
+      it "should return 204" do
         logout
         post :create, {book_id: @book.id.to_s, card: {text: "text", note: "note"}}
-        expect(response.status).to eq(403)
+        expect(response.status).to eq(204)
       end
     end
     describe "if you logined" do
@@ -56,10 +56,10 @@ RSpec.describe CardsController, type: :controller do
 
   describe "PUT : #update : " do
     describe "if you do'nt login" do
-      it "should return 403" do
+      it "should return 204" do
         logout
         put :update, {book_id: @book.id.to_s, card_id: @card.id.to_s, card: {text: "text1", note: "note1"}}
-        expect(response.status).to eq(403)
+        expect(response.status).to eq(204)
       end
     end
     describe "if you logined" do
@@ -84,10 +84,10 @@ RSpec.describe CardsController, type: :controller do
 
   describe "DELETE : destroy : " do
     describe "if you do'nt login" do
-      it "should return 403" do
+      it "should return 204" do
         logout
         delete :destroy, {book_id: @book.id.to_s, card_id: @card.id.to_s}
-        expect(response.status).to eq(403)
+        expect(response.status).to eq(204)
       end
     end
     describe "if you logined" do

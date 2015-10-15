@@ -9,7 +9,7 @@
 
   function resourceUser($resource, $q) {
     /*jshint camelcase: false */
-    var resource = $resource('/api/users/:id', null, {
+    var resource = $resource('/api/users/', null, {
       'update': {method: 'PUT'}
     });
     var data;

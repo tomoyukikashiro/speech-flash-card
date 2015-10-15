@@ -22,13 +22,13 @@ class Book
       id: id.to_s,
       name: name,
       first_card_id: first_card_id.to_s,
-      voices: voices.get_all
+      voices: Book::Voices.get_all(self)
     }
   end
 
-  def self.get_all
-    if self.all.size > 0
-      self.all.map do |item|
+  def self.get_all(user)
+    if user.books.size > 0
+      user.books.map do |item|
         item.get_data
       end
     else

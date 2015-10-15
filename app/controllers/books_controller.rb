@@ -4,7 +4,7 @@ class BooksController < ApplicationController
   before_filter :check_book, only: [:update, :destroy]
 
   def index
-    render json: {list: @user.books.get_all}.to_json,  status: 200
+    render json: {list: Book.get_all(@user)}.to_json,  status: 200
   end
 
   def create

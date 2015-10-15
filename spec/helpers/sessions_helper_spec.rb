@@ -2,21 +2,10 @@ require 'rails_helper'
 
 RSpec.describe SessionsHelper, type: :helper do
 
-  describe "#login" do
-    before do
-      @user = User.create(name: "Example User", email: "user@example.com", password: "foobar", password_confirmation: "foobar")
-    end
-    it "cookie should have remember_token" do
-      login(@user)
-      expect(User.encrypt(cookies[:remember_token])).to eq(@user.remember_token)
-      expect(login?).to be_truthy
-    end
-  end
-
   describe "#current_user" do
     describe "if you have logined" do
       it "return logined user" do
-        user = User.create(name: "Example User", email: "user@example.com", password: "foobar", password_confirmation: "foobar")
+        user = FactoryGirl.create(:user)
         login(user)
         expect(current_user()).to eq(user)
       end
@@ -31,7 +20,7 @@ RSpec.describe SessionsHelper, type: :helper do
   describe "#login?" do
     describe "if you have logined" do
       it "return true" do
-        user = User.create(name: "Example User", email: "user@example.com", password: "foobar", password_confirmation: "foobar")
+        user = FactoryGirl.create(:user)
         login(user)
         expect(login?).to be_truthy
       end
@@ -46,7 +35,7 @@ RSpec.describe SessionsHelper, type: :helper do
   describe "#logout" do
     describe "if you have logined" do
       it "remember_token in cookie is deleted" do
-        user = User.create(name: "Example User", email: "user@example.com", password: "foobar", password_confirmation: "foobar")
+        user = FactoryGirl.create(:user)
         login(user)
         expect(cookies[:remember_token]).to be_present
         logout

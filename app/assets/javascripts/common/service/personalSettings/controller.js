@@ -24,7 +24,7 @@
       if(!param){
         return;
       }
-      resourceUser.resource.update({id: orgUserData.id}, param).$promise
+      resourceUser.resource.update({}, param).$promise
         .then(function(){
           $mdDialog.hide();
         }, function(e){
