@@ -3,9 +3,13 @@
   'use strict';
 
   angular.module('EnglishFlashCard')
-    .config(appRouter);
+    .config(appRouter).run(['commonToast', run]);
 
   appRouter.$inject = ['$routeProvider', '$locationProvider'];
+
+  function run(commonToast) {
+    commonToast.notice(FLASH);
+  }
 
   function appRouter($routeProvider, $locationProvider) {
 

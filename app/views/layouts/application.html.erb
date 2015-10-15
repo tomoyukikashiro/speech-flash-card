@@ -21,6 +21,9 @@
   <md-content flex layout="row">
     <%= yield %>
   </md-content>
+  <%= javascript_tag do %>
+    var FLASH = <%= raw flash.to_h.to_json %>;
+  <% end %>
   <%= javascript_include_tag 'application' %>
 </body>
 </html>

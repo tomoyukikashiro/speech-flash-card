@@ -44,6 +44,7 @@
 //= require common/service/audioSettings/dialog.js
 //= require common/service/audioSettings/controller.js
 //= require common/service/commonDialog.js
+//= require common/service/commonToast.js
 //= require common/service/personalSettings/dialog.js
 //= require common/service/personalSettings/controller.js
 //= require common/service/sideNav.js

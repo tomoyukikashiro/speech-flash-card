@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
   end
 
   def oauth_failure
-    redirect_to root_path
+    redirect_to root_path, notice: 'Login しました'
   end
 
   def destroy
