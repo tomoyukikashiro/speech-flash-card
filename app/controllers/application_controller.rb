@@ -7,26 +7,30 @@ class ApplicationController < ActionController::Base
   private
     def check_book
       @book = @user.books.where(id: params[:book_id]).first
-      return_empty(@book)
+      return_empty_error(@book)
     end
 
     def check_voice
       check_book
       @voice = @book.voices
-      return_empty(@voice)
+      return_empty_error(@voice)
     end
 
     def check_card
       @card = @book.cards.where(id: params[:card_id]).first
-      return_empty(@card)
+      return_empty_error(@card)
     end
 
     def check_user
       @user = current_user
-      return_empty(@user)
+      return_empty_success(@user)
     end
 
-    def return_empty(target)
+    def return_empty_error(target)
+      render nothing: true, status: 404 and return unless target.present?
+    end
+
+    def return_empty_success(target)
       render nothing: true, status: 204 and return unless target.present?
     end
 end

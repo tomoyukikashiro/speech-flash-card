@@ -81,7 +81,7 @@ RSpec.describe BooksController, type: :controller do
       end
       describe "and parameters are valid" do
         context "update saved voice data" do
-          it "should return 201" do
+          it "should return 204" do
             put :update, {book_id: @book.id.to_s, book: {name: "example2", voices: {name: "English", lang: "en-UK", id: @book.voices.first.id}}}
             expect(response.status).to eq(204)
             saved_book = Book.where(id: @book.id).first
@@ -91,7 +91,7 @@ RSpec.describe BooksController, type: :controller do
           end
         end
         context "create new voice data" do
-          it "should return 201" do
+          it "should return 204" do
             @book.voices.delete_all
             put :update, {book_id: @book.id.to_s, book: {name: "example2", voices: {name: "English", lang: "en-UK"}}}
             expect(response.status).to eq(204)
@@ -117,7 +117,7 @@ RSpec.describe BooksController, type: :controller do
         @user = stub_login
         @book = FactoryGirl.create(:book, user: @user)
       end
-      it "should return 201 and user is deleted" do
+      it "should return 204 and user is deleted" do
         delete :destroy, {book_id: @book.id.to_s}
         expect(response.status).to eq(204)
         saved_book = Book.where(id: @book.id.to_s)
