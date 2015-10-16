@@ -1,0 +1,12 @@
+.card-list-sidenav{
+  background-color: $bg-color;
+
+  md-content{
+    background-color: transparent;
+  }
+
+  md-list-item{
+    background-color: #fff;
+    margin-bottom: 10px;
+  }
+}

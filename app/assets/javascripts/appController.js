@@ -20,6 +20,11 @@
 
     function activate() {
       $rootScope.$on('pagechange', onPageChange);
+      $rootScope.$on('updatecard', onUpdateCard);
+    }
+
+    function onUpdateCard(e, cardList) {
+      vm.cardListData = cardList;
     }
 
     function onPageChange(e, data) {

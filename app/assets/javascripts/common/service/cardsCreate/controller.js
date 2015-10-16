@@ -5,9 +5,9 @@
     .module('EnglishFlashCard')
     .controller('cardsCreateDialogController', cardsCreateDialogController);
 
-  cardsCreateDialogController.$inject = ['$routeParams', '$mdDialog', 'resourceCard', 'baseController', 'isFirst', 'bookId', 'commonDialog'];
+  cardsCreateDialogController.$inject = ['$rootScope', '$routeParams', '$mdDialog', 'resourceCard', 'baseController', 'isFirst', 'bookId', 'commonDialog', 'commonToast'];
 
-  function cardsCreateDialogController($routeParams, $mdDialog, resourceCard, baseController, isFirst, bookId, commonDialog) {
+  function cardsCreateDialogController($rootScope, $routeParams, $mdDialog, resourceCard, baseController, isFirst, bookId, commonDialog, commonToast) {
     angular.extend(this, baseController);
     var vm = this;
     vm.submit = submit;
@@ -23,11 +23,14 @@
         text : vm.text,
         note : vm.note
       };
-      resourceCard.resource.save(param, postData, function(response) {
-        vm.routers.card.goDetail(param.bookId, response.id);
-        $mdDialog.hide();
-      }, function(response) {
-        if(resourceCard.isTooManyCard(response.data)){
+      resourceCard.save(param, postData).then(function(cardList) {
+        $mdDialog.hide().then(function() {
+          $rootScope.$broadcast('updatecard', cardList);
+          commonToast.notice({notice: 'created card'});
+          vm.routers.card.goDetail(undefined, cardList[cardList.length-1].id);
+        });
+      }, function(data) {
+        if(resourceCard.isTooManyCard(data)){
           commonDialog.alert({content: 'Cardはこれ以上つくれません'});
         }
       });

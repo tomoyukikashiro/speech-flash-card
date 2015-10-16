@@ -19,6 +19,7 @@
       getIterator: getIterator,
       remove: remove,
       update: update,
+      save: save,
 
       isTooManyCard: isTooManyCard
     };
@@ -47,6 +48,19 @@
         });
       return dfd.promise;
     }
+    function save(params, postData) {
+      var dfd = $q.defer();
+      resource.save(params, postData)
+        .$promise
+        .then(function(data) {
+          list.data.push(data);
+          dfd.resolve(list.data);
+        }, function (data) {
+          dfd.reject(data);
+        });
+      return dfd.promise;
+    }
+
 
     function getCurrentIndex(card) {
       if(angular.isUndefined(list.data)){

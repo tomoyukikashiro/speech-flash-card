@@ -2,13 +2,18 @@
   md-swipe-left="cardsDetail.onClickNext()"
   md-swipe-right="cardsDetail.onClickPrev()">
   <div class="card-list__item" flex layout="column">
-    <md-card class="card-list__text--outer" layout="column" layout-align="center center">
+    <div class="card-list__text--outer" layout="column" layout-align="center center">
       <h1 class="card-list__text" ng-bind="cardsDetail.card.text"></h1>
-      <md-button class="md-fab md-primary md-raised card-list-spech-button"  aria-label="speach" ng-click="cardsDetail.onClickCard(cardsDetail.card.text)">
+    </div>
+    <div class="card-list__control" flex layout="row" layout-align="center center">
+      <md-button class="card-list__control_icon-button" aria-label="prev" ng-click="cardsDetail.onClickPrev()" ng-disabled="!cardsDetail.cardIterator.hasPrev"><md-icon class="card-list__control_icon" md-svg-icon="images/icons/skip_previous_black.svg"></md-icon></md-button>
+      <md-button md-ripple-size="full" class="md-fab md-primary md-raised card-list-speech-button"  aria-label="speach" ng-click="cardsDetail.onClickCard(cardsDetail.card.text)">
           <md-icon md-svg-src="images/icons/volume_up_white.svg"></md-icon>
       </md-button>
-    </md-card>
-    <md-card  class="md-padding card-list__note">
+      <div class="spacer"></div>
+      <md-button class="card-list__control_icon-button" aria-label="next" ng-click="cardsDetail.onClickNext()" ng-disabled="!cardsDetail.cardIterator.hasNext"><md-icon class="card-list__control_icon" md-svg-icon="images/icons/skip_next_black.svg"></md-icon></md-button>
+    </div>
+    <md-card class="md-padding card-list__note">
       <h2 class="card-list__note__title">Note</h2>
       <p class="card-list__note__text" ng-bind="cardsDetail.card.note"></p>
     </md-card>

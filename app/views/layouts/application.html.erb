@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="EnglishFlashCard" ng-strict-di>
 <head>
-  <title>EnglishFlashCard</title>
+  <title>Speech Flash Card</title>
   <meta charset="utf-8">
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,7 @@
   <%= stylesheet_link_tag "application" %>
 </head>
 <body layout="column" ng-controller="appController as appCtrl">
-  <md-toolbar class="md-toolbar-tools <%= "hide" unless @is_loggedin %>" md-scroll-shrink>
+  <md-toolbar class="md-toolbar-tools md-medium-tall <%= "hide" unless @is_loggedin %>">
     <md-button class="md-icon-button" aria-label="Settings" ng-click="appCtrl.sideNav.toggleLeft()" hide-gt-sm><md-icon md-svg-icon="images/icons/menu_white.svg" ></md-icon></md-button>
     <h2><span ng-bind="appCtrl.page.preName" ng-click="appCtrl.routers.book.goList()"></span><span ng-bind="appCtrl.page.name"></span></h2>
     <span flex></span>
