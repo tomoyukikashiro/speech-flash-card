@@ -29,6 +29,9 @@
 
     function activate() {
       vm.pageChange(vm.APP_CONFIG.PAGE_NAME.BOOK);
+      if(books.length === 0){
+        createBookDialog.show(undefined, true);
+      }
     }
 
   }

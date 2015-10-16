@@ -16,6 +16,7 @@
       resource: resource,
       getList: getList,
       remove: remove,
+      save: save,
       update: update,
       getBook: getBook,
 
@@ -36,6 +37,16 @@
         });
       return dfd.promise;
     }
+    function save(param) {
+      var dfd = $q.defer();
+      resource.save({}, param, function(response) {
+        data.push(response);
+        dfd.resolve(response);
+      },function() {
+        dfd.reject();
+      });
+      return dfd.promise;
+    }
     function remove(id) {
       var dfd = $q.defer();
       resource.remove({bookId: id})
@@ -51,7 +62,7 @@
       resource.get()
         .$promise
         .then(function(res) {
-          data = res ? res.list : null;
+          data = res ? res.list : [];
           dfd.resolve(data);
         });
       return dfd.promise;

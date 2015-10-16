@@ -10,6 +10,10 @@
 @import "pages/login/all";
 @import "pages/signup/all";
 
-md-content{
-  background-color: #f2f2f2;
+.content-outer{
+  flex: 1;
+}
+md-dialog{
+  flex: 1;
+  max-width: 600px;
 }

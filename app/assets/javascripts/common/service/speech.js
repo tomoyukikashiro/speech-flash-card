@@ -14,6 +14,9 @@
       rate: 1,
       pitch: 1 // 0 - 2
     };
+    var voiceBlackList = ['alex', 'agnes', 'albert', 'bad news', 'bahh', 'bells', 'boing', 'bruce', 'bubbles', 'cellos', 'deranged'
+    ,'fiona', 'fred', 'good news', 'hysterical', 'junior', 'kathy', 'moira', 'pipe organ', 'princess', 'ralph', 'tessa', 'trinoids'
+    ,'veena', 'vicki', 'victoria', 'whisper', 'zarvox'];
 
     var extendedOptions,
         msg = new SpeechSynthesisUtterance(),
@@ -83,18 +86,27 @@
     this.bindVoicesLoad = function() {
       window.speechSynthesis.onvoiceschanged = function() {
         voices = speechSynthesis.getVoices();
-        summlizedVoice = summlizeVoice(voices);
+        summlizedVoice = getSummlizeVoice(voices);
       }
     };
+
+    this.speakSampleVoice = function(lang, voice){
+      msg.voice = voice;
+      msg.text = APP_CONFIG.SAMPLE_VOICE[lang];
+      speechSynthesis.speak(msg);
+    }
 
     this.speak = function(text) {
       msg.text = text;
       speechSynthesis.speak(msg);
     };
 
-    function summlizeVoice(voices) {
+    function getSummlizeVoice(voices) {
       var res = {};
       angular.forEach(voices, function(v) {
+        if(voiceBlackList.indexOf(v.name.toLowerCase()) !== -1){
+          return;
+        }
         var lang   = v.lang.split('-')[0];
         var key = APP_CONFIG.LANG[lang.toUpperCase()];
         if(!res[key]){

@@ -5,9 +5,9 @@
     .module('EnglishFlashCard')
     .controller('booksEditDialogController', booksEditDialogController);
 
-  booksEditDialogController.$inject = ['$mdDialog', 'resourceBook', 'baseController', 'book', 'speech'];
+  booksEditDialogController.$inject = ['$mdDialog', 'resourceBook', 'baseController', 'book', 'speech', 'commonToast'];
 
-  function booksEditDialogController($mdDialog, resourceBook, baseController, book, speech) {
+  function booksEditDialogController($mdDialog, resourceBook, baseController, book, speech, commonToast) {
     angular.extend(this, baseController);
     var vm = this;
     vm.book = book;
@@ -26,6 +26,7 @@
       resourceBook.remove(book.id)
         .then(function() {
           $mdDialog.hide();
+          commonToast.notice({notice: 'deleted book'});
         });
     }
     function update() {

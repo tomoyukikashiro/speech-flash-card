@@ -5,13 +5,15 @@
     .module('EnglishFlashCard')
     .controller('booksCreateDialogController', booksCreateDialogController);
 
-  booksCreateDialogController.$inject = ['resourceBook', 'baseController', '$mdDialog', 'speech', 'commonDialog'];
+  booksCreateDialogController.$inject = ['resourceBook', 'baseController', '$mdDialog', 'speech', 'commonDialog', 'commonToast', 'isFirst'];
 
-  function booksCreateDialogController(resourceBook, baseController, $mdDialog, speech, commonDialog) {
+  function booksCreateDialogController(resourceBook, baseController, $mdDialog, speech, commonDialog, commonToast, isFirst) {
     angular.extend(this, baseController);
     var vm = this;
     vm.submit = submit;
     vm.voices = speech.getVoices();
+    vm.speech = speech;
+    vm.isFirst = isFirst;
 
     ////
     function submit() {
@@ -21,8 +23,9 @@
           voices: speech.getVoiceParam(vm.selectedVoice)
         }
       };
-      resourceBook.resource.save({}, param, function(response) {
+      resourceBook.save(param).then(function(response) {
         $mdDialog.hide();
+        commonToast.notice({notice: 'created book'});
       }, function(response) {
         if(resourceBook.isTooManyBook(response.data)){
           commonDialog.alert({content: 'Bookはこれ以上つくれません'});

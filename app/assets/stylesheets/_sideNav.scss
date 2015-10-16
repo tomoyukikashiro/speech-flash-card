@@ -1,3 +1,7 @@
+.md-sidenav__outer{
+  position: relative;
+  z-index: 1;
+}
 md-sidenav {
   max-width: 230px;
   min-width: 230px;

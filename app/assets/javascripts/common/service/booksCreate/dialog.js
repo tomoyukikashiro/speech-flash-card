@@ -14,14 +14,17 @@
     };
 
     ///
-    function show($event) {
+    function show($event, isFirst) {
       $mdDialog.show({
         clickOutsideToClose: true,
         parent: angular.element(document.body),
         targetEvent: $event,
         templateUrl: '/templates/books/dialog/create.html',
         controller: 'booksCreateDialogController',
-        controllerAs: 'booksCreate'
+        controllerAs: 'booksCreate',
+        locals: {
+          isFirst: isFirst
+        }
       });
     }
   }
