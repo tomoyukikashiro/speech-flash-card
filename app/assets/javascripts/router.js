@@ -11,7 +11,7 @@
 
     $locationProvider.html5Mode(true);
     $routeProvider
-      .when('/login',
+      .when('/login/',
           {
             templateUrl: '/templates/login/oauth.html',
             controller: 'loginController',
@@ -21,7 +21,7 @@
             }
           }
       )
-      .when('/signup',
+      .when('/signup/',
           {
             templateUrl: '/templates/signup/index.html',
             controller: 'signupController',
@@ -31,7 +31,7 @@
             }
           }
       )
-      .when('/books',
+      .when('/books/',
           {
             templateUrl: '/templates/books/list.html',
             controller: 'booksListController',
@@ -41,7 +41,7 @@
               books: ['resourceBook', function(resourceBook) {return resourceBook.getList()}]
             }
           })
-      .when('/books/:bookId/cards/:cardId',
+      .when('/books/:bookId/cards/:cardId/',
         {
           templateUrl: '/templates/cards/detail.html',
           controller: 'cardsDetailController',
@@ -52,7 +52,7 @@
             card: ['resourceCard', function(resourceCard) {return resourceCard.getCard()}]
           }
         })
-      .otherwise({redirectTo: '/login'});
+      .otherwise({redirectTo: '/login/'});
   }
 
 })();

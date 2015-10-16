@@ -5,14 +5,19 @@
     .module('EnglishFlashCard')
     .controller('cardsCreateDialogController', cardsCreateDialogController);
 
-  cardsCreateDialogController.$inject = ['$rootScope', '$routeParams', '$mdDialog', 'resourceCard', 'baseController', 'isFirst', 'bookId', 'commonDialog', 'commonToast'];
+  cardsCreateDialogController.$inject = ['$rootScope', '$routeParams', '$mdDialog', 'resourceCard', 'baseController', 'isFirst', 'bookId', 'commonDialog', 'commonToast', 'analytics'];
 
-  function cardsCreateDialogController($rootScope, $routeParams, $mdDialog, resourceCard, baseController, isFirst, bookId, commonDialog, commonToast) {
+  function cardsCreateDialogController($rootScope, $routeParams, $mdDialog, resourceCard, baseController, isFirst, bookId, commonDialog, commonToast, analytics) {
     angular.extend(this, baseController);
     var vm = this;
     vm.submit = submit;
     vm.isFirst = isFirst;
 
+    activate();
+
+    function activate() {
+      analytics.sendCurrentPageView('/cards/create/');
+    }
 
     ////////////////
     function submit() {

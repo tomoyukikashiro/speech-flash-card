@@ -49,6 +49,7 @@
 //= require common/service/personalSettings/dialog.js
 //= require common/service/personalSettings/controller.js
 //= require common/service/sideNav.js
+//= require common/service/analytics.js
 //= require common/directive/sideNav/sideNav.js
 //= require common/directive/sideNav/controller.js
 

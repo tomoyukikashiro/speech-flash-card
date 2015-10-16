@@ -28,13 +28,15 @@ Rails.application.routes.draw do
   delete "api/books/:book_id/cards/:card_id" => "cards#destroy"
   #views
   root "top_pages#index"
-  get  "login"                         => "top_pages#index"
-  get  "signup"                        => "top_pages#index"
-  get  "books"                         => "top_pages#index"
-  get  "books/:book_id/cards/:card_id" => "top_pages#index"
+  get  "login/"                         => "top_pages#index"
+  get  "signup"                         => "top_pages#index"
+  get  "books/"                         => "top_pages#index"
+  get  "books/:book_id/cards/:card_id/" => "top_pages#index"
   # oauth
   match 'auth/:provider/callback', to: 'sessions#oauth', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
+  # 404
+  get '*path' => "top_pages#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

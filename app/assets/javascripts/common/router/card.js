@@ -8,7 +8,7 @@
   routerCard.$inject = ['$location', '$routeParams'];
 
   function routerCard($location, $routeParams) {
-    var path = '/books/:bookId/cards/:cardId';
+    var path = '/books/:bookId/cards/:cardId/';
 
     function createPath(bookId, cardId) {
       var _bookId = bookId || $routeParams.bookId;

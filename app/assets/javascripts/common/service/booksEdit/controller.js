@@ -5,9 +5,9 @@
     .module('EnglishFlashCard')
     .controller('booksEditDialogController', booksEditDialogController);
 
-  booksEditDialogController.$inject = ['$mdDialog', 'resourceBook', 'baseController', 'book', 'speech', 'commonToast'];
+  booksEditDialogController.$inject = ['$mdDialog', 'resourceBook', 'baseController', 'book', 'speech', 'commonToast', 'analytics'];
 
-  function booksEditDialogController($mdDialog, resourceBook, baseController, book, speech, commonToast) {
+  function booksEditDialogController($mdDialog, resourceBook, baseController, book, speech, commonToast, analytics) {
     angular.extend(this, baseController);
     var vm = this;
     vm.book = book;
@@ -17,6 +17,12 @@
     vm.voices = speech.getVoices();
     var selectedVoiceData = speech.getSelectedVoiceData(book.voices);
     vm.isSelectedVoice = isSelectedVoice;
+
+    activate();
+
+    function activate() {
+      analytics.sendCurrentPageView('/books/edit/');
+    }
 
     function isSelectedVoice(data){
       return data === selectedVoiceData;

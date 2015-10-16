@@ -46,6 +46,7 @@
     }
 
     function activate() {
+      vm.analytics.sendCurrentPageView('/cards/detail/');
       speech.init({voice: selectedVoice});
       $rootScope.$broadcast(changeCardEvent, card.id);
       vm.pageChange(vm.APP_CONFIG.PAGE_NAME.CARD);

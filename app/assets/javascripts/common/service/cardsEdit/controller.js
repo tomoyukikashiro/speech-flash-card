@@ -5,15 +5,21 @@
     .module('EnglishFlashCard')
     .controller('cardsEditDialogController', cardsEditDialogController);
 
-  cardsEditDialogController.$inject = ['$rootScope', '$routeParams', '$mdDialog', 'resourceCard', 'baseController', 'card', 'commonToast'];
+  cardsEditDialogController.$inject = ['$rootScope', '$routeParams', '$mdDialog', 'resourceCard', 'baseController', 'card', 'commonToast', 'analytics'];
 
-  function cardsEditDialogController($rootScope, $routeParams, $mdDialog, resourceCard, baseController, card, commonToast) {
+  function cardsEditDialogController($rootScope, $routeParams, $mdDialog, resourceCard, baseController, card, commonToast, analytics) {
     angular.extend(this, baseController);
     var vm = this;
     var cardIterator = resourceCard.getIterator();
     vm.card = card;
     vm.submit = submit;
     vm.remove = remove;
+
+    activate();
+
+    function activate() {
+      analytics.sendCurrentPageView('/cards/edit/');
+    }
 
     ////////////////
     function remove() {

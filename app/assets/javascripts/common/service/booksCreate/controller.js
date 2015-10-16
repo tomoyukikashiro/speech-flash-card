@@ -5,15 +5,21 @@
     .module('EnglishFlashCard')
     .controller('booksCreateDialogController', booksCreateDialogController);
 
-  booksCreateDialogController.$inject = ['resourceBook', 'baseController', '$mdDialog', 'speech', 'commonDialog', 'commonToast', 'isFirst'];
+  booksCreateDialogController.$inject = ['resourceBook', 'baseController', '$mdDialog', 'speech', 'commonDialog', 'commonToast', 'isFirst', 'analytics'];
 
-  function booksCreateDialogController(resourceBook, baseController, $mdDialog, speech, commonDialog, commonToast, isFirst) {
+  function booksCreateDialogController(resourceBook, baseController, $mdDialog, speech, commonDialog, commonToast, isFirst, analytics) {
     angular.extend(this, baseController);
     var vm = this;
     vm.submit = submit;
     vm.voices = speech.getVoices();
     vm.speech = speech;
     vm.isFirst = isFirst;
+
+    activate();
+
+    function activate() {
+      analytics.sendCurrentPageView('/books/create/');
+    }
 
     ////
     function submit() {

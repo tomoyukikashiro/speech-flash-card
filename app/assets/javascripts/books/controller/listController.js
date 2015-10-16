@@ -29,6 +29,7 @@
 
     function activate() {
       vm.pageChange(vm.APP_CONFIG.PAGE_NAME.BOOK);
+      vm.analytics.sendCurrentPageView('/books/');
       if(books.length === 0){
         createBookDialog.show(undefined, true);
       }
