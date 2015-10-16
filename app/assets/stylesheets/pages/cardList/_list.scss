@@ -1,3 +1,7 @@
+.card-list__nav{
+  position: fixed;
+  top: 0;
+}
 .page__card-list{
   background-color: $bg-color;
   .card-list__item{
