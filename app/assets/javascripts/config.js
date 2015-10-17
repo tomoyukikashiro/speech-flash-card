@@ -9,6 +9,32 @@
           BOOK: 'books',
           CARD: 'cards'
         },
+        SAMPLE_VOICE: {
+          AR: 'مرحبا',
+          ZH: '你好',
+          CS: 'ahoj',
+          DA: 'Hej',
+          NL: 'hallo',
+          EN: 'hello',
+          FI: 'Hei',
+          FR: 'Bonjour',
+          DE: 'Hallo',
+          EL: 'Γεια σας',
+          HI: 'नमस्ते',
+          HU: 'Helló',
+          IT: 'Ciao',
+          JA: 'こんにちは',
+          KO: '안녕하세요',
+          PL: 'Halo',
+          PT: 'Olá',
+          RO: 'Alo',
+          RU: 'Здравствуйте',
+          SK: 'ahoj',
+          ES: '¡Hola',
+          SV: 'Hallå',
+          TH: 'สวัสดี',
+          TR: 'Merhaba'
+        },
         // http://www.w3.org/WAI/ER/IG/ert/iso639.htm
         LANG: {
           AA: 'Afar',

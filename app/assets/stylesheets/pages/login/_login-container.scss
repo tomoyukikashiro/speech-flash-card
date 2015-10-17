@@ -12,15 +12,19 @@
   }
   .buttons{
     background-color: #fff;
-  }
-  .md-button{
-    font-size: 15px;
-    text-decoration: none;
-    width: 90%;
-    md-icon{
-      background-color: #FFF;
-      margin-right: 10px;
+    .md-button{
+      font-size: 15px;
+      text-decoration: none;
+      width: 90%;
+      md-icon{
+        background-color: #FFF;
+        margin-right: 10px;
+      }
     }
+  }
+  .voice-select{
+    width: 80%;
+    margin: 30px auto;
   }
 }
 

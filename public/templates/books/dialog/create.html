@@ -10,14 +10,7 @@
         <label>Name</label>
         <input type="text" ng-model="booksCreate.bookName" required>
       </md-input-container>
-      <md-input-container>
-        <label>Language</label>
-        <md-select ng-model="booksCreate.selectedVoice">
-          <md-optgroup label="{{name}}" ng-repeat="(name, voice) in booksCreate.voices">
-            <md-option ng-value="data.lang + '_' + data.name" ng-repeat="data in voice">{{data.name}}</md-icon></md-option>
-          </md-optgroup>
-        </md-select>
-      </md-input-container>
+      <voice-select title="Language"></voice-select>
     </md-dialog-content>
     <div class="md-actions" layout="row">
       <md-button ng-click="booksCreate.submit()" class="md-primary">Create</md-button>

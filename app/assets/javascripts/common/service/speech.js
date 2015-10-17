@@ -37,6 +37,11 @@
       return summlizedVoice;
     };
 
+    this.getSampleText = function(lang) {
+      var _lang = lang.split('-')[0]; // 0: en 1: US
+      return APP_CONFIG.SAMPLE_VOICE[_lang.toUpperCase()];
+    };
+
     // target : voice.lang + '_' + voice.name
     this.getVoiceParam = function(target) {
       var lang = target.split('_')[0];
@@ -107,8 +112,12 @@
         if(voiceBlackList.indexOf(v.name.toLowerCase()) !== -1){
           return;
         }
-        var lang   = v.lang.split('-')[0];
+        var lang  = v.lang.split('-')[0];
         var key = APP_CONFIG.LANG[lang.toUpperCase()];
+        if(!key){
+          // W3Cに定義されていない言語コードが幾つかある
+          return
+        }
         if(!res[key]){
           res[key] = [];
         }

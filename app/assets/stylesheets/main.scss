@@ -13,6 +13,9 @@
 .content-outer{
   flex: 1;
 }
+md-dialog{
+  flex: 1;
+}
 @media (max-width: $layout-breakpoint-sm) {
   md-dialog{
     flex: 1;

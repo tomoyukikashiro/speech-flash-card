@@ -52,6 +52,8 @@
 //= require common/service/analytics.js
 //= require common/directive/sideNav/sideNav.js
 //= require common/directive/sideNav/controller.js
+//= require common/directive/voiceSelect/voiceSelect.js
+//= require common/directive/voiceSelect/controller.js
 
 //= require appController.js
 //= require login/controller/indexController.js
