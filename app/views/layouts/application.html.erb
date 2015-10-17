@@ -11,7 +11,7 @@
 </head>
 <body layout="column" ng-controller="appController as appCtrl">
   <md-toolbar class="md-toolbar-tools md-medium-tall <%= "hide" unless @is_loggedin %>">
-    <md-button class="md-icon-button" aria-label="Settings" ng-click="appCtrl.sideNav.toggleLeft()" hide-gt-sm><md-icon md-svg-icon="images/icons/menu_white.svg" ></md-icon></md-button>
+    <md-button class="md-icon-button" aria-label="Settings" ng-click="appCtrl.sideNav.toggleLeft()"><md-icon md-svg-icon="images/icons/menu_white.svg" ></md-icon></md-button>
     <h2><span ng-bind="appCtrl.page.preName" ng-click="appCtrl.routers.book.goList()"></span><span ng-bind="appCtrl.page.name"></span></h2>
     <span flex></span>
     <md-button class="md-icon-button" aria-label="Card list" ng-show="appCtrl.page.name === 'cards'" ng-click="appCtrl.cardList.toggleLeft()"><md-icon md-svg-icon="images/icons/list_white.svg"></md-icon></md-button>
