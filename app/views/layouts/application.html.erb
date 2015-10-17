@@ -7,6 +7,11 @@
   <%= csrf_meta_tags %>
   <link href='//fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag "application" %>
+  <style>
+    [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+      display: none !important;
+    }
+  </style>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="description" content="flashcard helps you memolize words by speeching">
   <title>Speech Flashcard</title>
@@ -34,7 +39,7 @@
   <meta property="og:site_name" content="Speech Flashcard"/>
   <meta property="og:description" content="flashcard helps you memolize words by speeching"/>
 </head>
-<body layout="column" ng-controller="appController as appCtrl">
+<body layout="column" ng-controller="appController as appCtrl" ng-cloak>
   <md-toolbar class="md-toolbar-tools md-medium-tall <%= "hide" unless @is_loggedin %>">
     <md-button class="md-icon-button" aria-label="Settings" ng-click="appCtrl.sideNav.toggleLeft()"><md-icon md-svg-icon="images/icons/menu_white.svg" ></md-icon></md-button>
     <h2><span ng-bind="appCtrl.page.preName" ng-click="appCtrl.routers.book.goList()"></span><span ng-bind="appCtrl.page.name"></span></h2>
