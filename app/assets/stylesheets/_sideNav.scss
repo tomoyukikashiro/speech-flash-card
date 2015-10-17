@@ -1,6 +1,5 @@
 .md-sidenav__outer{
   position: relative;
-  z-index: 50;
 
   .development-info{
     font-size: 13px;
@@ -16,10 +15,8 @@
 @media (max-width: $layout-breakpoint-sm) {
   .md-sidenav__outer{
     position: absolute;
-    top: 88px;
-    left: 0;
+    top: 0;
     width: 100%;
-    height: calc(100% - 88px);
   }
 }
 md-sidenav {

@@ -10,7 +10,8 @@
       restrict: 'E',
       controller: 'sideNavController',
       controllerAs: 'sideNav',
-      templateUrl: 'templates/common/directive/sideNav.html'
+      templateUrl: 'templates/common/directive/sideNav.html',
+      replace: true
     };
     return directive;
   }
