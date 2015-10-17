@@ -4,14 +4,14 @@ class SessionsController < ApplicationController
     user = User.from_omniauth(env["omniauth.auth"])
     if user.present?
       login user
-      render nothing: true, status: 204
+      redirect_to root_path, notice: 'Login しました'
     else
-      render nothing: true, status: 400
+      redirect_to root_path, notice: 'Login 失敗しました'
     end
   end
 
   def oauth_failure
-    redirect_to root_path, notice: 'Login しました'
+    redirect_to root_path, notice: 'Login 失敗しました'
   end
 
   def destroy
