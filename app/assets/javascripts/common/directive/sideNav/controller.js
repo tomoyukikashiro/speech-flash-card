@@ -13,6 +13,7 @@
   function sideNavController($window, $mdDialog, resourceSession, auioSettingsDialog, personalSettingsDialog) {
     var vm = this;
     vm.logout = logout;
+    vm.goTw = goTw;
     vm.audioSettings = audioSettings;
     vm.personalSettings = personalSettings;
 
@@ -21,6 +22,10 @@
     }
     function personalSettings(e){
       personalSettingsDialog.show(e);
+    }
+
+    function goTw() {
+      $window.location.assign('https://twitter.com/SpeechFlashcard');
     }
 
     function logout(e){
