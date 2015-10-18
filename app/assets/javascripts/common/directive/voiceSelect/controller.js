@@ -5,14 +5,21 @@
     .module('EnglishFlashCard')
     .controller('voiceSelectController', voiceSelectController);
 
-  voiceSelectController.$inject = ['$scope', 'speech'];
+  voiceSelectController.$inject = ['$scope', 'speech', '$timeout'];
 
-  function voiceSelectController($scope, speech) {
+  function voiceSelectController($scope, speech, $timeout) {
     var vm = this;
     var selectedVoice;
-    vm.voices = speech.getVoices();
+    vm.voices = '';
     vm.onSelect = onSelect;
+    vm.onOpenSelect = onOpenSelect;
     vm.speakSample = speakSample;
+
+    function onOpenSelect() {
+      return $timeout(function() {
+        vm.voices = speech.getVoices();
+      }, 1000);
+    }
 
     function speakSample() {
       if(!selectedVoice){

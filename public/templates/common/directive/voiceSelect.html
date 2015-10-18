@@ -2,7 +2,7 @@
 
   <md-input-container class="voice-select__input-container">
     <label>{{title}}</label>
-    <md-select ng-model="voiceSelect.selectedVoice" md-on-close="voiceSelect.onSelect($event)">
+    <md-select ng-model="voiceSelect.selectedVoice" md-on-close="voiceSelect.onSelect($event)" md-on-open="voiceSelect.onOpenSelect()">
       <md-optgroup label="{{name}}" ng-repeat="(name, voice) in voiceSelect.voices">
         <md-option ng-value="data.lang + '_' + data.name" ng-repeat="data in voice">{{data.name}}</md-icon></md-option>
       </md-optgroup>

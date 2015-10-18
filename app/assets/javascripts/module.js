@@ -13,6 +13,7 @@
 
     if(!window.SpeechSynthesisUtterance){
       disableVoiceDialog.show();
+      return;
     }
     speech.bindVoicesLoad();
     commonToast.notice(FLASH);

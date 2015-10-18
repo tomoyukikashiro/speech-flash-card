@@ -89,6 +89,7 @@
     };
 
     this.bindVoicesLoad = function() {
+      var me = this;
       var onvoiceschanged = function() {
         voices = speechSynthesis.getVoices();
         summlizedVoice = getSummlizeVoice(voices);
@@ -99,6 +100,9 @@
       }else{
         $timeout(function() {
           onvoiceschanged();
+          if(!voices){
+            me.bindVoicesLoad();
+          }
         }, 500);
       }
     };
