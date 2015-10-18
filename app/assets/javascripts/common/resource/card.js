@@ -9,7 +9,7 @@
 
   function resourceCard($resource, $q, $routeParams, $route) {
     var resource = $resource('/api/books/:bookId/cards/:cardId', {bookId: '@bookId', cardId: '@cardId'}, { update: {method: 'PUT'}}),
-        list = {},
+        list = {data: []},
         iterator;
 
     return {

@@ -5,9 +5,9 @@
     .module('EnglishFlashCard')
     .service('speech', speech);
 
-  speech.$inject = ['APP_CONFIG'];
+  speech.$inject = ['APP_CONFIG', '$timeout'];
 
-  function speech(APP_CONFIG) {
+  function speech(APP_CONFIG, $timeout) {
     // https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html
     var defOptions = {
       volume: 1, // 0 -2
@@ -97,7 +97,9 @@
       if('onvoiceschanged' in speechSynthesis){
         window.speechSynthesis.onvoiceschanged = onvoiceschanged;
       }else{
-        onvoiceschanged();
+        $timeout(function() {
+          onvoiceschanged();
+        }, 500);
       }
     };
 

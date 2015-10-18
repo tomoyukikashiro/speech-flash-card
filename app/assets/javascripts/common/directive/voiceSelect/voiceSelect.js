@@ -12,7 +12,8 @@
       controllerAs: 'voiceSelect',
       templateUrl: 'templates/common/directive/voiceSelect.html',
       scope: {
-        title: '@'
+        title: '@',
+        onSelect: '&'
       }
     };
     return directive;

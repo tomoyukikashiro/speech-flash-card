@@ -21,8 +21,9 @@
 
     ////////////////
     function submit() {
+      var _bookId =  bookId || $routeParams.bookId;
       var param = {
-        bookId: bookId || $routeParams.bookId
+        bookId: _bookId
       };
       var postData = {
         text : vm.text,
@@ -32,7 +33,7 @@
         $mdDialog.hide().then(function() {
           $rootScope.$broadcast('updatecard', cardList);
           commonToast.notice({notice: 'created card'});
-          vm.routers.card.goDetail(undefined, cardList[cardList.length-1].id);
+          vm.routers.card.goDetail(_bookId, cardList[cardList.length-1].id);
         });
       }, function(data) {
         if(resourceCard.isTooManyCard(data)){
