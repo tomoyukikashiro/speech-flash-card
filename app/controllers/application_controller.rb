@@ -4,7 +4,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
 
+  force_ssl if: :ssl_configured?
+
   private
+    def ssl_configured?
+      !Rails.env.development?
+    end
+
     def check_book
       @book = @user.books.where(id: params[:book_id]).first
       return_empty_error(@book)
