@@ -4,6 +4,7 @@
 @import "reset";
 @import "sideNav";
 @import "settings";
+@import "voice-select";
 
 @import "pages/bookList/all";
 @import "pages/cardList/all";
@@ -12,6 +13,7 @@
 
 .content-outer{
   flex: 1;
+  overflow: hidden;
   position: relative;
 }
 md-dialog{
