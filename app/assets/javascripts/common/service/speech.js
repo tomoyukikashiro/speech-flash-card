@@ -89,9 +89,15 @@
     };
 
     this.bindVoicesLoad = function() {
-      window.speechSynthesis.onvoiceschanged = function() {
+      var onvoiceschanged = function() {
         voices = speechSynthesis.getVoices();
         summlizedVoice = getSummlizeVoice(voices);
+      }
+      // speechSynthesis is partial support in safari.
+      if('onvoiceschanged' in speechSynthesis){
+        window.speechSynthesis.onvoiceschanged = onvoiceschanged;
+      }else{
+        onvoiceschanged();
       }
     };
 

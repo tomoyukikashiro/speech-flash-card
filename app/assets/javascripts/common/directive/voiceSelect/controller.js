@@ -13,6 +13,9 @@
     vm.onSelect = onSelect;
 
     function onSelect($event) {
+      if(!vm.selectedVoice){
+        return;
+      }
       var data = speech.getVoiceParam(vm.selectedVoice);
       var text = speech.getSampleText(data.lang);
       var voice = speech.getVoiceData(data.lang, data.name);
