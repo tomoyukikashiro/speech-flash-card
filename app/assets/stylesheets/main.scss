@@ -16,6 +16,11 @@
   overflow: hidden;
   position: relative;
 }
+md-icon{
+  // book listの編集ボタンが見えない対応
+  width: 25px;
+  height: 25px;
+}
 md-dialog{
   flex: 1;
 }
