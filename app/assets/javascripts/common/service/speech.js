@@ -19,7 +19,7 @@
     ,'veena', 'vicki', 'victoria', 'whisper', 'zarvox'];
 
     var extendedOptions,
-        msg = new SpeechSynthesisUtterance(),
+        msg,
         voices, summlizedVoice,
         matchedVoice; // savedVoices data which match browser voice data.
 
@@ -90,6 +90,7 @@
 
     this.bindVoicesLoad = function() {
       var me = this;
+      msg = new SpeechSynthesisUtterance();
       var onvoiceschanged = function() {
         voices = speechSynthesis.getVoices();
         summlizedVoice = getSummlizeVoice(voices);
