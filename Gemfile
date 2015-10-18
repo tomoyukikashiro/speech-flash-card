@@ -6,6 +6,7 @@ ruby "2.1.2"
 gem 'rails'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
+gem "autoprefixer-rails", '~> 6.0.3'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
