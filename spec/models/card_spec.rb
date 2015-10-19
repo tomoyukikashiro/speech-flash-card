@@ -48,4 +48,55 @@ RSpec.describe Card, :type => :model do
     end
   end
 
+  # ------------------------------
+  # max size of card
+  # ------------------------------
+  context "max size validation" do
+    before {@book = FactoryGirl.create(:book)}
+    it "user can set cards up to 50 in book" do
+      50.times do
+        @book.cards.create(text: "test")
+      end
+      expect(@book.valid?).to be_truthy
+    end
+    it "user can not set cards greater than 51 books" do
+      51.times do
+        @book.cards.create(text: "test")
+      end
+      expect(@book.valid?).to be_falsey
+    end
+  end
+
+  # ------------------------------
+  # #get_data
+  # ------------------------------
+  describe "#get_data" do
+    it "return data" do
+      card = FactoryGirl.create(:card)
+      expect(card.get_data).to eq({id: card.id.to_s, text: card.text, note: card.note})
+    end
+  end
+
+  # ------------------------------
+  # #self.get_all
+  # ------------------------------
+  describe "#self.get_all" do
+    context "book contains a card" do
+      before {@book = FactoryGirl.create(:book_with_card)}
+      it "return data" do
+        expect(Card.get_all(@book)).to eq([{
+          id: @book.cards.first.id.to_s,
+          text: @book.cards.first.text,
+          note: @book.cards.first.note
+        }])
+      end
+    end
+    context "book dose not contain any card" do
+      before {@book = FactoryGirl.create(:book)}
+      it "return empty array" do
+        expect(Card.get_all(@book)).to eq([])
+      end
+    end
+  end
+
 end

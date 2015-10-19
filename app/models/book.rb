@@ -16,6 +16,8 @@ class Book
     cards.destroy_all
   end
 
+  MAX_BOOKS_COUNT = 20
+
   def get_data
     first_card_id = cards.size > 0 ? cards.first.id : nil
     return {
@@ -38,7 +40,7 @@ class Book
 
   private
     def check_count
-      errors.add(:tmb, "too many books") if self.user.present? && self.user.books.size > 20
+      errors.add(:tmb, "too many books") if self.user.present? && self.user.books.size > MAX_BOOKS_COUNT
     end
 
 end

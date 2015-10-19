@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
 
+  before_filter :check_user, only: [:destroy]
+
   def oauth
     user = User.from_omniauth(env["omniauth.auth"])
     if user.present?

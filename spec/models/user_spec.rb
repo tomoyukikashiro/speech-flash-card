@@ -2,32 +2,63 @@ require 'rails_helper'
 
 RSpec.describe User, :type => :model do
   before do
-    @user = User.create(name: "Example User", oauth_token: "token")
+    @user = FactoryGirl.create(:user)
   end
 
   it "user has properties" do
     expect(@user).to respond_to(:name)
-    expect(@user).to respond_to(:oauth_token)
+    expect(@user).to respond_to(:screen_name)
+    expect(@user).to respond_to(:image_path)
+    expect(@user).to respond_to(:uid)
+    expect(@user).to respond_to(:provider)
     expect(@user).to respond_to(:remember_token)
+    expect(@user).to respond_to(:oauth_token)
+    expect(@user).to respond_to(:oauth_expires_at)
+
     expect(@user.valid?).to be_truthy
   end
 
   # ------------------------------
-  # books
+  # name
   # ------------------------------
-  context "validation" do
-    it "user can set book up to 20 books" do
-      20.times do
-        @user.books.create(name: "test")
-      end
-      expect(@user.valid?).to be_truthy
-    end
-    it "user can not set book greater than 21 books" do
-      21.times do
-        @user.books.create(name: "test")
-      end
-      expect(@user.valid?).to be_falsey
-    end
+  it "when name is too long" do
+    @user.name = "a" * 51
+    expect(@user.valid?).to be_falsey
+  end
+  # ------------------------------
+  # screen_name
+  # ------------------------------
+  it "when screen_name is too long" do
+    @user.screen_name = "a" * 51
+    expect(@user.valid?).to be_falsey
+  end
+  # ------------------------------
+  # image_path
+  # ------------------------------
+  it "when image_path is too long" do
+    @user.screen_name = "a" * 201
+    expect(@user.valid?).to be_falsey
+  end
+  # ------------------------------
+  # uid
+  # ------------------------------
+  it "when uid dose not exist" do
+    @user.uid = nil
+    expect(@user.valid?).to be_falsey
+  end
+  # ------------------------------
+  # provider
+  # ------------------------------
+  it "when provider dose not exist" do
+    @user.provider = nil
+    expect(@user.valid?).to be_falsey
+  end
+  # ------------------------------
+  # remember_token
+  # ------------------------------
+  it "remember_token" do
+    @user.save
+    expect(@user.remember_token).not_to be_blank
   end
 
   # ------------------------------
@@ -44,20 +75,16 @@ RSpec.describe User, :type => :model do
     end
   end
 
-
   # ------------------------------
-  # name
+  # self.from_omniauth
   # ------------------------------
-  it "when is too long" do
-    @user.name = "a" * 51
-    expect(@user.valid?).to be_falsey
-  end
-
-  # ------------------------------
-  # remember_token
-  # ------------------------------
-  it "remember_token" do
-    @user.save
-    expect(@user.remember_token).not_to be_blank
+  describe "#self.from_omniauth", skip: "引数のauthを作成する方法が不明" do
+    context "user dose not exist" do
+      before {expect(User.where(provider: "facebook", uid: "1111111").all.size).to eq(0)}
+      it "create new user" do
+        User.from_omniauth({provider: "facebook", uid: "1111111", credentials: {token: "111"}})
+        expect(User.where(provider: "facebook", uid: "1111111").all.size).to eq(1)
+      end
+    end
   end
 end

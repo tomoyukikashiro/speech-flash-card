@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   private
     def ssl_configured?
-      !Rails.env.development?
+      Rails.env.production?
     end
 
     def check_book

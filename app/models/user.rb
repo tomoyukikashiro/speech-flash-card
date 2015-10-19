@@ -16,6 +16,8 @@ class User
   validates :name,        length: { maximum: 50 }
   validates :screen_name, length: { maximum: 50 }
   validates :image_path,  length: { maximum: 200 }
+  validates :uid, presence: true
+  validates :provider, presence: true
   validates :oauth_token, presence: true, length: { maximum: 500 }
 
   index({remember_token: 1}, {unique: true})
@@ -27,7 +29,6 @@ class User
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
-      p auth
       user.provider = auth.provider
       user.uid = auth.uid
 
@@ -39,7 +40,7 @@ class User
 
       user.oauth_token = auth.credentials.token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at) unless auth.credentials.expires_at.nil?
-      user.save!
+      user.save
     end
   end
 

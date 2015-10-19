@@ -12,6 +12,8 @@ class Card
   validates :note, allow_nil: true, length: { maximum: 100 }
   validate :check_count, on: :create
 
+  MAX_CARD_COUNT = 50
+
   def get_data
     return {id: id.to_s, text: text, note: note}
   end
@@ -28,7 +30,7 @@ class Card
 
   private
     def check_count
-      errors.add(:tmc, "too many card") if self.book.present? && self.book.cards.size > 50
+      errors.add(:tmc, "too many card") if self.book.present? && self.book.cards.size > MAX_CARD_COUNT
     end
 
 end

@@ -6,26 +6,4 @@ class UsersController < ApplicationController
     render json: {id: @user.id.to_s, name: @user.name}, status: 200
   end
 
-  def update
-    if @user.update_attributes(update_params)
-      render nothing: true, status: 204
-    else
-      render json: @user.errors.keys, status: 400
-    end
-  end
-
-  def destroy
-    if @user.destroy
-      render nothing: true, status: 204
-    else
-      render nothing: true, status: 400
-    end
-  end
-
-  private
-
-    def update_params
-      params.require(:user).permit(:name)
-    end
-
 end
