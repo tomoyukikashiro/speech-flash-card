@@ -25,7 +25,7 @@
 
     ///
     function isTooManyBook(errors) {
-      return errors && errors.indexOf('tmb') !== -1
+      return errors && errors.indexOf('tmb') !== -1;
     }
     function update(id, data) {
       var dfd = $q.defer();
@@ -80,7 +80,7 @@
       angular.forEach(data, function(v) {
         if(v.id === id){
           v.name = data.name;
-          v.voices = {name: data.voices.name, lang: data.voices.lang}
+          v.voices = {name: data.voices.name, lang: data.voices.lang};
         }
       });
     }

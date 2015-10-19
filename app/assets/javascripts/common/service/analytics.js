@@ -11,6 +11,6 @@
 
     this.sendCurrentPageView = function(path){
       ga('send', 'pageview', path || $location.path());
-    }
+    };
   }
 })();

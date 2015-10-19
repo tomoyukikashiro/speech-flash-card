@@ -14,9 +14,9 @@
       rate: 1,
       pitch: 1 // 0 - 2
     };
-    var voiceBlackList = ['alex', 'agnes', 'albert', 'bad news', 'bahh', 'bells', 'boing', 'bruce', 'bubbles', 'cellos', 'deranged'
-    ,'fiona', 'fred', 'good news', 'hysterical', 'junior', 'kathy', 'moira', 'pipe organ', 'princess', 'ralph', 'tessa', 'trinoids'
-    ,'veena', 'vicki', 'victoria', 'whisper', 'zarvox'];
+    var voiceBlackList = ['alex', 'agnes', 'albert', 'bad news', 'bahh', 'bells', 'boing', 'bruce', 'bubbles', 'cellos', 'deranged',
+    'fiona', 'fred', 'good news', 'hysterical', 'junior', 'kathy', 'moira', 'pipe organ', 'princess', 'ralph', 'tessa', 'trinoids',
+    'veena', 'vicki', 'victoria', 'whisper', 'zarvox'];
 
     var extendedOptions,
         msg,
@@ -94,7 +94,7 @@
       var onvoiceschanged = function() {
         voices = speechSynthesis.getVoices();
         summlizedVoice = getSummlizeVoice(voices);
-      }
+      };
       // speechSynthesis is partial support in safari.
       if('onvoiceschanged' in speechSynthesis){
         window.speechSynthesis.onvoiceschanged = onvoiceschanged;
@@ -112,7 +112,7 @@
       msg.voice = voice;
       msg.text = APP_CONFIG.SAMPLE_VOICE[lang];
       speechSynthesis.speak(msg);
-    }
+    };
 
     this.speak = function(text) {
       msg.text = text;
@@ -129,7 +129,7 @@
         var key = APP_CONFIG.LANG[lang.toUpperCase()];
         if(!key){
           // W3Cに定義されていない言語コードが幾つかある
-          return
+          return;
         }
         if(!res[key]){
           res[key] = [];

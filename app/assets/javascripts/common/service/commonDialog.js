@@ -10,11 +10,11 @@
   function commonDialog($mdDialog) {
 
     return {
-      alert: alert
+      alert: _alert
     };
 
     ///
-    function alert(param) {
+    function _alert(param) {
       var custom = $mdDialog.alert({
         title: param.title || 'ATTENTION',
         content: param.content,

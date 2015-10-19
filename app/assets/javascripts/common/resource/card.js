@@ -26,7 +26,7 @@
 
     ///
     function isTooManyCard(errors) {
-      return errors && errors.indexOf('tmc') !== -1
+      return errors && errors.indexOf('tmc') !== -1;
     }
     function update(params, data) {
       var dfd = $q.defer();

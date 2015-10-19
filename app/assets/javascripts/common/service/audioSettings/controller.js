@@ -27,7 +27,7 @@
           resourceUser.setAudioData(data);
           vm.user = angular.copy(resourceUser.getData());
           $mdDialog.hide();
-        }, function(e){
+        }, function(){
           // TODO ログ
         });
     }

@@ -96,6 +96,7 @@
         "SpeechSynthesisUtterance": true,
         "speechSynthesis"         : true,
         "AUTH_TOKEN"              : true,
+        "FLASH"                   : true,
         "expect"                  : true,
         "sinon"                   : true,
         "describe"                : true,

@@ -7,7 +7,6 @@
 
   function fcBookMenu() {
     var directive = {
-      link: link,
       restrict: 'E',
       templateUrl: 'templates/cards/menu.html',
       controller: 'cardsMenuController',
@@ -18,7 +17,5 @@
     };
     return directive;
 
-    function link(scope, element, attrs) {
-    }
   }
 })();

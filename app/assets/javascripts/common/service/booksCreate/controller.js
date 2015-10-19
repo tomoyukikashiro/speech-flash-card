@@ -29,7 +29,7 @@
           voices: speech.getVoiceParam(vm.selectedVoice)
         }
       };
-      resourceBook.save(param).then(function(response) {
+      resourceBook.save(param).then(function() {
         $mdDialog.hide();
         commonToast.notice({notice: 'created book'});
       }, function(response) {
