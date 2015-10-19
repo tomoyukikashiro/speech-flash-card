@@ -14,18 +14,17 @@
     vm.remove = remove;
     vm.update = update;
     vm.speech = speech;
-    vm.voices = speech.getVoices();
-    var selectedVoiceData = speech.getSelectedVoiceData(book.voices);
-    vm.isSelectedVoice = isSelectedVoice;
+    vm.selectedVoice = '';
 
     activate();
 
     function activate() {
       analytics.sendCurrentPageView('/books/edit/');
-    }
-
-    function isSelectedVoice(data){
-      return data === selectedVoiceData;
+      // 保存しているvoiceの中でブラウザに合うものを取得
+      var selectedVoice = speech.getSelectedVoiceData(book.voices);
+      if(selectedVoice){
+        vm.selectedVoice = speech.getVoiceKey(selectedVoice.lang, selectedVoice.name);
+      }
     }
 
     function remove() {
@@ -36,14 +35,14 @@
         });
     }
     function update() {
-      var voice = speech.getVoiceParam(vm.selectedVoice);
       var param = {
         name: vm.book.name,
-        voices: voice
+        voices: speech.getVoiceParam(vm.selectedVoice)
       };
       resourceBook.update(book.id, param)
         .then(function() {
           $mdDialog.hide();
+          commonToast.notice({notice: 'updated book'});
         });
     }
   }

@@ -13,7 +13,8 @@
       templateUrl: 'templates/common/directive/voiceSelect.html',
       scope: {
         title: '@',
-        onSelect: '&'
+        onSelect: '&',
+        selectedVoiceModel: '='
       }
     };
     return directive;

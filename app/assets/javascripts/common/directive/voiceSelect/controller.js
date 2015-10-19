@@ -9,11 +9,9 @@
 
   function voiceSelectController($scope, speech, $timeout) {
     var vm = this;
-    var selectedVoice;
-    vm.voices = '';
-    vm.onSelect = onSelect;
-    vm.onOpenSelect = onOpenSelect;
+    vm.voices = speech.getVoices();
     vm.speakSample = speakSample;
+    vm.onOpenSelect = onOpenSelect;
 
     function onOpenSelect() {
       return $timeout(function() {
@@ -22,20 +20,13 @@
     }
 
     function speakSample() {
-      if(!selectedVoice){
+      if(!$scope.selectedVoiceModel){
         return;
       }
+      var data = speech.getVoiceParam($scope.selectedVoiceModel);
+      var selectedVoice = speech.getVoiceData(data.lang, data.name);
       speech.init({voice: selectedVoice});
       speech.speak(speech.getSampleText(selectedVoice.lang));
-    }
-
-    function onSelect($event) {
-      if(!vm.selectedVoice){
-        return;
-      }
-      var data = speech.getVoiceParam(vm.selectedVoice);
-      selectedVoice = speech.getVoiceData(data.lang, data.name);
-      $scope.onSelect({voice: selectedVoice});
     }
   }
 

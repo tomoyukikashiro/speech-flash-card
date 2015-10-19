@@ -10,18 +10,12 @@
   function booksCreateDialogController(resourceBook, baseController, $mdDialog, speech, commonDialog, commonToast, isFirst, analytics) {
     angular.extend(this, baseController);
     var vm = this;
-    var selectedVoice;
+    vm.selectedVoice = '';
     vm.submit = submit;
-    vm.voices = speech.getVoices();
     vm.speech = speech;
     vm.isFirst = isFirst;
-    vm.onSelect = onSelect;
 
     activate();
-
-    function onSelect(voice) {
-      selectedVoice = voice;
-    }
 
     function activate() {
       analytics.sendCurrentPageView('/books/create/');
@@ -32,7 +26,7 @@
       var param = {
         book: {
           name: vm.bookName,
-          voices: speech.getVoiceParam(selectedVoice.lang, selectedVoice.name)
+          voices: speech.getVoiceParam(vm.selectedVoice)
         }
       };
       resourceBook.save(param).then(function(response) {
