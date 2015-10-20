@@ -22,6 +22,10 @@
         templateUrl: '/templates/books/dialog/create.html',
         controller: 'booksCreateDialogController',
         controllerAs: 'booksCreate',
+        focusOnOpen: false,
+        onComplete: function(scope, elm) {
+          elm.find('input').eq(0).focus();
+        },
         locals: {
           isFirst: isFirst
         }

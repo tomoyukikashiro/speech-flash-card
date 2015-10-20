@@ -22,6 +22,10 @@
         templateUrl: '/templates/cards/dialog/create.html',
         controller: 'cardsCreateDialogController',
         controllerAs: 'cardsCreate',
+        focusOnOpen: false,
+        onComplete: function(scope, elm) {
+          elm.find('input').eq(0).focus();
+        },
         locals: {
           isFirst: isFirst,
           bookId : bookId
