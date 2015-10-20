@@ -13,7 +13,9 @@
       notice: notice
     };
 
-    ///
+    // flashは noticeやalertなどの幾つか入る可能性がある
+    // rails の flashに準拠
+    // {notice: '', alert: ''}
     function notice(flash) {
       var data = getSimpleConfig(getKeyData('notice', flash));
       angular.forEach(data, function(v) {

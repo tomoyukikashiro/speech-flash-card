@@ -23,6 +23,7 @@
 
     function clearCache() {
       data = null;
+      return data;
     }
 
     //////
@@ -40,7 +41,6 @@
         delete data.$resolved;
 
         data = data.id ? data : null;
-
         dfd.resolve(data);
       }, function() {
         dfd.reject();

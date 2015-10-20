@@ -31,7 +31,6 @@
 //= require common/resource/card.js
 //= require common/router/book.js
 //= require common/router/card.js
-//= require common/service/resolveRedirection.js
 //= require common/service/speech.js
 //= require common/service/booksCreate/dialog.js
 //= require common/service/booksCreate/controller.js

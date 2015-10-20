@@ -100,9 +100,12 @@
         "expect"                  : true,
         "sinon"                   : true,
         "describe"                : true,
+        "xdescribe"               : true,
         "it"                      : true,
         "xit"                     : true,
         "beforeEach"              : true,
-        "afterEach"               : true
+        "afterEach"               : true,
+        "module"                  : true,
+        "inject"                  : true
     }
 }

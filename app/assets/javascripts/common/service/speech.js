@@ -23,6 +23,7 @@
         voices, summlizedVoice,
         matchedVoice; // savedVoices data which match browser voice data.
 
+    // card detailページへ最初に遷移したら呼び出す
     this.init = function(options) {
       extendedOptions = angular.extend({}, defOptions, options);
       if(extendedOptions.voice){
@@ -31,6 +32,17 @@
       msg.volume = extendedOptions.volume;
       msg.rate = extendedOptions.rate;
       msg.pitch = extendedOptions.pitch;
+    };
+
+    this.speakSampleVoice = function(lang, voice){
+      msg.voice = voice;
+      msg.text = APP_CONFIG.SAMPLE_VOICE[lang];
+      speechSynthesis.speak(msg);
+    };
+
+    this.speak = function(text) {
+      msg.text = text;
+      speechSynthesis.speak(msg);
     };
 
     this.getVoices = function() {
@@ -60,10 +72,10 @@
       return lang + '_' + name;
     };
 
-    // @param savedVoices : selected voice data list
-    // return selected voice data
-    // if there is not voice which you selected
-    // return null.
+    // savedVoices : 保存された1言語のvoiceデータのリスト
+    // ブラウザ毎にvoiceデータがことなるので、複数保存されている可能性あり
+    // DB上に保存されたvoiceデータと、現在のブラウザで取得できたvoiceデータを
+    // 照合して一番はじめに一致したvoiceを利用する
     this.getSelectedVoiceData = function(savedVoices) {
       var me = this;
       var res;
@@ -88,6 +100,10 @@
       return res;
     };
 
+    this.canUseVoice = function() {
+      return 'onvoiceschanged' in speechSynthesis;
+    };
+
     this.bindVoicesLoad = function() {
       var me = this;
       msg = new SpeechSynthesisUtterance();
@@ -96,7 +112,7 @@
         summlizedVoice = getSummlizeVoice(voices);
       };
       // speechSynthesis is partial support in safari.
-      if('onvoiceschanged' in speechSynthesis){
+      if(me.canUseVoice()){
         window.speechSynthesis.onvoiceschanged = onvoiceschanged;
       }else{
         $timeout(function() {
@@ -108,16 +124,6 @@
       }
     };
 
-    this.speakSampleVoice = function(lang, voice){
-      msg.voice = voice;
-      msg.text = APP_CONFIG.SAMPLE_VOICE[lang];
-      speechSynthesis.speak(msg);
-    };
-
-    this.speak = function(text) {
-      msg.text = text;
-      speechSynthesis.speak(msg);
-    };
 
     function getSummlizeVoice(voices) {
       var res = {};
@@ -140,4 +146,5 @@
     }
 
   }
+
 })();

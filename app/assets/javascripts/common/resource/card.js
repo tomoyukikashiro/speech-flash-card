@@ -52,8 +52,8 @@
       var dfd = $q.defer();
       resource.save(params, postData)
         .$promise
-        .then(function(data) {
-          list.data.push(data);
+        .then(function(response) {
+          list.data.push(response);
           dfd.resolve(list.data);
         }, function (data) {
           dfd.reject(data);
@@ -75,46 +75,32 @@
       return hitIndex;
     }
     function getIterator(currentCard) {
-      if(angular.isDefined(iterator)){
-        iterator.updateHas();
-        return iterator;
-      }
       var _list = list.data;
       var index = getCurrentIndex(currentCard);
       iterator = {
-        hasNext: undefined,
-        hasPrev: undefined,
-        updateHas: updateHas,
+        hasNext: hasNext,
+        hasPrev: hasPrev,
         getNext: getNext,
         getPrev: getPrev
       };
-      iterator.updateHas();
       return iterator;
-      function _hasNext() {
+      function hasNext() {
         return !angular.isUndefined(_list) && index !== _list.length -1;
       }
-      function _hasPrev() {
+      function hasPrev() {
         return !angular.isUndefined(_list) && index !== 0;
       }
-      function updateHas() {
-        _list = list.data;
-        this.hasNext = _hasNext();
-        this.hasPrev = _hasPrev();
-      }
       function getPrev() {
-        if(!_hasPrev()){
+        if(!hasPrev()){
           return;
         }
-        var prev = _list[--index];
-        this.updateHas();
-        return prev;
+        return _list[--index];
       }
       function getNext() {
-        if(!_hasNext()){
+        if(!hasNext()){
           return;
         }
         var next = _list[++index];
-        this.updateHas();
         return next;
       }
     }
@@ -165,7 +151,6 @@
           v.note = data.note;
         }
       });
-      iterator.updateHas();
     }
     function removeItem(id) {
       angular.forEach(list.data, function(v, i) {
@@ -173,7 +158,6 @@
           list.data.splice(i, 1);
         }
       });
-      iterator.updateHas();
     }
 
   }

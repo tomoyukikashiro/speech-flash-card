@@ -16,7 +16,9 @@
       return;
     }
     speech.bindVoicesLoad();
-    commonToast.notice(FLASH);
+    if(window.FLASH) {
+      commonToast.notice(FLASH);
+    }
   }]);
 
   appConfig.$inject = ['$httpProvider', 'APP_CONFIG'];

@@ -10,7 +10,9 @@
   function analytics($location) {
 
     this.sendCurrentPageView = function(path){
-      ga('send', 'pageview', path || $location.path());
+      if(window.ga){
+        ga('send', 'pageview', path || $location.path());
+      }
     };
   }
 })();

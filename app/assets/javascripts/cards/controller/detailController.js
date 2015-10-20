@@ -5,12 +5,16 @@
     .module('EnglishFlashCard')
     .controller('cardsDetailController', cardsDetailController);
 
-  cardsDetailController.$inject = ['$rootScope', '$location', '$mdInkRipple', 'resourceCard', 'resourceBook','baseController', '$routeParams', 'speech', 'card'];
+  cardsDetailController.$inject = ['$rootScope', '$location', '$mdInkRipple', 'resourceCard', 'resourceBook','baseController', '$routeParams', 'speech', 'card', 'currentUser', 'books'];
 
-  function cardsDetailController($rootScope, $location, $mdInkRipple, resourceCard, resourceBook, baseController, $routeParams, speech, card) {
+  function cardsDetailController($rootScope, $location, $mdInkRipple, resourceCard, resourceBook, baseController, $routeParams, speech, card, currentUser, books) {
 
-    if(!card){
+    if(!currentUser || !books){
       $location.path('/login');
+      return;
+    }else if(!card){
+      $location.path('/books');
+      return;
     }
 
     angular.extend(this, baseController);
@@ -23,6 +27,8 @@
     vm.onClickCard = onClickCard;
     vm.onClickNext = onClickNext;
     vm.onClickPrev = onClickPrev;
+    vm.hasPrev = false;
+    vm.hasNext = false;
 
     activate();
 
@@ -44,8 +50,13 @@
     function onClickCard(text) {
       speech.speak(text);
     }
+    function updateHas() {
+      vm.hasPrev = vm.cardIterator.hasPrev();
+      vm.hasNext = vm.cardIterator.hasNext();
+    }
 
     function activate() {
+      updateHas();
       vm.analytics.sendCurrentPageView('/cards/detail/');
       speech.init({voice: selectedVoice});
       $rootScope.$broadcast(changeCardEvent, card.id);

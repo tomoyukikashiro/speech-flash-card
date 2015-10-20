@@ -15,6 +15,7 @@
 
     if(!books){
       $location.path('/login');
+      return;
     }
 
     angular.extend(this, baseController);

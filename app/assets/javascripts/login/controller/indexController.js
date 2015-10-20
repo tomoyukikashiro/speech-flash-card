@@ -15,14 +15,9 @@
     }
 
     var vm = this;
+    vm.login = {};
     vm.loginSubmit = loginSubmit;
 
-    activate();
-
-    ///
-    function activate() {
-      vm.login = {};
-    }
     function loginSubmit() {
       resourceSession.resource.save({}, {email: vm.login.email, password: vm.login.password})
       .$promise.then(function() {

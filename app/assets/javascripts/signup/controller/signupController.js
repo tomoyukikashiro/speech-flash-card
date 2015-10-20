@@ -15,13 +15,7 @@
 
     var vm = this;
     vm.createSubmit = createSubmit;
-
-    activate();
-
-    ///
-    function activate() {
-      vm.signup = {};
-    }
+    vm.signup = {};
 
     function createSubmit() {
       resourceUser.resource.save({}, {

@@ -30,13 +30,12 @@
         note : vm.note
       };
       resourceCard.save(param, postData).then(function(cardList) {
-        $mdDialog.hide().then(function() {
+          $mdDialog.hide();
           $rootScope.$broadcast('updatecard', cardList);
           commonToast.notice({notice: 'created card'});
           vm.routers.card.goDetail(_bookId, cardList[cardList.length-1].id);
-        });
-      }, function(data) {
-        if(resourceCard.isTooManyCard(data)){
+      }, function(response) {
+        if(resourceCard.isTooManyCard(response.data)){
           commonDialog.alert({content: 'Cardはこれ以上つくれません'});
         }
       });

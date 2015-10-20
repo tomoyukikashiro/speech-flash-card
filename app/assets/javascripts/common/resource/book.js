@@ -32,7 +32,7 @@
       resource.update({bookId: id}, {book: data})
         .$promise
         .then(function() {
-          updateItem(id, name);
+          updateItem(id, data);
           dfd.resolve();
         });
       return dfd.promise;
@@ -42,8 +42,8 @@
       resource.save({}, param, function(response) {
         data.push(response);
         dfd.resolve(response);
-      },function() {
-        dfd.reject();
+      },function(response) {
+        dfd.reject(response);
       });
       return dfd.promise;
     }
@@ -76,11 +76,11 @@
       });
       return res;
     }
-    function updateItem(id, data) {
+    function updateItem(id, target) {
       angular.forEach(data, function(v) {
         if(v.id === id){
-          v.name = data.name;
-          v.voices = {name: data.voices.name, lang: data.voices.lang};
+          v.name = target.name;
+          v.voices = {name: target.voices.name, lang: target.voices.lang};
         }
       });
     }

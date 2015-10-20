@@ -10,7 +10,7 @@
   function cardsEditDialogController($rootScope, $routeParams, $mdDialog, resourceCard, baseController, card, commonToast, analytics) {
     angular.extend(this, baseController);
     var vm = this;
-    var cardIterator = resourceCard.getIterator();
+    var cardIterator = resourceCard.getIterator(card);
     vm.card = card;
     vm.submit = submit;
     vm.remove = remove;
@@ -27,9 +27,10 @@
       resourceCard.remove(param)
         .then(function () {
           $mdDialog.hide();
-          if(cardIterator.hasNext){
+          commonToast.notice({notice: 'delete card'});
+          if(cardIterator.hasNext()){
             vm.routers.card.goDetail(null, cardIterator.getNext().id);
-          }else if (cardIterator.hasPrev){
+          }else if (cardIterator.hasPrev()){
             vm.routers.card.goDetail(null, cardIterator.getPrev().id);
           }else{
             vm.routers.book.goList();
@@ -49,6 +50,7 @@
       resourceCard.update(param, postData)
         .then(function () {
           $mdDialog.hide();
+          commonToast.notice({notice: 'update card'});
           resourceCard.getList().then(function(cardList) {
             $rootScope.$broadcast('updatecard', cardList);
           });

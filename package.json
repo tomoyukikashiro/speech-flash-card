@@ -9,6 +9,7 @@
     "karma-jshint": "^0.1.0",
     "karma-jshint-preprocessor": "0.0.6",
     "karma-mocha": "^0.2.0",
+    "karma-osx-reporter": "^0.2.1",
     "karma-phantomjs-launcher": "^0.2.1",
     "karma-sinon": "^1.0.4",
     "mocha": "^2.3.3",
@@ -16,7 +17,8 @@
     "sinon": "^1.17.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test-ci": "./node_modules/karma/bin/karma start --single-run",
+    "test": "./node_modules/karma/bin/karma start"
   },
   "repository": {
     "type": "git",
