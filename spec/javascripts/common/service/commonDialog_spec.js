@@ -4,7 +4,7 @@
 
   describe('common/service/commonDialog.js', function(){
     var _commonDialog, _$mdDialog, optionSpy, showSpy;
-    beforeEach(module('EnglishFlashCard'));
+    beforeEach(module('SpeechFlashCard'));
     beforeEach(module('ngMaterial'));
     beforeEach(inject(function(commonDialog, $mdDialog) {
       _commonDialog = commonDialog;

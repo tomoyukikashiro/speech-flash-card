@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('EnglishFlashCard')
+    .module('SpeechFlashCard')
       .controller('appController', appController);
 
   appController.$inject = ['$rootScope', 'baseController', 'APP_CONFIG', 'cardList', 'resourceCard'];

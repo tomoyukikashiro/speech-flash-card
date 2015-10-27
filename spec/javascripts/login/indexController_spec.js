@@ -3,7 +3,7 @@
 
   describe('login/indexController.js', function(){
 
-    beforeEach(module('EnglishFlashCard'));
+    beforeEach(module('SpeechFlashCard'));
     var ctrl;
 
     describe('loggedin', function(){

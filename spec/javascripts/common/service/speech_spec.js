@@ -3,7 +3,7 @@
   'use strict';
   describe('common/service/speech.js', function(){
     var _speech, spy, config, _$rootScope;
-    beforeEach(module('EnglishFlashCard'));
+    beforeEach(module('SpeechFlashCard'));
     beforeEach(inject(function($rootScope, speech, APP_CONFIG, $httpBackend){
       _$rootScope = $rootScope;
       _speech = speech;

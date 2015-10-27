@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('EnglishFlashCard')
+    .module('SpeechFlashCard')
     .service('sideNav', sideNav);
 
   sideNav.$inject = ['$mdSidenav', '$mdUtil'];

@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('EnglishFlashCard')
+    .module('SpeechFlashCard')
     .factory('disableVoiceDialog', disableVoiceDialog);
 
   disableVoiceDialog.$inject = ['$mdDialog'];

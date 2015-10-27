@@ -5,7 +5,7 @@
    * return object will extend controller instance
    */
   angular
-    .module('EnglishFlashCard')
+    .module('SpeechFlashCard')
     .factory('baseController', baseController);
 
   baseController.$inject = ['$rootScope', '$location', 'routerBook', 'routerCard', 'sideNav', 'APP_CONFIG', 'analytics'];

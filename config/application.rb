@@ -16,7 +16,7 @@ Bundler.require(*Rails.groups)
 # http://blog.r-unit.co.jp/archives/1508
 Mongo::Logger.logger.level = Logger::WARN
 
-module EnglishFlashCard
+module SpeechFlashCard
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

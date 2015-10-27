@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('EnglishFlashCard')
+    .module('SpeechFlashCard')
     .controller('cardsDetailController', cardsDetailController);
 
   cardsDetailController.$inject = ['$rootScope', '$location', '$mdInkRipple', 'resourceCard', 'resourceBook','baseController', '$routeParams', 'speech', 'card', 'currentUser', 'books'];

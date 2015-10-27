@@ -5,7 +5,7 @@
   describe('resource/user.js', function(){
 
     var _$httpBackend, _resourceUser;
-    beforeEach(module('EnglishFlashCard'));
+    beforeEach(module('SpeechFlashCard'));
     beforeEach(inject(function($httpBackend, resourceUser) {
       _$httpBackend = $httpBackend;
       _resourceUser = resourceUser;

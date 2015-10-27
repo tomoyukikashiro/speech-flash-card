@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('EnglishFlashCard')
+    .module('SpeechFlashCard')
     .directive('sideNav', sideNav);
 
   function sideNav() {

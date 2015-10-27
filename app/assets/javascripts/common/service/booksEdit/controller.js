@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('EnglishFlashCard')
+    .module('SpeechFlashCard')
     .controller('booksEditDialogController', booksEditDialogController);
 
   booksEditDialogController.$inject = ['$mdDialog', 'resourceBook', 'baseController', 'book', 'speech', 'commonToast', 'analytics'];

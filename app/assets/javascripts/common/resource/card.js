@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('EnglishFlashCard')
+    .module('SpeechFlashCard')
     .factory('resourceCard', resourceCard);
 
   resourceCard.$inject = ['$resource', '$q', '$routeParams', '$route'];

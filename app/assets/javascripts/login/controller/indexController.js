@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('EnglishFlashCard')
+    .module('SpeechFlashCard')
     .controller('loginController', loginController);
 
   loginController.$inject = ['routerBook', 'resourceSession', 'currentUser'];

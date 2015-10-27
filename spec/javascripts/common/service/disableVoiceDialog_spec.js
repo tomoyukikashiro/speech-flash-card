@@ -4,7 +4,7 @@
 
   describe('common/service/disableVoiceDialog.js', function(){
     var spy, _disableVoiceDialog;
-    beforeEach(module('EnglishFlashCard'));
+    beforeEach(module('SpeechFlashCard'));
     beforeEach(module('ngMaterial'));
     beforeEach(inject(function($mdDialog, disableVoiceDialog){
       spy = sinon.stub($mdDialog, 'show');

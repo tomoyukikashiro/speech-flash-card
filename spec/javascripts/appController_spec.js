@@ -5,7 +5,7 @@
 
     // api リクエスト確認はレスポンスが通常とは違うので調査が必要
 
-    beforeEach(module('EnglishFlashCard'));
+    beforeEach(module('SpeechFlashCard'));
     var ctrl, _$rootScope, _$route, _$httpBackend;
     beforeEach(inject(function($httpBackend, $route, $controller, $rootScope, baseController, APP_CONFIG, cardList, resourceCard) {
       _$rootScope = $rootScope;

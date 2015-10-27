@@ -5,7 +5,7 @@
   describe('common/router/book.js', function(){
 
     var _routerBook, _$location;
-    beforeEach(module('EnglishFlashCard'));
+    beforeEach(module('SpeechFlashCard'));
     beforeEach(inject(function(routerBook, $location) {
       _routerBook = routerBook;
       _$location = $location;

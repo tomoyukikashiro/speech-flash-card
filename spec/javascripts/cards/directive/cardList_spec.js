@@ -6,7 +6,7 @@
     var ctrl;
     var _$scope;
     var cardList = {close: angular.noop};
-    beforeEach(module('EnglishFlashCard'));
+    beforeEach(module('SpeechFlashCard'));
     beforeEach(inject(function($controller, $rootScope, baseController) {
       _$scope = $rootScope.$new();
       ctrl = $controller('cardListController', {

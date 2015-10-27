@@ -3,7 +3,7 @@
   'use strict';
 
   describe('common/service/cardsEdit/controller.js', function(){
-    beforeEach(module('EnglishFlashCard'));
+    beforeEach(module('SpeechFlashCard'));
     beforeEach(module('ngMaterial'));
     var $httpBackend, $controller, $rootScope, $routeParams, $mdDialog, resourceCard, baseController, commonToast, analytics;
     beforeEach(inject(function(_$httpBackend_, _$controller_, _$rootScope_, _$routeParams_, _$mdDialog_, _resourceCard_, _baseController_, _commonToast_, _analytics_){

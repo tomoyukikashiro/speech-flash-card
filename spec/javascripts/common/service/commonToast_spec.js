@@ -4,7 +4,7 @@
 
   describe('common/service/commonToast.js', function(){
     var _commonToast, _$mdToast, spy;
-    beforeEach(module('EnglishFlashCard'));
+    beforeEach(module('SpeechFlashCard'));
     beforeEach(module('ngMaterial'));
     beforeEach(inject(function(commonToast, $mdToast){
       _commonToast = commonToast;

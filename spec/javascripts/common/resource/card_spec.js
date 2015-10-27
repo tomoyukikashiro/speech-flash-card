@@ -4,7 +4,7 @@
   describe('common/resouce/card.js', function(){
 
     var _resourceCard, _$httpBackend, _$route;
-    beforeEach(module('EnglishFlashCard'));
+    beforeEach(module('SpeechFlashCard'));
     beforeEach(inject(function(resourceCard, $httpBackend, $route) {
       _$route = $route;
       _resourceCard = resourceCard;

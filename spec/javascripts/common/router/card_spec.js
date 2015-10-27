@@ -5,7 +5,7 @@
   describe('common/router/card.js', function(){
 
     var _routerCard, _$location, _$routeParams;
-    beforeEach(module('EnglishFlashCard'));
+    beforeEach(module('SpeechFlashCard'));
     beforeEach(inject(function(routerCard, $location, $routeParams) {
       _routerCard = routerCard;
       _$location = $location;

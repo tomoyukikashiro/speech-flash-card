@@ -3,7 +3,7 @@
   'use strict';
   describe('common/service/analytics.js', function(){
     var _analytics, _$location, spy;
-    beforeEach(module('EnglishFlashCard'));
+    beforeEach(module('SpeechFlashCard'));
     beforeEach(inject(function(analytics, $location) {
       _analytics = analytics;
       _$location = $location;

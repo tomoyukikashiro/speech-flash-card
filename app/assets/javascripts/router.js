@@ -2,7 +2,7 @@
 
   'use strict';
 
-  angular.module('EnglishFlashCard')
+  angular.module('SpeechFlashCard')
     .config(appRouter);
 
   appRouter.$inject = ['$routeProvider', '$locationProvider'];

@@ -5,7 +5,7 @@
   describe('common/resource/session.js', function(){
 
     var _$httpBackend, _resourceSession, _resourceUser;
-    beforeEach(module('EnglishFlashCard'));
+    beforeEach(module('SpeechFlashCard'));
     beforeEach(inject(function($httpBackend, resourceSession, resourceUser) {
       _$httpBackend = $httpBackend;
       _resourceSession = resourceSession;

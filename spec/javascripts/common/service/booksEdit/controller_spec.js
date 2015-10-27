@@ -5,7 +5,7 @@
   describe('common/service/booksEdit/controller.js', function(){
 
     var $controller, analytics, $mdDialog, resourceBook, baseController, speech, commonToast, $httpBackend;
-    beforeEach(module('EnglishFlashCard'));
+    beforeEach(module('SpeechFlashCard'));
     beforeEach(module('ngMaterial'));
     beforeEach(inject(function(_$httpBackend_, _$controller_, _$mdDialog_, _resourceBook_, _baseController_, _speech_, _commonToast_, _analytics_){
       $controller = _$controller_;

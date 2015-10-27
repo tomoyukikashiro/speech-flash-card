@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('EnglishFlashCard')
+    .module('SpeechFlashCard')
     .service('analytics', analytics);
 
   analytics.$inject = ['$location'];

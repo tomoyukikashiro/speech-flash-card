@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('EnglishFlashCard')
+    .module('SpeechFlashCard')
     .controller('cardsCreateDialogController', cardsCreateDialogController);
 
   cardsCreateDialogController.$inject = ['$rootScope', '$routeParams', '$mdDialog', 'resourceCard', 'baseController', 'isFirst', 'bookId', 'commonDialog', 'commonToast', 'analytics'];

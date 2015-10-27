@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('EnglishFlashCard')
+    .module('SpeechFlashCard')
     .service('speech', speech);
 
   speech.$inject = ['APP_CONFIG', '$timeout'];

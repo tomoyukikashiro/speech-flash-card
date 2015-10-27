@@ -1,7 +1,7 @@
 (function() {
 
   'use strict';
-  angular.module('EnglishFlashCard')
+  angular.module('SpeechFlashCard')
     .constant('APP_CONFIG',
       {
         AUTH_TOKEN : document.querySelector('meta[name="csrf-token"]') && document.querySelector('meta[name="csrf-token"]').getAttribute('content'),

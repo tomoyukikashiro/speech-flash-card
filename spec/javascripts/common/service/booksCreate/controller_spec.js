@@ -3,7 +3,7 @@
 
   describe('common/service/booksCreate/controller.js', function(){
     var controller, spy, spySpeech, spyResourceBook, _$httpBackend, _commonToast, _commonDialog, _$mdDialog;
-    beforeEach(module('EnglishFlashCard'));
+    beforeEach(module('SpeechFlashCard'));
     beforeEach(module('ngMaterial'));
     beforeEach(inject(function($controller, resourceBook, baseController, $mdDialog, speech, commonDialog, commonToast, analytics, $httpBackend){
       spy = sinon.stub(analytics, 'sendCurrentPageView');

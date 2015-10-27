@@ -4,7 +4,7 @@
   describe('cards/controller/detailController.js', function(){
 
     var ctrl;
-    beforeEach(module('EnglishFlashCard'));
+    beforeEach(module('SpeechFlashCard'));
 
     describe('not loggedin', function(){
       var _$location, spy;

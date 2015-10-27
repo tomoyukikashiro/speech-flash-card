@@ -4,7 +4,7 @@
   describe('common/resource/book.js', function(){
 
     var _resourceBook, _$httpBackend;
-    beforeEach(module('EnglishFlashCard'));
+    beforeEach(module('SpeechFlashCard'));
     beforeEach(inject(function(resourceBook, $httpBackend) {
       _resourceBook = resourceBook;
       _$httpBackend = $httpBackend;

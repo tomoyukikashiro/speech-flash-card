@@ -5,7 +5,7 @@
   describe('common/controller/baseController.js', function(){
 
     var ctrl, _$rootScope;
-    beforeEach(module('EnglishFlashCard'));
+    beforeEach(module('SpeechFlashCard'));
     beforeEach(inject(function($rootScope, baseController) {
       _$rootScope = $rootScope;
       ctrl = baseController;

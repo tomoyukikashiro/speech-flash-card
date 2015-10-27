@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('EnglishFlashCard')
+    .module('SpeechFlashCard')
     .controller('personalSettingsDialogController', personalSettingsDialogController);
 
   personalSettingsDialogController.$inject = ['baseController', 'resourceUser', '$mdDialog'];

@@ -3,7 +3,7 @@
 
   describe('books/controller/listController.js', function(){
     var ctrl;
-    beforeEach(module('EnglishFlashCard'));
+    beforeEach(module('SpeechFlashCard'));
 
     describe('books prop is undefined', function(){
       var _$location, spy;
