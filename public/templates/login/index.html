@@ -1,0 +1,22 @@
+<div class="login-container" flex layout="column" layout-align="center center">
+  <div>
+    <h1 class="md-display-3">Speech Flash Cards</h1>
+    <form name="UserLoginForm" ng-submit="loginIndex.loginSubmit()">
+      <md-input-container>
+        <label>Email</label>
+        <input type="email" required autocomplete="email" ng-model="loginIndex.login.email">
+      </md-input-container>
+      <md-input-container>
+        <label>Password</label>
+        <input type="password" required autocomplete="password" ng-model="loginIndex.login.password">
+      </md-input-container>
+      <div layout="row" layout-align="end center">
+        <div layout="row" flex>
+          <p><a ng-href="/signup">Singup</a></p>
+        </div>
+        <md-button class="md-raised md-primary">Login</md-button>
+      </div>
+    </form>
+  </div>
+</div>
+

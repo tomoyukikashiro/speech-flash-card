@@ -1,0 +1,2 @@
+web: bundle exec unicorn -p $PORT -E development -c config/unicorn.rb
+mongo: mongod --dbpath db/ --port 27017

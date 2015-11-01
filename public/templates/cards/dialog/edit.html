@@ -1,0 +1,23 @@
+<md-dialog aria-label="Edit Card">
+  <form name="cardEditForm">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Edit Card</h2>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <md-input-container>
+        <label>text</label>
+        <input type="text" name="text" ng-model="cardsEdit.card.text" required>
+      </md-input-container>
+      <md-input-container>
+        <label>note</label>
+        <textarea name="note" ng-model="cardsEdit.card.note"></textarea>
+      </md-input-container>
+      <div class="md-actions" layout="row">
+        <md-button ng-click="cardsEdit.remove()" class="md-warn">Delete</md-button>
+        <md-button ng-click="cardsEdit.submit()">Update</md-button>
+      </div>
+    </md-dialog-content>
+  </form>
+</md-dialog>

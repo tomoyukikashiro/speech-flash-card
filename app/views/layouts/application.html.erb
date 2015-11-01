@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html ng-app="SpeechFlashCard" ng-strict-di>
+<head>
+  <meta charset="utf-8">
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= csrf_meta_tags %>
+  <link href='//fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag "application" %>
+  <style>
+    [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+      display: none !important;
+    }
+  </style>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="flashcard helps you memolize words by speeching">
+  <title>Speech Flashcard</title>
+
+  <!-- Disable tap highlight on IE -->
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Speech Flashcard">
+  <link rel="icon" sizes="192x192" href="images/mb-icon.png">
+
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Speech Flashcard">
+  <link rel="apple-touch-icon" href="images/mb-icon.png">
+
+  <!-- Add ogp -->
+  <meta property="og:locale" content="ja_JP"/>
+  <meta property="og:title" content="Speech Flashcard"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://speechflashcard.herokuapp.com/"/>
+  <meta property="og:image" content="https://speechflashcard.herokuapp.com/images/ogp.jpg"/>
+  <meta property="og:site_name" content="Speech Flashcard"/>
+  <meta property="og:description" content="flashcard helps you memolize words by speeching"/>
+</head>
+<body layout="column" ng-controller="appController as appCtrl" ng-cloak>
+  <md-toolbar class="md-toolbar-tools md-medium-tall <%= "hide" unless @is_loggedin %>">
+    <md-button class="md-icon-button" aria-label="Settings" ng-click="appCtrl.sideNav.toggleLeft()"><md-icon md-svg-icon="images/icons/menu_white.svg" ></md-icon></md-button>
+    <h2><span ng-bind="appCtrl.page.preName" ng-click="appCtrl.routers.book.goList()"></span><span ng-bind="appCtrl.page.name"></span></h2>
+    <span flex></span>
+    <md-button class="md-icon-button" aria-label="Card list" ng-show="appCtrl.page.name === 'cards'" ng-click="appCtrl.cardList.toggleLeft()"><md-icon md-svg-icon="images/icons/list_white.svg"></md-icon></md-button>
+  </md-toolbar>
+  <div class="content-outer" layout="row">
+    <side-nav class="md-sidenav__outer md-whiteframe-6dp <%= "hide" unless @is_loggedin %>"></side-nav>
+    <card-list class="card-list__nav" card-list="appCtrl.cardListData"></card-list>
+    <md-content flex layout="row">
+      <%= yield %>
+    </md-content>
+  </div>
+  <%= javascript_tag do %>
+    var FLASH = <%= raw flash.to_h.to_json %>;
+  <% end %>
+  <%= javascript_include_tag 'application' %>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-68927286-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+</body>
+</html>

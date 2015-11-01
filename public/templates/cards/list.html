@@ -1,0 +1,9 @@
+<md-sidenav class="md-sidenav-right md-whiteframe-z2 card-list-sidenav" md-component-id="right">
+  <md-content layout-padding>
+    <md-list>
+      <md-list-item ng-click="cardListCtrl.changeCard(card.id)" ng-repeat="card in cardList" aria-label="{{card.text}}" ng-class="{'md-whiteframe-6dp': cardListCtrl.currentId === card.id}">
+        <p ng-bind="card.text"></p>
+      </md-list-item>
+    </md-list>
+  </md-content>
+</md-sidenav>

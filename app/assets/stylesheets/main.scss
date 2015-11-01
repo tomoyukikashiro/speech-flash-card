@@ -1,0 +1,38 @@
+@charset "utf-8";
+
+@import "bower_components/angular-material/angular-material.scss";
+@import "reset";
+@import "sideNav";
+@import "settings";
+@import "voice-select";
+
+@import "pages/bookList/all";
+@import "pages/cardList/all";
+@import "pages/login/all";
+@import "pages/signup/all";
+
+.content-outer{
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+md-icon{
+  // book listの編集ボタンが見えない対応
+  width: 25px;
+  height: 25px;
+}
+md-dialog{
+  flex: 1;
+}
+@media (max-width: $layout-breakpoint-sm) {
+  md-dialog{
+    flex: 1;
+    width: 80%;
+  }
+}
+@media (min-width: $layout-breakpoint-md) {
+  md-dialog{
+    flex: 1;
+    max-width: 600px;
+  }
+}
